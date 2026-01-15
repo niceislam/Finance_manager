@@ -1,0 +1,37 @@
+name: finance_management
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  get: ^4.7.3
+  introduction_screen: ^4.0.0
+  flutter_secure_storage: ^10.0.0
+  percent_indicator: ^4.2.5
+  syncfusion_flutter_charts: ^32.1.23
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/image/
+
+  fonts:
+    - family: myFont
+      fonts:
+        - asset: assets/font/Montserrat-Regular.ttf
