@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../Global_widget/custom_text.dart';
 
-
 class CurrentBalance extends StatelessWidget {
   const CurrentBalance({super.key});
 
@@ -12,9 +11,16 @@ class CurrentBalance extends StatelessWidget {
 
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 15),
-      height: 100,
+      height: 90,
       width: size.width,
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade300,
+            blurRadius: 2,
+            offset: Offset(0, 2),
+          ),
+        ],
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
       ),

@@ -5,7 +5,7 @@ class TransectionController extends GetxController {
   TextEditingController searchController = TextEditingController();
   RxBool iconActive = false.obs;
   RxBool CatagorySlide = false.obs;
-  RxBool onEnd = false.obs;
+  RxBool onEnd = true.obs;
 
   searchClearTap() {
     if (searchController.text.isNotEmpty) {

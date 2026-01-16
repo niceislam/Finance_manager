@@ -3,6 +3,8 @@ import 'package:finance_management/app/module/home/view/screen/home_screen/botto
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../../../../../../Global_widget/history_card.dart';
+
 class main_body extends StatelessWidget {
   const main_body({super.key});
 
@@ -22,11 +24,17 @@ class main_body extends StatelessWidget {
           spacing: 10,
           children: [
             //percent part
-            percent_part(size: size),
+            percent_part(
+              size: size,
+              name: "Nice Islam",
+              profession: "Flutter App Developer",
+              age: "21",
+              monthlyIncome: 40000,
+              expense: 12000,
+            ),
 
             //income and expense
             Row(
-              spacing: 15,
               children: [
                 _buildContainer(
                   title: 'Income',
@@ -47,42 +55,32 @@ class main_body extends StatelessWidget {
 
             //recent transaction
             SizedBox(height: 20),
-            CustomText(
-              text: "Recent Transection",
-              fontWeight: FontWeight.w900,
-              fontsize: 17,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomText(
+                  text: "Recent Transection",
+                  fontWeight: FontWeight.w900,
+                  fontsize: 17,
+                ),
+                CustomText(
+                  text: "12",
+                  fontWeight: FontWeight.w900,
+                  fontsize: 17,
+                  textColor: Colors.grey,
+                ),
+              ],
             ),
             ListView.builder(
               shrinkWrap: true,
               itemCount: 10,
               physics: NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.only(bottom: 5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
-                  ),
-                  child: ListTile(
-                    dense: true,
-                    leading: Icon(Icons.local_grocery_store_outlined),
-                    title: CustomText(
-                      text: "Grocery Store",
-                      fontWeight: FontWeight.w600,
-                      fontsize: 15,
-                    ),
-                    subtitle: CustomText(
-                      text: "shopping",
-                      fontsize: 13,
-                      textColor: Colors.grey,
-                    ),
-                    trailing: CustomText(
-                      text: "\$1300.0",
-                      fontWeight: FontWeight.w600,
-                      fontsize: 15,
-                      textColor: Colors.red,
-                    ),
-                  ),
+                return HistoryCard(
+                  icon: Icon(Icons.card_travel),
+                  title: "Grocery Shop",
+                  subTitle: "shopping",
+                  actionTk: "\$2500",
                 );
               },
             ),
@@ -101,7 +99,8 @@ class main_body extends StatelessWidget {
   }) {
     return Expanded(
       child: Container(
-        height: 80,
+        margin: EdgeInsets.symmetric(horizontal: 10),
+        height: 70,
         width: size.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -126,13 +125,13 @@ class main_body extends StatelessWidget {
                   text: "${title}",
                   fontWeight: FontWeight.w600,
                   textColor: textColor,
-                  fontsize: 16,
+                  fontsize: 15,
                 ),
                 CustomText(
                   text: "\$${tk ?? ""}",
                   fontWeight: FontWeight.w600,
                   textColor: textColor,
-                  fontsize: 17,
+                  fontsize: 15,
                 ),
               ],
             ),

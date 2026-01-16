@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 
 import 'bottom_home/home_body/home_body.dart';
 import 'bottom_home/home_body/part/bottombar.dart';
+import 'bottom_home/widget/floating_action.dart';
+import 'custom_Appbar/custom_appbar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,17 +22,13 @@ class HomeScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: CustomText(
-            text: "Overview",
-            textColor: Colors.white,
-            fontsize: 22,
-          ),
-          backgroundColor: Colors.indigo,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(50),
+          child: AllAppbar(controller: controller),
         ),
         body: Obx(() => controller.bottomPage[controller.bottomIndex.value]),
         bottomNavigationBar: CustomBottombar(controller: controller),
+        floatingActionButton: floating_action(controller: controller),
       ),
     );
   }
