@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
+import 'package:finance_management/app/module/home/view/screen/home_screen/widget/custom_alert.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'bottom_home/home_body/home_body.dart';
@@ -21,14 +25,32 @@ class HomeScreen extends StatelessWidget {
           currentFocus.unfocus();
         }
       },
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50),
-          child: AllAppbar(controller: controller),
+      child: PopScope(
+        canPop: false,
+        onPopInvokedWithResult: (didpop, result) async {
+          if (didpop) {
+            log("==============${didpop}");
+            return;
+          }
+          final souldpop = await showDialog(
+            context: context,
+            builder: (context) {
+              return CustomAlertDia();
+            },
+          );
+          if (souldpop == true) {
+            SystemNavigator.pop();
+          }
+        },
+        child: Scaffold(
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(48),
+            child: AllAppbar(controller: controller),
+          ),
+          body: Obx(() => controller.bottomPage[controller.bottomIndex.value]),
+          bottomNavigationBar: CustomBottombar(controller: controller),
+          floatingActionButton: floating_action(controller: controller),
         ),
-        body: Obx(() => controller.bottomPage[controller.bottomIndex.value]),
-        bottomNavigationBar: CustomBottombar(controller: controller),
-        floatingActionButton: floating_action(controller: controller),
       ),
     );
   }
