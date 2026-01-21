@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:finance_management/app/module/home/Global_widget/custom_appbar.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
-import 'package:finance_management/app/module/home/view/screen/add_transection_screen/widget/book_list.dart';
-import 'package:finance_management/app/module/home/view/screen/add_transection_screen/widget/booklist_container.dart';
+import 'package:finance_management/app/module/home/controller/add_transection_controller/add_transection.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +9,7 @@ class AddTransection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BooklistController controller = Get.put(BooklistController());
+    AddTraController controller = Get.put(AddTraController());
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: PreferredSize(
@@ -46,6 +43,7 @@ class AddTransection extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 30),
+                  padding: EdgeInsets.only(top: 20, left: 15, right: 15),
                   height: size.height,
                   width: size.width,
                   decoration: BoxDecoration(
@@ -56,46 +54,66 @@ class AddTransection extends StatelessWidget {
                     color: Colors.white,
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 10,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
                       CustomText(
-                        text: "Book Store",
+                        text: "Transection Type",
                         fontWeight: FontWeight.w900,
-                        fontsize: 30,
+                        fontsize: 18,
                       ),
-                      SizedBox(height: 20),
 
-                      SizedBox(
-                        height: 230,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          itemCount: 10,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                              ),
-                              child: BookList(
-                                index: index,
-                                ontapFront: () {
-                                  if (controller.status.value != index) {
-                                    controller.status.value = index;
-                                  } else {
-                                    controller.status.value = -1;
-                                  }
+                      Obx(
+                        () => Row(
+                          spacing: 10,
+                          children: [
+                            Expanded(
+                              child: _buildContainer(
+                                size,
+                                conColor: controller.pageNumber.value == 0
+                                    ? Colors.red
+                                    : Colors.teal.shade200,
+                                ontap: () {
+                                  controller.pageNumber.value = 0;
                                 },
-                                ontapSide: () {
-                                  if (controller.status.value != index) {
-                                    controller.status.value = index;
-                                  } else {
-                                    controller.status.value = -1;
-                                  }
-                                },
+                                title: "Expense",
                               ),
-                            );
+                            ),
+                            Expanded(
+                              child: _buildContainer(
+                                size,
+                                title: "Income",
+                                ontap: () {
+                                  controller.pageNumber.value = 1;
+                                },
+                                conColor: controller.pageNumber.value == 1
+                                    ? Colors.red
+                                    : Colors.teal.shade200,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: PageView(
+                          onPageChanged: (v) {
+                            controller.onPageChanged(pageNum: v);
                           },
+                          controller: PageController(initialPage: controller.pageNumber.value),
+                          clipBehavior: Clip.none,
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            Container(
+                              height: 70,
+                              width: size.width,
+                              color: Colors.green,
+                            ),
+                            Container(
+                              height: 70,
+                              width: size.width,
+                              color: Colors.red,
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -105,6 +123,40 @@ class AddTransection extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  GestureDetector _buildContainer(
+    Size size, {
+
+    VoidCallback? ontap,
+    Color? conColor,
+    String? title,
+  }) {
+    return GestureDetector(
+      onTap: ontap,
+      child: Container(
+        height: 45,
+        width: size.width / 2,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(40),
+          color: conColor,
+        ),
+        child: Center(
+          child: Row(
+            spacing: 10,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.arrow_downward, color: Colors.white),
+              CustomText(
+                text: "${title ?? ""}",
+                fontsize: 17,
+                textColor: Colors.white,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
