@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -32,8 +34,7 @@ class AddTraController extends GetxController {
 
   incomeSave() async {
     IncomeLoading.value = true;
-    await Future.delayed(Duration(seconds: 2));
+    await LocalStorage().deleteAll();
     IncomeLoading.value = false;
-    log("============income");
   }
 }
