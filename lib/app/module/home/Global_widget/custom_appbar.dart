@@ -17,7 +17,8 @@ class CustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.indigo,
+      scrolledUnderElevation: 0,
+      backgroundColor: Colors.teal,
       leading: Padding(
         padding: const EdgeInsets.only(left: 10),
         child: GestureDetector(
@@ -35,12 +36,7 @@ class CustomAppbar extends StatelessWidget {
         ),
       ),
       actions: [
-        GestureDetector(
-          onTap: actionTap,
-          child:
-              actionIcon ??
-              SizedBox()
-        ),
+        GestureDetector(onTap: actionTap, child: actionIcon ?? SizedBox()),
         SizedBox(width: 10),
       ],
     );

@@ -10,6 +10,8 @@ import '../../view/screen/home_screen/bottom_home/transection_body/transection_b
 
 class HomeController extends GetxController
     with GetSingleTickerProviderStateMixin {
+
+
   late AnimationController animController;
   late Animation<Offset> offsetAnimation;
   RxInt bottomIndex = 0.obs;
@@ -20,6 +22,9 @@ class HomeController extends GetxController
   floatingTap() {
     Get.to(() => AddTransection());
   }
+
+  editInfo(){}
+
 
   @override
   void onInit() {

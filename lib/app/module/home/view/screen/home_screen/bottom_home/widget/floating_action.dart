@@ -1,3 +1,4 @@
+import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ class floating_action extends StatelessWidget {
           ? SlideTransition(
               position: controller.offsetAnimation,
               child: GestureDetector(
-                onTap: () {
+                onTap: () async {
                   controller.floatingTap();
                 },
                 child: Container(

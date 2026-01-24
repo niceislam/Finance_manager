@@ -24,13 +24,13 @@ class home_body extends StatelessWidget {
                     padding: EdgeInsets.only(top: 40),
                     height: 80,
                     width: MediaQuery.sizeOf(context).width,
-                    color: Colors.indigo,
+                    color: Colors.teal,
                   ),
 
                   //home body
                   Container(
                     margin: EdgeInsets.only(top: 60),
-                    child: main_body(),
+                    child: main_body(controller: controller,),
                   ),
 
                   //current balance

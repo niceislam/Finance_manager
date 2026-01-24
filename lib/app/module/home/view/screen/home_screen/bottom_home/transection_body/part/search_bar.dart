@@ -20,7 +20,7 @@ class CustomSearchBar extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 15),
       height: 80,
       width: size.width,
-      color: Colors.indigo,
+      color: Colors.teal,
       child: Obx(
         () => CustomTextField(
           controller: controller.searchController,

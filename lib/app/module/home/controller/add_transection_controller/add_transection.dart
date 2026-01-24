@@ -1,14 +1,39 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class AddTraController extends GetxController {
   PageController pageController = PageController();
-  RxInt pageNumber = 0.obs;
+  TextEditingController productsControleller = TextEditingController();
+  TextEditingController costPriceController = TextEditingController();
+  TextEditingController incomeController = TextEditingController();
+  RxString dateFormat = DateFormat("dd MMM yyy").format(DateTime.now()).obs;
+  RxString TimeFormat = DateFormat("hh:mm").format(DateTime.now()).obs;
+  final mykey = GlobalKey<FormState>();
+  final mykeyincome = GlobalKey<FormState>();
+  RxBool slideOnEnd = true.obs;
+  RxBool IncomeLoading = false.obs;
+  RxBool expenseLoading = false.obs;
+  RxString costType = "".obs;
 
-  onPageChanged({required int pageNum}) {
-    pageNumber.value = pageNum;
+  expenseSave() async {
+    log("============expense");
+    expenseLoading.value = true;
+    await Future.delayed(Duration(seconds: 2));
+    expenseLoading.value = false;
+    // if (mykey.currentState!.validate()) {
+    //   log(
+    //     "======${productsControleller.text}=====${costType}=======${costPriceController.text}",
+    //   );
+    // }
   }
 
-
-
+  incomeSave() async {
+    IncomeLoading.value = true;
+    await Future.delayed(Duration(seconds: 2));
+    IncomeLoading.value = false;
+    log("============income");
+  }
 }

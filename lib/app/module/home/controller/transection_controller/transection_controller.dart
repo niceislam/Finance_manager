@@ -4,13 +4,16 @@ import 'package:get/get.dart';
 class TransectionController extends GetxController {
   TextEditingController searchController = TextEditingController();
   RxBool iconActive = false.obs;
-  RxBool CatagorySlide = false.obs;
-  RxBool onEnd = true.obs;
+  RxBool slideOnEnd = true.obs;
 
   searchClearTap() {
     if (searchController.text.isNotEmpty) {
       searchController.clear();
     }
+  }
+
+  onEndSlidebtn() {
+    slideOnEnd.value = !slideOnEnd.value;
   }
 
   @override

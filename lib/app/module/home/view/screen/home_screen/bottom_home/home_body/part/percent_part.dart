@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../../../../../Global_widget/custom_text.dart';
@@ -12,6 +14,7 @@ class percent_part extends StatelessWidget {
     this.percent,
     this.monthlyIncome,
     this.expense,
+    this.editInfo,
   });
 
   final Size size;
@@ -21,6 +24,7 @@ class percent_part extends StatelessWidget {
   final double? percent;
   final double? monthlyIncome;
   final double? expense;
+  final VoidCallback? editInfo;
 
   @override
   Widget build(BuildContext context) {
@@ -79,30 +83,48 @@ class percent_part extends StatelessWidget {
           ),
           Expanded(
             flex: 10,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomText(
-                    maxline: 1,
-                    text: "${name ?? "N/A"}",
-                    fontWeight: FontWeight.w600,
-                    fontsize: 20,
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomText(
+                        maxline: 1,
+                        text: "${name ?? "N/A"}",
+                        fontWeight: FontWeight.w600,
+                        fontsize: 20,
+                      ),
+                      CustomText(
+                        maxline: 1,
+                        text: "${profession ?? "N/A"}",
+                        fontsize: 15,
+                        textColor: Colors.grey,
+                      ),
+                      CustomText(
+                        text: "${age ?? "0"}",
+                        textColor: Colors.grey,
+                        fontsize: 15,
+                      ),
+                    ],
                   ),
-                  CustomText(
-                    maxline: 1,
-                    text: "${profession ?? "N/A"}",
-                    fontsize: 15,
-                    textColor: Colors.grey,
+                ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: InkWell(
+                    onTap: editInfo,
+                    child: CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.grey.shade100,
+                      child: Center(
+                        child: Icon(Icons.edit, size: 23, color: Colors.black),
+                      ),
+                    ),
                   ),
-                  CustomText(
-                    text: "${age ?? "0"}",
-                    textColor: Colors.grey,
-                    fontsize: 15,
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

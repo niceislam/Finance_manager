@@ -1,9 +1,10 @@
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/Global_widget/history_card.dart';
 import 'package:finance_management/app/module/home/controller/transection_controller/transection_controller.dart';
-import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/transection_body/part/catagory.dart';
+import 'package:finance_management/app/module/home/Global_widget/CategorySlideBtn.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/transection_body/part/history_list.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/transection_body/part/search_bar.dart';
+import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/transection_body/part/slide_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -39,7 +40,7 @@ class TransectionBody extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    App_catagory(size: size, controller: Trcontroller),
+                    SlideButtoon(size: size, Trcontroller: Trcontroller),
                     SizedBox(height: 10),
                     Obx(
                       () => Row(
@@ -48,7 +49,7 @@ class TransectionBody extends StatelessWidget {
                             fontsize: 17,
                             fontWeight: FontWeight.w900,
                             text:
-                                "${Trcontroller.CatagorySlide.value == true ? "Today" : "All"}",
+                                "${Trcontroller.slideOnEnd.value == false ? "Today" : "All"}",
                           ),
                         ],
                       ),

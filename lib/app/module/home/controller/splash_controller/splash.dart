@@ -7,11 +7,12 @@ class SplashController extends GetxController {
   RxBool isSkip = false.obs;
 
   splashFun() async {
-    var status = await LocalStorage().readData(key: "start");
+    var onbordingstatus = await LocalStorage().readData(key: "onbording");
+    var loginstatus = await LocalStorage().readData(key: "login");
     await Future.delayed(Duration(milliseconds: 100));
     isSkip.value = true;
     await Future.delayed(Duration(milliseconds: 2000));
-    if (status != null) {
+    if (onbordingstatus != null && loginstatus != null) {
       Get.offAll(() => HomeScreen());
     } else {
       Get.offAll(() => OnbordingScreen());

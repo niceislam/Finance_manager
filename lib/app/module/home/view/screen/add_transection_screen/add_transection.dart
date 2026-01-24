@@ -1,8 +1,12 @@
 import 'package:finance_management/app/module/home/Global_widget/custom_appbar.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/add_transection_controller/add_transection.dart';
+import 'package:finance_management/app/module/home/view/screen/add_transection_screen/part/expense_textfield.dart';
+import 'package:finance_management/app/module/home/view/screen/add_transection_screen/part/income_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../Global_widget/CategorySlideBtn.dart';
 
 class AddTransection extends StatelessWidget {
   const AddTransection({super.key});
@@ -11,151 +15,153 @@ class AddTransection extends StatelessWidget {
   Widget build(BuildContext context) {
     AddTraController controller = Get.put(AddTraController());
     Size size = MediaQuery.sizeOf(context);
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50),
-        child: CustomAppbar(
-          leadingTap: () {
-            Get.back();
-          },
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(50),
+          child: CustomAppbar(
+            leadingTap: () {
+              Get.back();
+            },
 
-          leadingIcon: Icon(Icons.arrow_back_ios, color: Colors.white),
-          centerText: "Add Transection",
-          actionTap: () {},
-          actionIcon: CustomText(
-            text: "Save",
-            textColor: Colors.white,
-            fontsize: 18,
-          ),
-        ),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Container(
-                  padding: EdgeInsets.only(top: 40),
-                  height: 80,
-                  width: MediaQuery.sizeOf(context).width,
-                  color: Colors.indigo,
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 30),
-                  padding: EdgeInsets.only(top: 20, left: 15, right: 15),
-                  height: size.height,
-                  width: size.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(15),
-                      topLeft: Radius.circular(15),
-                    ),
-                    color: Colors.white,
-                  ),
-                  child: Column(
-                    spacing: 10,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText(
-                        text: "Transection Type",
-                        fontWeight: FontWeight.w900,
-                        fontsize: 18,
-                      ),
-
-                      Obx(
-                        () => Row(
-                          spacing: 10,
-                          children: [
-                            Expanded(
-                              child: _buildContainer(
-                                size,
-                                conColor: controller.pageNumber.value == 0
-                                    ? Colors.red
-                                    : Colors.teal.shade200,
-                                ontap: () {
-                                  controller.pageNumber.value = 0;
-                                },
-                                title: "Expense",
-                              ),
-                            ),
-                            Expanded(
-                              child: _buildContainer(
-                                size,
-                                title: "Income",
-                                ontap: () {
-                                  controller.pageNumber.value = 1;
-                                },
-                                conColor: controller.pageNumber.value == 1
-                                    ? Colors.red
-                                    : Colors.teal.shade200,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: PageView(
-                          onPageChanged: (v) {
-                            controller.onPageChanged(pageNum: v);
-                          },
-                          controller: PageController(initialPage: controller.pageNumber.value),
-                          clipBehavior: Clip.none,
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            Container(
-                              height: 70,
-                              width: size.width,
-                              color: Colors.green,
-                            ),
-                            Container(
-                              height: 70,
-                              width: size.width,
-                              color: Colors.red,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            leadingIcon: Icon(Icons.arrow_back_ios, color: Colors.white),
+            centerText: "Add Transection",
+            actionTap: () {
+              //controller.submitButton();
+            },
+            actionIcon: CustomText(
+              text: "Save",
+              textColor: Colors.white,
+              fontsize: 18,
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  GestureDetector _buildContainer(
-    Size size, {
-
-    VoidCallback? ontap,
-    Color? conColor,
-    String? title,
-  }) {
-    return GestureDetector(
-      onTap: ontap,
-      child: Container(
-        height: 45,
-        width: size.width / 2,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(40),
-          color: conColor,
         ),
-        child: Center(
-          child: Row(
-            spacing: 10,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.arrow_downward, color: Colors.white),
-              CustomText(
-                text: "${title ?? ""}",
-                fontsize: 17,
-                textColor: Colors.white,
+        body: Column(
+          children: [
+            Expanded(
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(top: 40),
+                    height: 50,
+                    width: MediaQuery.sizeOf(context).width,
+                    color: Colors.teal,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 20, left: 15, right: 15),
+                    height: size.height,
+                    width: size.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        topLeft: Radius.circular(15),
+                      ),
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      spacing: 10,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //slide button
+                        Obx(
+                          () => CategorySlideButton(
+                            size: size,
+                            leftTitle: "Expense",
+                            rightTitle: "Income",
+                            onEndbutton: () {
+                              controller.slideOnEnd.value =
+                                  !controller.slideOnEnd.value;
+                            },
+                            onendText: controller.slideOnEnd.value,
+                          ),
+                        ),
+
+                        //body
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: 20,
+                                  ),
+                                  width: size.width,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.grey.shade200,
+                                  ),
+                                  child: Obx(
+                                    () => controller.slideOnEnd.value == true
+                                        ? ExpenseTexField(
+                                            controller: controller,
+                                          )
+                                        : IncomeTexField(
+                                            controller: controller,
+                                          ),
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+
+                                //Submit Button
+                                SizedBox(
+                                  height: 45,
+                                  width: 300,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.teal,
+                                      foregroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadiusGeometry.circular(15),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      controller.slideOnEnd.value == true
+                                          ? controller.expenseSave()
+                                          : controller.incomeSave();
+                                    },
+                                    child: Obx(
+                                      () =>
+                                          controller.IncomeLoading.value ==
+                                                  true ||
+                                              controller.expenseLoading.value ==
+                                                  true
+                                          ? Center(
+                                              child: CircularProgressIndicator(
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                color: Colors.white,
+                                              ),
+                                            )
+                                          : CustomText(
+                                              text: "Submit",
+                                              textColor: Colors.white,
+                                              fontWeight: FontWeight.w600,
+                                              fontsize: 18,
+                                            ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

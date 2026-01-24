@@ -29,7 +29,6 @@ class HomeScreen extends StatelessWidget {
         canPop: false,
         onPopInvokedWithResult: (didpop, result) async {
           if (didpop) {
-            log("==============${didpop}");
             return;
           }
           final souldpop = await showDialog(

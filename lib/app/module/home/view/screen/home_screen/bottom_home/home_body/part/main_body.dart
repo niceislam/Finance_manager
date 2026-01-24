@@ -1,13 +1,14 @@
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
+import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/home_body/part/percent_part.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-
+import 'package:get/get.dart';
 import '../../../../../../Global_widget/history_card.dart';
 
 class main_body extends StatelessWidget {
-  const main_body({super.key});
-
+  const main_body({super.key, required this.controller});
+  final HomeController controller;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -31,6 +32,9 @@ class main_body extends StatelessWidget {
               age: "21",
               monthlyIncome: 40000,
               expense: 12000,
+              editInfo: () {
+                controller.editInfo();
+              },
             ),
 
             //income and expense

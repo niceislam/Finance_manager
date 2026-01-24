@@ -11,8 +11,8 @@ class CustomBottombar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => BottomNavigationBar(
-        selectedIconTheme: IconThemeData(size: 30, color: Colors.indigo),
-        selectedItemColor: Colors.indigo,
+        selectedIconTheme: IconThemeData(size: 30, color: Colors.teal),
+        selectedItemColor: Colors.teal,
         unselectedLabelStyle: TextStyle(fontFamily: "myFont"),
         selectedLabelStyle: TextStyle(fontFamily: "myFont"),
         onTap: (v) {
