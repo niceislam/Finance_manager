@@ -1,3 +1,4 @@
+import 'package:finance_management/app/module/home/controller/languages_controller/languages_controller.dart';
 import 'package:finance_management/app/module/home/view/screen/authentication_screen/Auth_main.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/home_screen.dart';
 import 'package:finance_management/app/module/home/view/screen/splash_sreen/splash_screen.dart';
@@ -21,7 +22,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        builder: EasyLoading.init(),
-        debugShowCheckedModeBanner: false, home: SplashScreen());
+      translations: LanguagesController(),
+      locale: Locale("bn", "BD"),
+      fallbackLocale: Locale("en", "US"),
+      builder: EasyLoading.init(),
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
+    );
   }
 }

@@ -20,7 +20,7 @@ class ExpenseAddFirebase {
       calRef.update({
         "tExpense": FieldValue.arrayUnion([
           {
-            "cost": costPriceController.text,
+            "cost": int.parse(costPriceController.text),
             "costType": "${costType}",
             "dateTime": "${dateTime}",
             "product": "${productsControleller.text}",

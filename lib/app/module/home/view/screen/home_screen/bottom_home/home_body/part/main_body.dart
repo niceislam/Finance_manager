@@ -33,12 +33,12 @@ class main_body extends StatelessWidget {
                 size: size,
                 name: item.name ?? "Example",
                 profession: item.profession ?? "Example",
-                age: item.age ?? 0.00,
-                monthlyIncome: item.income ?? 0.00,
-                expense: item.expense ?? 0.00,
-                percent: item.expense < item.income
-                    ? item.expense / item.income
-                    : 1,
+                age: item.age ?? 0,
+                monthlyIncome: item.income ?? 0,
+                expense: item.expense ?? 0,
+                percent: double.parse(
+                  "${item.expense! < item.income! ? item.expense! / item.income! : 1}",
+                ),
                 editInfo: () {
                   controller.editInfo();
                 },
@@ -51,15 +51,15 @@ class main_body extends StatelessWidget {
               return Row(
                 children: [
                   _buildContainer(
-                    title: 'Income',
-                    tk: item.income ?? 0.00,
+                    title: 'home_income_view'.tr,
+                    tk: item.income ?? 0,
                     conColor: Colors.teal.shade50,
                     textColor: Colors.teal,
                     size: size,
                   ),
                   _buildContainer(
-                    title: 'Expense',
-                    tk: item.expense ?? 0.00,
+                    title: 'home_expense_view'.tr,
+                    tk: item.expense ?? 0,
                     conColor: Colors.red.shade50,
                     textColor: Colors.red,
                     size: size,
@@ -74,8 +74,8 @@ class main_body extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomText(
-                  text: "Recent Transection",
-                  fontWeight: FontWeight.w900,
+                  text: "home_TrView".tr,
+                  fontWeight: FontWeight.w600,
                   fontsize: 17,
                 ),
                 Obx(
@@ -93,7 +93,7 @@ class main_body extends StatelessWidget {
               return item!.isEmpty
                   ? Padding(
                       padding: const EdgeInsets.only(top: 50),
-                      child: Center(child: CustomText(text: "No Data")),
+                      child: Center(child: CustomText(text: "No_data".tr)),
                     )
                   : ListView.builder(
                       shrinkWrap: true,
@@ -118,7 +118,7 @@ class main_body extends StatelessWidget {
 
   Expanded _buildContainer({
     required String title,
-    double? tk,
+    int? tk,
     required Color conColor,
     required Color textColor,
     required Size size,

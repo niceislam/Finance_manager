@@ -31,11 +31,11 @@ class CurrentBalance extends StatelessWidget {
           spacing: 5,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomText(text: "Current Balance"),
+            CustomText(text: "current_balance".tr),
             Obx(
               () => CustomText(
                 text:
-                    "\$${(controller.userAllData.value.income - controller.userAllData.value.expense) ?? 0.00}",
+                    "\$${(controller.userAllData.value.income! - controller.userAllData.value.expense!) ?? 0.00}",
                 fontsize: 25,
                 fontWeight: FontWeight.bold,
               ),

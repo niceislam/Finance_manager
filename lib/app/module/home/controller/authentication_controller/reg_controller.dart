@@ -38,24 +38,6 @@ class RegController extends GetxController {
             "income": 0.00,
             "expense": 0.00,
             "tExpense": [
-              // {
-              //   "costType": "shopping",
-              //   "product": "grocery",
-              //   "cost": 400,
-              //   "dateTime": "12:25",
-              // },
-              // {
-              //   "costType": "shopping",
-              //   "product": "grocery",
-              //   "cost": 400,
-              //   "dateTime": "12:25",
-              // },
-              // {
-              //   "costType": "shopping",
-              //   "product": "grocery",
-              //   "cost": 400,
-              //   "dateTime": "12:25",
-              // },
             ],
           });
 

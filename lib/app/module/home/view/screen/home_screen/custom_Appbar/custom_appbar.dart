@@ -14,14 +14,14 @@ class AllAppbar extends StatelessWidget {
     return Obx(() {
       int val = controller.bottomIndex.value;
       return val == 0
-          ? CustomAppbar(centerText: "Overview")
+          ? CustomAppbar(centerText: "home_title".tr)
           : val == 1
           ? CustomAppbar(
-              centerText: "Transection",
+              centerText: "Tr_title".tr,
               actionIcon: Icon(Icons.more_vert, color: Colors.white, size: 30),
             )
           : val == 2
-          ? CustomAppbar(centerText: "Report")
+          ? CustomAppbar(centerText: "Rp_title".tr)
           : SizedBox();
       // return AppBar(
       //   actions: [

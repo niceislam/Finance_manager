@@ -31,7 +31,7 @@ class CustomAppbar extends StatelessWidget {
         "${centerText ?? ""}",
         style: TextStyle(
           color: Colors.white,
-          fontSize: 22,
+          fontSize: 19,
           fontFamily: "myFont",
         ),
       ),

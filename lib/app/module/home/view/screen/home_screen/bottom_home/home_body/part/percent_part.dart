@@ -20,10 +20,10 @@ class percent_part extends StatelessWidget {
   final Size size;
   final String? name;
   final String? profession;
-  final double? age;
+  final int? age;
   final double? percent;
-  final double? monthlyIncome;
-  final double? expense;
+  final int? monthlyIncome;
+  final int? expense;
   final VoidCallback? editInfo;
 
   @override

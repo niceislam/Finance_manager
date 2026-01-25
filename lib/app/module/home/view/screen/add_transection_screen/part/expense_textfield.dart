@@ -37,18 +37,22 @@ class ExpenseTexField extends StatelessWidget {
           SizedBox(height: 10),
           //Product
           CustomText(
-            text: "Product",
-            fontWeight: FontWeight.w900,
+            text: "Add_Tr_ProductField".tr,
+            fontWeight: FontWeight.w600,
             fontsize: 16,
           ),
           CustomTextField(
             controller: controller.productsControleller,
-            hintText: "Products...",
+            hintText: "Add_Tr_ProductField_hint".tr,
           ),
           SizedBox(height: 10),
 
           //Type
-          CustomText(text: "Type", fontWeight: FontWeight.w900, fontsize: 16),
+          CustomText(
+            text: "Add_Tr_Type_Field".tr,
+            fontWeight: FontWeight.w600,
+            fontsize: 16,
+          ),
           Obx(
             () => DropdownButtonFormField(
               padding: EdgeInsets.symmetric(horizontal: 10),
@@ -68,7 +72,7 @@ class ExpenseTexField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              hint: CustomText(text: "Select Type"),
+              hint: CustomText(text: "Add_Tr_Type_Field_hint".tr,textColor: Colors.grey,),
               initialValue: controller.costType.value != ""
                   ? controller.costType.value
                   : null,
@@ -94,7 +98,11 @@ class ExpenseTexField extends StatelessWidget {
           SizedBox(height: 10),
 
           //Cost price
-          CustomText(text: "Cost", fontWeight: FontWeight.w900, fontsize: 16),
+          CustomText(
+            text: "Add_Tr_Cost_Field".tr,
+            fontWeight: FontWeight.w600,
+            fontsize: 16,
+          ),
           CustomTextField(
             validator: (value) {
               if (value == "" || value == null) {
@@ -104,7 +112,7 @@ class ExpenseTexField extends StatelessWidget {
             preIcon: Icon(Icons.account_balance),
             keyboardType: TextInputType.number,
             controller: controller.costPriceController,
-            hintText: "Cost price",
+            hintText: "Add_Tr_Cost_Field_hint".tr,
           ),
         ],
       ),
