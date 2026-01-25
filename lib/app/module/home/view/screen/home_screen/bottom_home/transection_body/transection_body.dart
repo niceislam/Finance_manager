@@ -62,7 +62,7 @@ class TransectionBody extends StatelessWidget {
                       icondata: Icons.shopping_bag_outlined,
                       title: "Grocery Shop",
                       subtitle: "shopping",
-                      actionTk: "2100",
+                      actionTk: 2100,
                     ),
                   ],
                 ),

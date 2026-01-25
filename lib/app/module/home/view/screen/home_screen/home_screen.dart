@@ -42,6 +42,7 @@ class HomeScreen extends StatelessWidget {
           }
         },
         child: Scaffold(
+          backgroundColor: Colors.white,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(48),
             child: AllAppbar(controller: controller),

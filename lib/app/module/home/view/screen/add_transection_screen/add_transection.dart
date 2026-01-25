@@ -1,3 +1,4 @@
+import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_appbar.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/add_transection_controller/add_transection.dart';
@@ -33,6 +34,7 @@ class AddTransection extends StatelessWidget {
             leadingIcon: Icon(Icons.arrow_back_ios, color: Colors.white),
             centerText: "Add Transection",
             actionTap: () {
+              LocalStorage().deleteAll();
               //controller.submitButton();
             },
             actionIcon: CustomText(

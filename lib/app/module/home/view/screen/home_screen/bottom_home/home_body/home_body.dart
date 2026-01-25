@@ -10,48 +10,50 @@ class home_body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController controller = Get.put(HomeController());
-    return Stack(
-      children: [
-        SingleChildScrollView(
-          controller: controller.scrollController,
-          child: Column(
-            children: [
-              Stack(
-                //alignment: Alignment.bottomCenter,
-                clipBehavior: Clip.none,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(top: 40),
-                    height: 80,
-                    width: MediaQuery.sizeOf(context).width,
-                    color: Colors.teal,
-                  ),
+    return Obx(
+      () => controller.isLoading.value == true
+          ? Center(child: CircularProgressIndicator())
+          : Stack(
+              children: [
+                SingleChildScrollView(
+                  controller: controller.scrollController,
+                  child: Column(
+                    children: [
+                      Stack(
+                        //alignment: Alignment.bottomCenter,
+                        clipBehavior: Clip.none,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(top: 40),
+                            height: 80,
+                            width: MediaQuery.sizeOf(context).width,
+                            color: Colors.teal,
+                          ),
 
-                  //home body
-                  Container(
-                    margin: EdgeInsets.only(top: 60),
-                    child: main_body(controller: controller,),
-                  ),
+                          //home body
+                          Container(
+                            margin: EdgeInsets.only(top: 60),
+                            child: main_body(controller: controller),
+                          ),
 
-                  //current balance
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: CurrentBalance(),
+                          //current balance
+                          Padding(
+                            padding: const EdgeInsets.only(top: 15),
+                            child: CurrentBalance(controller: controller),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Obx(
-          () => AnimatedPositioned(
-            width: MediaQuery.sizeOf(context).width,
-            top: controller.scrollToSlide.isTrue ? 5 : -100,
-            duration: Duration(milliseconds: 100),
-            child: CurrentBalance(),
-          ),
-        ),
-      ],
+                ),
+                AnimatedPositioned(
+                  width: MediaQuery.sizeOf(context).width,
+                  top: controller.scrollToSlide.isTrue ? 5 : -100,
+                  duration: Duration(milliseconds: 100),
+                  child: CurrentBalance(controller: controller),
+                ),
+              ],
+            ),
     );
   }
 }

@@ -16,7 +16,7 @@ class History_list extends StatelessWidget {
   final IconData? icondata;
   final String? subtitle;
   final Widget? ActionWidget;
-  final String? actionTk;
+  final double? actionTk;
   final int itemcount;
 
   @override
@@ -36,7 +36,7 @@ class History_list extends StatelessWidget {
               icon: Icon(icondata),
               title: "${title ?? ""}",
               subTitle: "${subtitle ?? ""}",
-              actionTk: "${actionTk ?? ""}",
+              actionTk: 12,
               actionWid: ActionWidget,
             );
           },

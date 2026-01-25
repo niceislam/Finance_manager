@@ -1,8 +1,10 @@
+import 'dart:developer';
+
+import 'package:finance_management/app/data/dummy_data/iconData.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/home_body/part/percent_part.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:get/get.dart';
 import '../../../../../../Global_widget/history_card.dart';
 
@@ -15,7 +17,7 @@ class main_body extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: Colors.grey.shade200,
+        color: Colors.white,
       ),
       width: size.width,
       child: Padding(
@@ -25,37 +27,46 @@ class main_body extends StatelessWidget {
           spacing: 10,
           children: [
             //percent part
-            percent_part(
-              size: size,
-              name: "Nice Islam",
-              profession: "Flutter App Developer",
-              age: "21",
-              monthlyIncome: 40000,
-              expense: 12000,
-              editInfo: () {
-                controller.editInfo();
-              },
-            ),
+            Obx(() {
+              final item = controller.userAllData.value;
+              return percent_part(
+                size: size,
+                name: item.name ?? "Example",
+                profession: item.profession ?? "Example",
+                age: item.age ?? 0.00,
+                monthlyIncome: item.income ?? 0.00,
+                expense: item.expense ?? 0.00,
+                percent: item.expense < item.income
+                    ? item.expense / item.income
+                    : 1,
+                editInfo: () {
+                  controller.editInfo();
+                },
+              );
+            }),
 
             //income and expense
-            Row(
-              children: [
-                _buildContainer(
-                  title: 'Income',
-                  tk: '4000',
-                  conColor: Colors.teal.shade50,
-                  textColor: Colors.teal,
-                  size: size,
-                ),
-                _buildContainer(
-                  title: 'Expense',
-                  tk: '1500',
-                  conColor: Colors.red.shade50,
-                  textColor: Colors.red,
-                  size: size,
-                ),
-              ],
-            ),
+            Obx(() {
+              final item = controller.userAllData.value;
+              return Row(
+                children: [
+                  _buildContainer(
+                    title: 'Income',
+                    tk: item.income ?? 0.00,
+                    conColor: Colors.teal.shade50,
+                    textColor: Colors.teal,
+                    size: size,
+                  ),
+                  _buildContainer(
+                    title: 'Expense',
+                    tk: item.expense ?? 0.00,
+                    conColor: Colors.red.shade50,
+                    textColor: Colors.red,
+                    size: size,
+                  ),
+                ],
+              );
+            }),
 
             //recent transaction
             SizedBox(height: 20),
@@ -67,27 +78,38 @@ class main_body extends StatelessWidget {
                   fontWeight: FontWeight.w900,
                   fontsize: 17,
                 ),
-                CustomText(
-                  text: "12",
-                  fontWeight: FontWeight.w900,
-                  fontsize: 17,
-                  textColor: Colors.grey,
+                Obx(
+                  () => CustomText(
+                    text: "${controller.userAllData.value.tExpense!.length}",
+                    fontWeight: FontWeight.w900,
+                    fontsize: 17,
+                    textColor: Colors.grey,
+                  ),
                 ),
               ],
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: 10,
-              physics: NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return HistoryCard(
-                  icon: Icon(Icons.card_travel),
-                  title: "Grocery Shop",
-                  subTitle: "shopping",
-                  actionTk: "\$2500",
-                );
-              },
-            ),
+            Obx(() {
+              final item = controller.userAllData.value.tExpense;
+              return item!.isEmpty
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 50),
+                      child: Center(child: CustomText(text: "No Data")),
+                    )
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: item.length,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        final items = item[index];
+                        return HistoryCard(
+                          icon: CustomIconData().data(ticket: items.costType),
+                          title: items.product ?? "",
+                          subTitle: items.costType ?? "N/A",
+                          actionTk: items.cost,
+                        );
+                      },
+                    );
+            }),
           ],
         ),
       ),
@@ -96,7 +118,7 @@ class main_body extends StatelessWidget {
 
   Expanded _buildContainer({
     required String title,
-    String? tk,
+    double? tk,
     required Color conColor,
     required Color textColor,
     required Size size,

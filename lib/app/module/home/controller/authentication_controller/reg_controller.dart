@@ -32,9 +32,9 @@ class RegController extends GetxController {
 
           String uid = userCredential.user!.uid;
           await FirebaseFirestore.instance.collection("users").doc(uid).set({
-            "name": "Example",
+            "name": "${namecontroller.text}",
             "profession": "Example",
-            "age": 00,
+            "age": 0.00,
             "income": 0.00,
             "expense": 0.00,
             "tExpense": [

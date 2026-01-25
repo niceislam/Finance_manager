@@ -1,7 +1,5 @@
-import 'dart:developer';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
+import 'package:finance_management/app/data/service/add_transection/expense_add.dart';
+import 'package:finance_management/app/data/service/add_transection/income_add.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -21,20 +19,27 @@ class AddTraController extends GetxController {
   RxString costType = "".obs;
 
   expenseSave() async {
-    log("============expense");
-    expenseLoading.value = true;
-    await Future.delayed(Duration(seconds: 2));
-    expenseLoading.value = false;
-    // if (mykey.currentState!.validate()) {
-    //   log(
-    //     "======${productsControleller.text}=====${costType}=======${costPriceController.text}",
-    //   );
-    // }
+    if (mykey.currentState!.validate()) {
+      expenseLoading.value = true;
+      await Future.delayed(Duration(seconds: 1));
+      await ExpenseAddFirebase().addData(
+        costPriceController: costPriceController,
+        productsControleller: productsControleller,
+        costType: costType.value,
+        dateTime: "${dateFormat} ${TimeFormat}",
+      );
+      productsControleller.clear();
+      costPriceController.clear();
+      costType.value = "";
+      expenseLoading.value = false;
+    }
   }
 
   incomeSave() async {
     IncomeLoading.value = true;
-    await LocalStorage().deleteAll();
+    await Future.delayed(Duration(milliseconds: 500));
+    await IncomeAddFirebase().addData(incomeController: incomeController);
+    incomeController.clear();
     IncomeLoading.value = false;
   }
 }

@@ -20,7 +20,7 @@ class percent_part extends StatelessWidget {
   final Size size;
   final String? name;
   final String? profession;
-  final String? age;
+  final double? age;
   final double? percent;
   final double? monthlyIncome;
   final double? expense;
@@ -34,7 +34,7 @@ class percent_part extends StatelessWidget {
       width: size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
+        color: Colors.teal.shade50,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.shade300,
@@ -52,25 +52,25 @@ class percent_part extends StatelessWidget {
             child: CircularPercentIndicator(
               radius: 75.0,
               lineWidth: 12.0,
-              percent: double.parse("${(expense! / monthlyIncome!)}"),
+              percent: percent ?? 0.0,
               animation: true,
               animationDuration: 1000,
               center: Column(
                 spacing: 3,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CustomText(
-                    text: "Monthly Spending",
-                    fontsize: 12,
-                    fontWeight: FontWeight.w900,
-                  ),
+                  // CustomText(
+                  //   text: "Monthly Spending",
+                  //   fontsize: 12,
+                  //   fontWeight: FontWeight.w900,
+                  // ),
                   SizedBox(
                     width: 110,
                     child: Center(
                       child: CustomText(
                         maxline: 1,
-                        text: "${monthlyIncome ?? 0.00}/${expense ?? 0.00}",
-                        fontsize: 11,
+                        text: "${percent! * 100}",
+                        fontsize: 30,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

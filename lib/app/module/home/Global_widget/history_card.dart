@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'custom_text.dart';
 
-
 class HistoryCard extends StatelessWidget {
   const HistoryCard({
     super.key,
@@ -15,13 +14,13 @@ class HistoryCard extends StatelessWidget {
   final Icon? icon;
   final String? title;
   final String? subTitle;
-  final String? actionTk;
+  final dynamic actionTk;
   final Widget? actionWid;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 5),
+      margin: EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -31,11 +30,11 @@ class HistoryCard extends StatelessWidget {
           ),
         ],
         borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
+        color: Colors.teal.shade50,
       ),
       child: ListTile(
         dense: true,
-        leading: icon ?? Icon(Icons.local_grocery_store_outlined),
+        leading: icon ?? Icon(Icons.close),
         title: CustomText(
           maxline: 1,
           text: "${title ?? ""}",
@@ -48,9 +47,9 @@ class HistoryCard extends StatelessWidget {
           textColor: Colors.grey,
         ),
         trailing:
-        actionWid ??
+            actionWid ??
             CustomText(
-              text: "${actionTk ?? ""}",
+              text: "${double.parse("${actionTk ?? 0.00}")}",
               fontWeight: FontWeight.w600,
               fontsize: 15,
               textColor: Colors.red,

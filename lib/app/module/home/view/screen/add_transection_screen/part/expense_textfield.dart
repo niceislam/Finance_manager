@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:finance_management/app/data/dummy_data/cost_type_data.dart';
+import 'package:finance_management/app/data/dummy_data/iconData.dart';
 import 'package:finance_management/app/module/home/controller/add_transection_controller/add_transection.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,20 @@ class ExpenseTexField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Obx(
+            () => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _buildContainer(
+                  child: CustomText(text: controller.dateFormat.value),
+                ),
+                _buildContainer(
+                  child: CustomText(text: controller.TimeFormat.value),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
           //Product
           CustomText(
             text: "Product",
@@ -64,29 +79,7 @@ class ExpenseTexField extends StatelessWidget {
                       child: Row(
                         spacing: 8,
                         children: [
-                          v == "Food & Dining"
-                              ? Icon(Icons.food_bank_outlined)
-                              : v == "Groceries"
-                              ? Icon(Icons.local_grocery_store_outlined)
-                              : v == "Transport"
-                              ? Icon(Icons.airplane_ticket_outlined)
-                              : v == "Rent"
-                              ? Icon(Icons.car_rental_outlined)
-                              : v == "Shopping"
-                              ? Icon(Icons.shopping_bag_outlined)
-                              : v == "Health"
-                              ? Icon(Icons.health_and_safety_outlined)
-                              : v == "Education"
-                              ? Icon(Icons.cast_for_education_outlined)
-                              : v == "Bills"
-                              ? Icon(Icons.lightbulb_outline)
-                              : v == "Entertainment"
-                              ? Icon(Icons.interests_outlined)
-                              : v == "Family"
-                              ? Icon(Icons.person_3_outlined)
-                              : v == "Other"
-                              ? Icon(Icons.devices_other)
-                              : SizedBox(),
+                          CustomIconData().data(ticket: v),
                           CustomText(text: "${v}"),
                         ],
                       ),
@@ -115,6 +108,18 @@ class ExpenseTexField extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Container _buildContainer({required Widget child}) {
+    return Container(
+      height: 50,
+      width: 140,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadiusGeometry.circular(10),
+        color: Colors.teal.shade100,
+      ),
+      child: Center(child: child),
     );
   }
 }
