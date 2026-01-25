@@ -29,7 +29,7 @@ class IncomeTexField extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          CustomText(text: "Income", fontWeight: FontWeight.w900, fontsize: 16),
+          CustomText(text: "Add_Tr_Income".tr, fontWeight: FontWeight.w600, fontsize: 16),
           CustomTextField(
             validator: (value) {
               if (value == "" || value == null) {
@@ -39,7 +39,7 @@ class IncomeTexField extends StatelessWidget {
             preIcon: Icon(Icons.account_balance),
             keyboardType: TextInputType.number,
             controller: controller.incomeController,
-            hintText: "Income Price",
+            hintText: "Add_Tr_Income_field".tr,
           ),
         ],
       ),

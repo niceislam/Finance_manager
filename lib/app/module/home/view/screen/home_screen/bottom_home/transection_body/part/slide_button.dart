@@ -19,8 +19,8 @@ class SlideButtoon extends StatelessWidget {
     return Obx(
       () => CategorySlideButton(
         size: size,
-        leftTitle: "All",
-        rightTitle: "Today",
+        leftTitle: "Tr_slideBtn_left".tr,
+        rightTitle: "Tr_slideBtn_right".tr,
         onendText: Trcontroller.slideOnEnd.value,
         onEndbutton: () {
           Trcontroller.slideOnEnd.value = !Trcontroller.slideOnEnd.value;

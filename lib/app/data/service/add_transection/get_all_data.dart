@@ -16,6 +16,7 @@ class GetUserData {
         if (documentSnapshot.exists) {
           Map<String, dynamic> data =
               documentSnapshot.data() as Map<String, dynamic>;
+          log("======Data ${data}");
           return FirebaseGetModel.fromJson(data);
         } else {
           EasyLoading.showInfo("Something went wrong");

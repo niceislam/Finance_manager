@@ -1,10 +1,10 @@
 class FirebaseGetModel {
   String? profession;
-  dynamic income;
+  int? income;
   List<TExpense>? tExpense;
   String? name;
-  dynamic expense;
-  dynamic age;
+  int? expense;
+  int? age;
 
   FirebaseGetModel({
     this.profession,
@@ -46,7 +46,7 @@ class FirebaseGetModel {
 class TExpense {
   String? dateTime;
   String? product;
-  dynamic cost;
+  int? cost;
   String? costType;
 
   TExpense({this.dateTime, this.product, this.cost, this.costType});

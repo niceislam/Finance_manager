@@ -21,12 +21,12 @@ class CustomBottombar extends StatelessWidget {
         currentIndex: controller.bottomIndex.value,
         backgroundColor: Colors.white,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Btm_home".tr),
           BottomNavigationBarItem(
             icon: Icon(Icons.receipt),
-            label: "Transection",
+            label: "Btm_Tr".tr,
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.report), label: "Report"),
+          BottomNavigationBarItem(icon: Icon(Icons.report), label: "Btm_Rp".tr),
         ],
       ),
     );

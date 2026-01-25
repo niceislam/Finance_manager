@@ -49,7 +49,7 @@ class TransectionBody extends StatelessWidget {
                             fontsize: 17,
                             fontWeight: FontWeight.w900,
                             text:
-                                "${Trcontroller.slideOnEnd.value == false ? "Today" : "All"}",
+                                "${Trcontroller.slideOnEnd.value == false ? "Tr_slideBtn_right".tr : "Tr_slideBtn_left".tr}",
                           ),
                         ],
                       ),

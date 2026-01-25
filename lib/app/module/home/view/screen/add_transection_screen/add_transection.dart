@@ -32,15 +32,17 @@ class AddTransection extends StatelessWidget {
             },
 
             leadingIcon: Icon(Icons.arrow_back_ios, color: Colors.white),
-            centerText: "Add Transection",
+            centerText: "Add_Tr_title".tr,
             actionTap: () {
               LocalStorage().deleteAll();
-              //controller.submitButton();
+
+
+              //controller submitButton();
             },
             actionIcon: CustomText(
-              text: "Save",
+              text: "Add_Tr_Save".tr,
               textColor: Colors.white,
-              fontsize: 18,
+              fontsize: 15,
             ),
           ),
         ),
@@ -76,8 +78,8 @@ class AddTransection extends StatelessWidget {
                         Obx(
                           () => CategorySlideButton(
                             size: size,
-                            leftTitle: "Expense",
-                            rightTitle: "Income",
+                            leftTitle: "home_expense_view".tr,
+                            rightTitle: "home_income_view".tr,
                             onEndbutton: () {
                               controller.slideOnEnd.value =
                                   !controller.slideOnEnd.value;
@@ -145,7 +147,7 @@ class AddTransection extends StatelessWidget {
                                               ),
                                             )
                                           : CustomText(
-                                              text: "Submit",
+                                              text: "Add_Tr_Submit".tr,
                                               textColor: Colors.white,
                                               fontWeight: FontWeight.w600,
                                               fontsize: 18,
