@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:finance_management/app/module/home/Global_widget/custom_appbar.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,31 +14,14 @@ class AllAppbar extends StatelessWidget {
     return Obx(() {
       int val = controller.bottomIndex.value;
       return val == 0
-          ? CustomAppbar(centerText: "home_title".tr)
+          ? CustomAppbar(centerText: "Overview")
           : val == 1
           ? CustomAppbar(
-              centerText: "Tr_title".tr,
-              actionIcon: GestureDetector(
-                onTap: () {
-                  showMenu(
-                    shape: RoundedRectangleBorder(),
-                    color: Colors.white,
-                    context: context,
-                    position: RelativeRect.fromLTRB(100, 100, 20, 0),
-                    items: [
-                      PopupMenuItem(child: CustomText(text: "Nice")),
-                      PopupMenuItem(child: CustomText(text: "ami")),
-                      PopupMenuItem(child: CustomText(text: "ami")),
-                      PopupMenuItem(child: CustomText(text: "ami")),
-                      PopupMenuItem(child: CustomText(text: "ami")),
-                    ],
-                  );
-                },
-                child: Icon(Icons.more_vert, color: Colors.white, size: 30),
-              ),
+              centerText: "Transection",
+              actionIcon: Icon(Icons.more_vert, color: Colors.white, size: 30),
             )
           : val == 2
-          ? CustomAppbar(centerText: "Rp_title".tr)
+          ? CustomAppbar(centerText: "Report")
           : SizedBox();
       // return AppBar(
       //   actions: [
