@@ -36,7 +36,7 @@ class TextfieldLogin extends StatelessWidget {
             validator: (value) {
               if (value == "" || value == null) {
                 return "Field can't be empty";
-              }else if (!((RegExp("[a-z]").hasMatch(value)) &&
+              } else if (!((RegExp("[a-z]").hasMatch(value)) &&
                   (RegExp("[A-Z]").hasMatch(value)) &&
                   (RegExp("[0-9]").hasMatch(value)))) {
                 return "password must 'A-Z','a-z','0-9'";
@@ -49,7 +49,9 @@ class TextfieldLogin extends StatelessWidget {
             sufIcon: InkWell(
               borderRadius: BorderRadius.circular(20),
               radius: 10,
-              onTap: controller.visibilityButton,
+              onTap: () {
+                controller.visibilityButton();
+              },
               child: controller.visibility.value == true
                   ? Icon(
                       Icons.visibility_off_outlined,

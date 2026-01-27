@@ -1,4 +1,6 @@
+import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
+import 'package:finance_management/app/module/home/view/screen/authentication_screen/Auth_main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,13 +10,13 @@ class ReportBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Center(
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             spacing: 20,
             children: [
-              Text("Add_Tr_Type_Field_hint".tr),
               ElevatedButton(
                 onPressed: () {
                   Get.updateLocale(Locale("en", "US"));
@@ -26,6 +28,13 @@ class ReportBody extends StatelessWidget {
                   Get.updateLocale(Locale("bn", "BD"));
                 },
                 child: CustomText(text: "Bangla"),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  await LocalStorage().deleteData(key: "login");
+                  Get.off(() => AuthPage());
+                },
+                child: CustomText(text: "Log out"),
               ),
             ],
           ),

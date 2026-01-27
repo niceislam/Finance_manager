@@ -1,8 +1,10 @@
+import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class TransectionController extends GetxController {
   TextEditingController searchController = TextEditingController();
+  final homeController = Get.find<HomeController>();
   RxBool iconActive = false.obs;
   RxBool slideOnEnd = true.obs;
 

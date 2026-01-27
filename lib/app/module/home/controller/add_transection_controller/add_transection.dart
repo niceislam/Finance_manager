@@ -18,7 +18,7 @@ class AddTraController extends GetxController {
   RxBool expenseLoading = false.obs;
   RxString costType = "".obs;
 
-  expenseSave() async {
+  Future<void> expenseSave() async {
     if (mykey.currentState!.validate()) {
       expenseLoading.value = true;
       await Future.delayed(Duration(seconds: 1));
@@ -35,7 +35,7 @@ class AddTraController extends GetxController {
     }
   }
 
-  incomeSave() async {
+  Future<void> incomeSave() async {
     IncomeLoading.value = true;
     await Future.delayed(Duration(milliseconds: 500));
     await IncomeAddFirebase().addData(incomeController: incomeController);

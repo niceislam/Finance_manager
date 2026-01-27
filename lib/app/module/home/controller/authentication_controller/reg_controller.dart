@@ -34,11 +34,11 @@ class RegController extends GetxController {
           await FirebaseFirestore.instance.collection("users").doc(uid).set({
             "name": "${namecontroller.text}",
             "profession": "Example",
-            "age": 0.00,
-            "income": 0.00,
-            "expense": 0.00,
-            "tExpense": [
-            ],
+            "age": 0,
+            "income": 0,
+            "expense": 0,
+            "tExpense": [],
+            "allExpense": [],
           });
 
           emailcontroller.clear();

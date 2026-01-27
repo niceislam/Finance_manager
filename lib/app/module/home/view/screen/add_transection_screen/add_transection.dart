@@ -4,6 +4,7 @@ import 'package:finance_management/app/module/home/Global_widget/custom_text.dar
 import 'package:finance_management/app/module/home/controller/add_transection_controller/add_transection.dart';
 import 'package:finance_management/app/module/home/view/screen/add_transection_screen/part/expense_textfield.dart';
 import 'package:finance_management/app/module/home/view/screen/add_transection_screen/part/income_textfield.dart';
+import 'package:finance_management/app/module/home/view/screen/authentication_screen/Auth_main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,10 +35,9 @@ class AddTransection extends StatelessWidget {
             leadingIcon: Icon(Icons.arrow_back_ios, color: Colors.white),
             centerText: "Add_Tr_title".tr,
             actionTap: () {
-              LocalStorage().deleteAll();
-
-
-              //controller submitButton();
+              controller.slideOnEnd.value == true
+                  ? controller.expenseSave()
+                  : controller.incomeSave();
             },
             actionIcon: CustomText(
               text: "Add_Tr_Save".tr,

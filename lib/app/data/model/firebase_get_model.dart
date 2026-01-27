@@ -2,6 +2,7 @@ class FirebaseGetModel {
   String? profession;
   int? income;
   List<TExpense>? tExpense;
+  List<TExpense>? allExpense;
   String? name;
   int? expense;
   int? age;
@@ -10,6 +11,7 @@ class FirebaseGetModel {
     this.profession,
     this.income,
     this.tExpense,
+    this.allExpense,
     this.name,
     this.expense,
     this.age,
@@ -18,27 +20,42 @@ class FirebaseGetModel {
   FirebaseGetModel.fromJson(Map<String, dynamic> json) {
     profession = json['profession'];
     income = json['income'];
+
     if (json['tExpense'] != null) {
       tExpense = <TExpense>[];
       json['tExpense'].forEach((v) {
-        tExpense!.add(new TExpense.fromJson(v));
+        tExpense!.add(TExpense.fromJson(v));
       });
     }
+
+    if (json['allExpense'] != null) {
+      allExpense = <TExpense>[];
+      json['allExpense'].forEach((v) {
+        allExpense!.add(TExpense.fromJson(v));
+      });
+    }
+
     name = json['name'];
     expense = json['expense'];
     age = json['age'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['profession'] = this.profession;
-    data['income'] = this.income;
-    if (this.tExpense != null) {
-      data['tExpense'] = this.tExpense!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['profession'] = profession;
+    data['income'] = income;
+
+    if (tExpense != null) {
+      data['tExpense'] = tExpense!.map((v) => v.toJson()).toList();
     }
-    data['name'] = this.name;
-    data['expense'] = this.expense;
-    data['age'] = this.age;
+
+    if (allExpense != null) {
+      data['allExpense'] = allExpense!.map((v) => v.toJson()).toList();
+    }
+
+    data['name'] = name;
+    data['expense'] = expense;
+    data['age'] = age;
     return data;
   }
 }
@@ -59,11 +76,11 @@ class TExpense {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['dateTime'] = this.dateTime;
-    data['product'] = this.product;
-    data['cost'] = this.cost;
-    data['costType'] = this.costType;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['dateTime'] = dateTime;
+    data['product'] = product;
+    data['cost'] = cost;
+    data['costType'] = costType;
     return data;
   }
 }

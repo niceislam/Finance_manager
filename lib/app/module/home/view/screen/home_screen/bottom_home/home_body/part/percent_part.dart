@@ -59,17 +59,14 @@ class percent_part extends StatelessWidget {
                 spacing: 3,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // CustomText(
-                  //   text: "Monthly Spending",
-                  //   fontsize: 12,
-                  //   fontWeight: FontWeight.w900,
-                  // ),
                   SizedBox(
                     width: 110,
                     child: Center(
                       child: CustomText(
                         maxline: 1,
-                        text: "${percent! * 100}",
+                        text: double.parse(
+                          "${percent! * 100}",
+                        ).toStringAsFixed(1),
                         fontsize: 30,
                         fontWeight: FontWeight.w600,
                       ),

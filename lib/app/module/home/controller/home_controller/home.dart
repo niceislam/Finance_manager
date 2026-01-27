@@ -27,7 +27,7 @@ class HomeController extends GetxController
   Rx<FirebaseGetModel> userAllData = FirebaseGetModel().obs;
   RxBool isLoading = false.obs;
 
-  floatingTap() async {
+  Future<void> floatingTap() async {
     var status = await LocalStorage().readData(key: "login");
     if (status != null) {
       Get.to(() => AddTransection())!.then((v) => getAllData());
@@ -36,7 +36,7 @@ class HomeController extends GetxController
     }
   }
 
-  homeScroll() {
+  void homeScroll() {
     scrollController.addListener(() {
       if (scrollController.offset > 100) {
         scrollToSlide.value = true;
@@ -46,7 +46,7 @@ class HomeController extends GetxController
     });
   }
 
-  floatingSlide() {
+  void floatingSlide() {
     animController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 6000),
@@ -59,14 +59,14 @@ class HomeController extends GetxController
     animController.repeat(reverse: true);
   }
 
-  getAllData() async {
+  Future<void> getAllData() async {
     isLoading.value = true;
     dynamic uid = await LocalStorage().readData(key: "login");
     userAllData.value = await GetUserData().GetData(uid: uid);
     isLoading.value = false;
   }
 
-  editInfo() {}
+  void editInfo() {}
 
   @override
   void onInit() {

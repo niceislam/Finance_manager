@@ -14,7 +14,7 @@ class floating_action extends StatelessWidget {
           ? SlideTransition(
               position: controller.offsetAnimation,
               child: GestureDetector(
-                onTap: () async {
+                onTap: () {
                   controller.floatingTap();
                 },
                 child: Container(

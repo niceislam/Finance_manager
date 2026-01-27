@@ -24,7 +24,7 @@ class CurrentBalance extends StatelessWidget {
           ),
         ],
         borderRadius: BorderRadius.circular(10),
-        color:Colors.teal.shade50,
+        color: Colors.teal.shade50,
       ),
       child: Center(
         child: Column(
@@ -35,7 +35,7 @@ class CurrentBalance extends StatelessWidget {
             Obx(
               () => CustomText(
                 text:
-                    "\$${(controller.userAllData.value.income! - controller.userAllData.value.expense!) ?? 0.00}",
+                    "\$${double.parse("${(controller.userAllData.value.income! - controller.userAllData.value.expense!)}")}",
                 fontsize: 25,
                 fontWeight: FontWeight.bold,
               ),

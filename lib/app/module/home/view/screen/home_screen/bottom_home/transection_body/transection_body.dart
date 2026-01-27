@@ -47,7 +47,7 @@ class TransectionBody extends StatelessWidget {
                         children: [
                           CustomText(
                             fontsize: 17,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: FontWeight.w600,
                             text:
                                 "${Trcontroller.slideOnEnd.value == false ? "Tr_slideBtn_right".tr : "Tr_slideBtn_left".tr}",
                           ),
@@ -57,12 +57,7 @@ class TransectionBody extends StatelessWidget {
                     SizedBox(height: 10),
 
                     //History List
-                    History_list(
-                      itemcount: 10,
-                      icondata: Icons.shopping_bag_outlined,
-                      title: "Grocery Shop",
-                      subtitle: "shopping",
-                      actionTk: 2100,
+                    History_list(controller: Trcontroller,
                     ),
                   ],
                 ),

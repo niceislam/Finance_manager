@@ -154,7 +154,7 @@ class main_body extends StatelessWidget {
                   fontsize: 15,
                 ),
                 CustomText(
-                  text: "\$${tk ?? ""}",
+                  text: "\$${double.parse("$tk")}",
                   fontWeight: FontWeight.w600,
                   textColor: textColor,
                   fontsize: 15,

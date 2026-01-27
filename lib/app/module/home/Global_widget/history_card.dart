@@ -10,12 +10,16 @@ class HistoryCard extends StatelessWidget {
     this.subTitle,
     this.actionTk,
     this.actionWid,
+    this.subTitle2,
+    this.ShowTime,
   });
   final Icon? icon;
   final String? title;
   final String? subTitle;
+  final String? subTitle2;
   final dynamic actionTk;
   final Widget? actionWid;
+  final bool? ShowTime;
 
   @override
   Widget build(BuildContext context) {
@@ -37,19 +41,31 @@ class HistoryCard extends StatelessWidget {
         leading: icon ?? Icon(Icons.close),
         title: CustomText(
           maxline: 1,
-          text: "${title ?? ""}",
+          text: title ?? "",
           fontWeight: FontWeight.w600,
           fontsize: 15,
         ),
-        subtitle: CustomText(
-          text: "${subTitle ?? ""}",
-          fontsize: 13,
-          textColor: Colors.grey,
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomText(
+              text: subTitle ?? "",
+              fontsize: 13,
+              textColor: Colors.grey,
+            ),
+            ShowTime == true
+                ? CustomText(
+                    text: subTitle2 ?? "",
+                    fontsize: 13,
+                    textColor: Colors.grey,
+                  )
+                : SizedBox(),
+          ],
         ),
         trailing:
             actionWid ??
             CustomText(
-              text: "${double.parse("${actionTk ?? 0.00}")}",
+              text: "${double.parse("${actionTk ?? 0}")}",
               fontWeight: FontWeight.w600,
               fontsize: 15,
               textColor: Colors.red,

@@ -27,6 +27,19 @@ class ExpenseAddFirebase {
           },
         ]),
       });
+      calRef.update({
+        "allExpense": FieldValue.arrayUnion([
+          {
+            "cost": int.parse(costPriceController.text),
+            "costType": "${costType}",
+            "dateTime": "${dateTime}",
+            "product": "${productsControleller.text}",
+          },
+        ]),
+      });
+      calRef.update({
+        "expense": FieldValue.increment(int.parse(costPriceController.text)),
+      });
       await EasyLoading.showSuccess("Expense Added");
     } catch (error) {
       log("======Error:${error}");

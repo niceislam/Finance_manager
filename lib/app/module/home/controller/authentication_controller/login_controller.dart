@@ -18,11 +18,11 @@ class LoginController extends GetxController {
   TextEditingController passwordControllerlogin = TextEditingController();
   RxList newUserPage = [LoginAuth(), RegisterAuth()].obs;
 
-  visibilityButton() {
+  void visibilityButton() {
     visibility.value = !visibility.value;
   }
 
-  loginTap() async {
+  Future<void> loginTap() async {
     if (mykey.currentState!.validate()) {
       isLoading.value = true;
       try {
