@@ -1,9 +1,4 @@
-import 'dart:developer';
-
-import 'package:finance_management/app/module/home/controller/transection_controller/transection_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import 'custom_text.dart';
 
 class CategorySlideButton extends StatefulWidget {
@@ -11,7 +6,9 @@ class CategorySlideButton extends StatefulWidget {
     super.key,
     required this.size,
     this.leftTitle,
-    this.rightTitle, this.onEndbutton, this.onendText,
+    this.rightTitle,
+    this.onEndbutton,
+    this.onendText,
   });
 
   final Size size;
@@ -39,6 +36,19 @@ class _CategorySlideButtonState extends State<CategorySlideButton> {
       child: Stack(
         alignment: Alignment.center,
         children: [
+          AnimatedPositioned(
+            onEnd: widget.onEndbutton,
+            left: CatagorySlide == true ? 182 : 0,
+            duration: Duration(milliseconds: 150),
+            child: Container(
+              height: 40,
+              width: 170,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.teal,
+              ),
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -52,7 +62,12 @@ class _CategorySlideButtonState extends State<CategorySlideButton> {
                   child: Container(
                     color: Colors.transparent,
                     child: Center(
-                      child: CustomText(text: "${widget.leftTitle ?? ""}"),
+                      child: CustomText(
+                        text: widget.leftTitle ?? "",
+                        textColor: widget.onendText == true
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                     ),
                   ),
                 ),
@@ -66,32 +81,17 @@ class _CategorySlideButtonState extends State<CategorySlideButton> {
                   child: Container(
                     color: Colors.transparent,
                     child: Center(
-                      child: CustomText(text: "${widget.rightTitle ?? ""}"),
+                      child: CustomText(
+                        text: widget.rightTitle ?? "",
+                        textColor: widget.onendText == true
+                            ? Colors.black
+                            : Colors.white,
+                      ),
                     ),
                   ),
                 ),
               ),
             ],
-          ),
-          AnimatedPositioned(
-            onEnd: widget.onEndbutton,
-            left: CatagorySlide == true ? 188 : 0,
-            duration: Duration(milliseconds: 150),
-            child: Container(
-              height: 40,
-              width: 165,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Colors.teal,
-              ),
-              child: Center(
-                child: CustomText(
-                  text:
-                  "${widget.onendText == false ? "${widget.rightTitle ?? ""}" : "${widget.leftTitle ?? ""}"}",
-                  textColor: Colors.white,
-                ),
-              ),
-            ),
           ),
         ],
       ),

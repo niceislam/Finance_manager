@@ -10,7 +10,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  final mykey = GlobalKey<FormState>();
+  final GlobalKey<FormState> mykey = GlobalKey<FormState>();
   RxInt signIndex = 0.obs;
   RxBool visibility = true.obs;
   RxBool isLoading = false.obs;
@@ -37,7 +37,7 @@ class LoginController extends GetxController {
             key: "login",
             value: "${userCredential.user!.uid}",
           );
-          Get.to(HomeScreen());
+          Get.to(() => HomeScreen());
           emailControllerlogin.clear();
           passwordControllerlogin.clear();
         }

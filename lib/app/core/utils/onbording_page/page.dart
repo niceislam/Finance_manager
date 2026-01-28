@@ -31,7 +31,7 @@ class OnBordingPage {
           width: 320,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Colors.indigo,
+            color: Colors.teal,
           ),
           child: Center(
             child: Obx(() {
@@ -39,7 +39,7 @@ class OnBordingPage {
               return controller.isLoading.value == true
                   ? CircularProgressIndicator(
                       backgroundColor: Colors.white,
-                      color: Colors.indigo,
+                      color: Colors.teal,
                     )
                   : CustomText(
                       text: "Get Started",
