@@ -7,6 +7,7 @@ import 'package:finance_management/app/module/home/view/screen/home_screen/botto
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../Global_widget/history_card.dart';
+import 'edit_bio.dart';
 
 class main_body extends StatelessWidget {
   const main_body({super.key, required this.controller});
@@ -40,7 +41,7 @@ class main_body extends StatelessWidget {
                   "${item.expense! < item.income! ? item.expense! / item.income! : 1}",
                 ),
                 editInfo: () {
-                  controller.editInfo();
+                  controller.updateInfo(item: item);
                 },
               );
             }),
@@ -89,8 +90,9 @@ class main_body extends StatelessWidget {
               ],
             ),
             Obx(() {
-              final item = controller.userAllData.value.tExpense;
-              return item!.isEmpty
+              final item = controller.userAllData.value.tExpense!.reversed
+                  .toList();
+              return item.isEmpty
                   ? Padding(
                       padding: const EdgeInsets.only(top: 50),
                       child: Center(child: CustomText(text: "No_data".tr)),

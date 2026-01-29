@@ -24,41 +24,41 @@ class History_list extends StatelessWidget {
         ),
         child: Obx(() {
           final item = controller.homeController.userAllData.value;
-          final status = !controller.slideOnEnd.value;
-          return status
-              ? item.tExpense!.isEmpty
+          final item2 = item.tExpense!.reversed.toList();
+          final item3 = item.allExpense!.reversed.toList();
+          return controller.slideOnEnd.value == false
+              ? item2.isEmpty
                     ? Center(child: CustomText(text: "No_data".tr))
                     : ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: item.tExpense!.length,
+                        itemCount: item2.length,
                         itemBuilder: (context, index) {
                           return HistoryCard(
                             icon: CustomIconData().data(
-                              ticket: item.tExpense![index].costType,
+                              ticket: item2[index].costType,
                             ),
-                            title: item.tExpense![index].product,
-                            subTitle: item.tExpense![index].costType,
+                            title: item2[index].product,
+                            subTitle: item2[index].costType,
 
-                            actionTk: item.tExpense![index].cost,
+                            actionTk: item2[index].cost,
                           );
                         },
                       )
-              : item.allExpense!.isEmpty
+              : item3.isEmpty
               ? Center(child: CustomText(text: "No_data".tr))
               : ListView.builder(
                   shrinkWrap: true,
-                  itemCount: item.allExpense!.length,
+                  itemCount: item3.length,
                   itemBuilder: (context, index) {
                     return HistoryCard(
                       ShowTime: true,
-                      subTitle2: item.allExpense![index].dateTime,
+                      subTitle2: item3[index].dateTime,
                       icon: CustomIconData().data(
-                        ticket: item.allExpense![index].costType,
+                        ticket: item3[index].costType,
                       ),
-                      title: item.allExpense![index].product,
-                      subTitle: item.allExpense![index].costType,
+                      title: item3[index].product,
+                      subTitle: item3[index].costType,
 
-                      actionTk: item.allExpense![index].cost,
+                      actionTk: item3[index].cost,
                     );
                   },
                 );

@@ -1,11 +1,7 @@
-import 'dart:developer';
-
 import 'package:finance_management/app/module/home/Global_widget/custom_appbar.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../Global_widget/custom_text.dart';
 import '../widget/language_slide.dart';
 
 class AllAppbar extends StatelessWidget {
@@ -19,7 +15,7 @@ class AllAppbar extends StatelessWidget {
       return val == 0
           ? CustomAppbar(
               centerText: "home_title".tr,
-              actionIcon: LanguageSlide(controller: controller,),
+              actionIcon: LanguageSlide(controller: controller),
             )
           : val == 1
           ? CustomAppbar(

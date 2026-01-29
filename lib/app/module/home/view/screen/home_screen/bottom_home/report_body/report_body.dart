@@ -8,7 +8,6 @@ class ReportBody extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-
       ],
     );
   }

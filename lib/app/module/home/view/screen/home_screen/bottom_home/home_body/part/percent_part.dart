@@ -89,18 +89,18 @@ class percent_part extends StatelessWidget {
                     children: [
                       CustomText(
                         maxline: 1,
-                        text: "${name ?? "N/A"}",
+                        text: name != "" ? name : "N/A",
                         fontWeight: FontWeight.w600,
                         fontsize: 20,
                       ),
                       CustomText(
                         maxline: 1,
-                        text: "${profession ?? "N/A"}",
+                        text: profession == "" ? "N/A" : profession,
                         fontsize: 15,
                         textColor: Colors.grey,
                       ),
                       CustomText(
-                        text: "${age ?? "0"}",
+                        text: "${age != "" ? age : "0"}",
                         textColor: Colors.grey,
                         fontsize: 15,
                       ),

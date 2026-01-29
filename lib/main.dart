@@ -9,9 +9,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:workmanager/workmanager.dart';
+
+
+// void callbackDispatcher() {
+//   Workmanager().executeTask((task, inputData) async {
+//     print("Background task: $task");
+//     return Future.value(true);
+//   });
+// }
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Workmanager().initialize(callbackDispatcher);
   await Firebase.initializeApp();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   var es = await LocalStorage().readData(key: "language");

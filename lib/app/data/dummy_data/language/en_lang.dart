@@ -24,6 +24,7 @@ class EnglshLanguage {
     "Add_Tr_Cost_Field_hint": "Cost Price",
     "Add_Tr_Income": "Income",
     "Add_Tr_Income_field": "Income Price",
-    "No_data":"No Data Found"
+    "No_data":"No Data Found",
+    "updateInfo_title":"Information"
   };
 }

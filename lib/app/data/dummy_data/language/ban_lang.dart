@@ -25,5 +25,6 @@ class BanglaLanguage {
     "Add_Tr_Income": "আয়",
     "Add_Tr_Income_field": "আয়ের পরিমাণ",
     "No_data": "কোন তথ্য পাওয়া যায়নি",
+    "updateInfo_title": "তথ্য",
   };
 }

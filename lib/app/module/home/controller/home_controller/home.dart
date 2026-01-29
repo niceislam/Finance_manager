@@ -1,12 +1,20 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/data/service/add_transection/get_all_data.dart';
+import 'package:finance_management/app/data/service/add_transection/update_bioData.dart';
+import 'package:finance_management/app/module/home/Global_widget/custom_Textfield.dart';
+import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/view/screen/add_transection_screen/add_transection.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/widget/login_dialogue.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import '../../view/screen/home_screen/bottom_home/home_body/home_body.dart';
+import '../../view/screen/home_screen/bottom_home/home_body/part/edit_bio.dart';
 import '../../view/screen/home_screen/bottom_home/report_body/report_body.dart';
 import '../../view/screen/home_screen/bottom_home/transection_body/transection_body.dart';
 
@@ -20,7 +28,11 @@ class HomeController extends GetxController
   RxBool languageSlide = false.obs;
   RxList bottomPage = [home_body(), TransectionBody(), ReportBody()].obs;
   Rx<FirebaseGetModel> userAllData = FirebaseGetModel().obs;
+  TextEditingController nameEditController = TextEditingController();
+  TextEditingController professionEditController = TextEditingController();
+  TextEditingController ageEditController = TextEditingController();
   RxBool isLoading = false.obs;
+  RxBool updateInfoLoading = false.obs;
 
   Future<void> floatingTap() async {
     var status = await LocalStorage().readData(key: "login");
@@ -61,7 +73,28 @@ class HomeController extends GetxController
     isLoading.value = false;
   }
 
-  void editInfo() {}
+  void updateInfo({required dynamic item}) {
+    Get.dialog(
+      EditBiodataDialogue(controller: Get.find<HomeController>()),
+      transitionCurve: Curves.easeInOut,
+    );
+    nameEditController.text = item.name!;
+    professionEditController.text = item.profession!;
+    ageEditController.text = item.age!.toString();
+  }
+
+  void updateInfoButton() async {
+    updateInfoLoading.value = true;
+    await UpdateBiodata()
+        .update(
+          namecontroller: nameEditController,
+          professionController: professionEditController,
+          ageController: ageEditController,
+        )
+        .then((v) => getAllData());
+    Get.back();
+    updateInfoLoading.value = false;
+  }
 
   void localeCheck() async {
     var status = await LocalStorage().readData(key: "language");
