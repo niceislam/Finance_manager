@@ -28,7 +28,7 @@ class History_list extends StatelessWidget {
           final item3 = item.allExpense!.reversed.toList();
           return controller.slideOnEnd.value == false
               ? item2.isEmpty
-                    ? Center(child: CustomText(text: "No_data".tr))
+                    ? Center(child: CustomText(text: "No_data_today".tr))
                     : ListView.builder(
                         itemCount: item2.length,
                         itemBuilder: (context, index) {

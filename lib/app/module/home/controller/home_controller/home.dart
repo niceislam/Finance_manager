@@ -105,6 +105,16 @@ class HomeController extends GetxController
     }
   }
 
+  void deleteData() async {
+    try {
+      var uid = await LocalStorage().readData(key: "login");
+      var callRef = FirebaseFirestore.instance.collection("users").doc(uid);
+      callRef.update({"tExpense": []});
+    } catch (error) {
+      log("======Error$error}");
+    }
+  }
+
   @override
   void onInit() {
     localeCheck();

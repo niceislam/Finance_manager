@@ -95,7 +95,7 @@ class main_body extends StatelessWidget {
               return item.isEmpty
                   ? Padding(
                       padding: const EdgeInsets.only(top: 50),
-                      child: Center(child: CustomText(text: "No_data".tr)),
+                      child: Center(child: CustomText(text: "No_data_today".tr)),
                     )
                   : ListView.builder(
                       shrinkWrap: true,
