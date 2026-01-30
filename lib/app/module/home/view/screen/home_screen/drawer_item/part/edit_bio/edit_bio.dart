@@ -1,4 +1,5 @@
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
+import 'package:finance_management/app/module/home/view/screen/home_screen/drawer_item/part/edit_bio/part/image_add.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,6 +29,11 @@ class EditBiodataDialogue extends StatelessWidget {
         spacing: 10,
         mainAxisSize: MainAxisSize.min,
         children: [
+          //Add Image
+          AddImage(controller: controller),
+          SizedBox(height: 10),
+
+          //Other TextField
           CustomTextField(
             hintText: "Name",
             controller: controller.nameEditController,

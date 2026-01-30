@@ -14,7 +14,6 @@ class percent_part extends StatelessWidget {
     this.percent,
     this.monthlyIncome,
     this.expense,
-    this.editInfo,
   });
 
   final Size size;
@@ -24,7 +23,6 @@ class percent_part extends StatelessWidget {
   final double? percent;
   final int? monthlyIncome;
   final int? expense;
-  final VoidCallback? editInfo;
 
   @override
   Widget build(BuildContext context) {
@@ -80,48 +78,32 @@ class percent_part extends StatelessWidget {
           ),
           Expanded(
             flex: 10,
-            child: Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 30),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText(
-                        maxline: 1,
-                        text: name != "" ? name : "N/A",
-                        fontWeight: FontWeight.w600,
-                        fontsize: 20,
-                      ),
-                      CustomText(
-                        maxline: 1,
-                        text: profession == "" ? "N/A" : profession,
-                        fontsize: 15,
-                        textColor: Colors.grey,
-                      ),
-                      CustomText(
-                        text: "${age != "" ? age : "0"}",
-                        textColor: Colors.grey,
-                        fontsize: 15,
-                      ),
-                    ],
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    maxline: 1,
+                    text: name != "" ? name : "N/A",
+                    fontWeight: FontWeight.w600,
+                    textOverflow: TextOverflow.ellipsis,
+                    fontsize: 20,
                   ),
-                ),
-                Positioned(
-                  top: 10,
-                  right: 10,
-                  child: InkWell(
-                    onTap: editInfo,
-                    child: CircleAvatar(
-                      radius: 20,
-                      backgroundColor: Colors.grey.shade100,
-                      child: Center(
-                        child: Icon(Icons.edit, size: 23, color: Colors.black),
-                      ),
-                    ),
+                  CustomText(
+                    maxline: 1,
+                    text: profession == "" ? "N/A" : profession,
+                    fontsize: 15,
+                    textColor: Colors.grey,
+                    textOverflow: TextOverflow.ellipsis,
                   ),
-                ),
-              ],
+                  CustomText(
+                    text: "${age != "" ? age : "0"}",
+                    textColor: Colors.grey,
+                    fontsize: 15,
+                  ),
+                ],
+              ),
             ),
           ),
         ],

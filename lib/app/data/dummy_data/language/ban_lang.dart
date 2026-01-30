@@ -1,6 +1,6 @@
 class BanglaLanguage {
   Map<String, String> language = {
-    "home_title": "সারসংক্ষেপ",
+    "home_title": "হোম",
     "current_balance": "বর্তমান ব্যালেন্স",
     "home_income_view": "মোট আয়",
     "home_expense_view": "মোট ব্যয়",
@@ -27,5 +27,10 @@ class BanglaLanguage {
     "No_data_today": "আজকের কোন তথ্য পাওয়া যায়নি",
     "No_data": "কোন তথ্য পাওয়া যায়নি",
     "updateInfo_title": "তথ্য",
+    "drawer_Budget" : "বাজেট",
+    "drawer_settings" : "সেটিংস",
+    "drawer_language" : "ভাষা",
+    "drawer_logOut" : "লগ আউট",
+    "Drawer_privacy" : "প্রাইভেসি পলিসি",
   };
 }

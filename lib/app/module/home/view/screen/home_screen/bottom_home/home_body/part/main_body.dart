@@ -7,7 +7,7 @@ import 'package:finance_management/app/module/home/view/screen/home_screen/botto
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../Global_widget/history_card.dart';
-import 'edit_bio.dart';
+import '../../../drawer_item/part/edit_bio/edit_bio.dart';
 
 class main_body extends StatelessWidget {
   const main_body({super.key, required this.controller});
@@ -40,9 +40,6 @@ class main_body extends StatelessWidget {
                 percent: double.parse(
                   "${item.expense! < item.income! ? item.expense! / item.income! : 1}",
                 ),
-                editInfo: () {
-                  controller.updateInfo(item: item);
-                },
               );
             }),
 

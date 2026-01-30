@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:finance_management/app/module/home/Global_widget/custom_appbar.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +17,10 @@ class AllAppbar extends StatelessWidget {
       return val == 0
           ? CustomAppbar(
               centerText: "home_title".tr,
-              actionIcon: LanguageSlide(controller: controller),
+              leadingIcon: Icon(Icons.menu, color: Colors.white, size: 28),
+              leadingTap: () {
+                Scaffold.of(context).openDrawer();
+              },
             )
           : val == 1
           ? CustomAppbar(

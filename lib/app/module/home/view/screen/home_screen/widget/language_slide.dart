@@ -37,7 +37,7 @@ class LanguageSlide extends StatelessWidget {
                   width: 30,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadiusGeometry.circular(8),
-                    color: Colors.white,
+                    color: Colors.teal,
                   ),
                   duration: Duration(milliseconds: 200),
                 ),

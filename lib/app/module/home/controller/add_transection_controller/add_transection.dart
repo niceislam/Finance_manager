@@ -39,12 +39,20 @@ class AddTraController extends GetxController {
   }
 
   Future<void> incomeSave() async {
-   if(mykeyincome.currentState!.validate()){
-     IncomeLoading.value = true;
-     await Future.delayed(Duration(milliseconds: 500));
-     await IncomeAddFirebase().addData(incomeController: incomeController);
-     incomeController.clear();
-     IncomeLoading.value = false;
-   }
+    if (mykeyincome.currentState!.validate()) {
+      IncomeLoading.value = true;
+      await Future.delayed(Duration(milliseconds: 500));
+      await IncomeAddFirebase().addData(incomeController: incomeController);
+      incomeController.clear();
+      IncomeLoading.value = false;
+    }
+  }
+
+  @override
+  void onInit() {
+    if (Get.arguments != null) {
+      slideOnEnd.value = Get.arguments;
+    }
+    super.onInit();
   }
 }

@@ -1,16 +1,12 @@
-import 'dart:developer';
-
-import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/widget/custom_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
-import 'bottom_home/home_body/home_body.dart';
 import 'bottom_home/home_body/part/bottombar.dart';
 import 'bottom_home/widget/floating_action.dart';
 import 'custom_Appbar/custom_appbar.dart';
+import 'drawer_item/drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -42,6 +38,7 @@ class HomeScreen extends StatelessWidget {
           }
         },
         child: Scaffold(
+          drawer: MainDrawerItem(),
           backgroundColor: Colors.white,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(48),

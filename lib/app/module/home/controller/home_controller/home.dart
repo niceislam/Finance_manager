@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
@@ -13,8 +14,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../view/screen/home_screen/bottom_home/home_body/home_body.dart';
-import '../../view/screen/home_screen/bottom_home/home_body/part/edit_bio.dart';
+import '../../view/screen/home_screen/drawer_item/part/edit_bio/edit_bio.dart';
 import '../../view/screen/home_screen/bottom_home/report_body/report_body.dart';
 import '../../view/screen/home_screen/bottom_home/transection_body/transection_body.dart';
 
@@ -33,6 +35,22 @@ class HomeController extends GetxController
   TextEditingController ageEditController = TextEditingController();
   RxBool isLoading = false.obs;
   RxBool updateInfoLoading = false.obs;
+  final ImagePicker picker = ImagePicker();
+  RxString imagePath = "".obs;
+
+  void cameraImage() async {
+    XFile? path = await picker.pickImage(source: ImageSource.camera);
+    imagePath.value = path!.path;
+    log("==========path $imagePath");
+    Get.back();
+  }
+
+  void galleryImage() async {
+    XFile? path = await picker.pickImage(source: ImageSource.gallery);
+    imagePath.value = path!.path;
+    log("==========path $imagePath");
+    Get.back();
+  }
 
   Future<void> floatingTap() async {
     var status = await LocalStorage().readData(key: "login");

@@ -1,6 +1,6 @@
 class EnglshLanguage {
   Map<String, String> language = {
-    "home_title": "Overview",
+    "home_title": "Home",
     "current_balance": "Current Balance",
     "home_income_view": "Income",
     "home_expense_view": "Expense",
@@ -27,5 +27,10 @@ class EnglshLanguage {
     "No_data": "No Data Found",
     "updateInfo_title": "Information",
     "No_data_today": "Today No Data Found",
+    "drawer_Budget" :"Budget",
+    "drawer_settings" :"Settings",
+    "drawer_language" :"Language",
+    "drawer_logOut" :"Log out",
+    "Drawer_privacy":"Privacy Policy"
   };
 }
