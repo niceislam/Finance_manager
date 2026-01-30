@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/data/service/add_transection/expense_add.dart';
 import 'package:finance_management/app/data/service/add_transection/income_add.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,7 +16,7 @@ class AddTraController extends GetxController {
   RxString TimeFormat = DateFormat("hh:mm").format(DateTime.now()).obs;
   final mykey = GlobalKey<FormState>();
   final mykeyincome = GlobalKey<FormState>();
-  RxBool slideOnEnd = true.obs;
+  RxBool slideOnEnd = false.obs;
   RxBool IncomeLoading = false.obs;
   RxBool expenseLoading = false.obs;
   RxString costType = "".obs;
@@ -36,10 +39,12 @@ class AddTraController extends GetxController {
   }
 
   Future<void> incomeSave() async {
-    IncomeLoading.value = true;
-    await Future.delayed(Duration(milliseconds: 500));
-    await IncomeAddFirebase().addData(incomeController: incomeController);
-    incomeController.clear();
-    IncomeLoading.value = false;
+   if(mykeyincome.currentState!.validate()){
+     IncomeLoading.value = true;
+     await Future.delayed(Duration(milliseconds: 500));
+     await IncomeAddFirebase().addData(incomeController: incomeController);
+     incomeController.clear();
+     IncomeLoading.value = false;
+   }
   }
 }

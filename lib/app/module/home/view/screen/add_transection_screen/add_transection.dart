@@ -8,7 +8,7 @@ import 'package:finance_management/app/module/home/view/screen/authentication_sc
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../Global_widget/CategorySlideBtn.dart';
+import '../../../Global_widget/category_slider/CategorySlideBtn.dart';
 
 class AddTransection extends StatelessWidget {
   const AddTransection({super.key});
@@ -35,7 +35,7 @@ class AddTransection extends StatelessWidget {
             leadingIcon: Icon(Icons.arrow_back_ios, color: Colors.white),
             centerText: "Add_Tr_title".tr,
             actionTap: () {
-              controller.slideOnEnd.value == true
+              controller.slideOnEnd.value == false
                   ? controller.expenseSave()
                   : controller.incomeSave();
             },
@@ -75,17 +75,17 @@ class AddTransection extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         //slide button
-                        Obx(
-                          () => CategorySlideButton(
-                            size: size,
-                            leftTitle: "home_expense_view".tr,
-                            rightTitle: "home_income_view".tr,
-                            onEndbutton: () {
-                              controller.slideOnEnd.value =
-                                  !controller.slideOnEnd.value;
-                            },
-                            onendText: controller.slideOnEnd.value,
-                          ),
+                        CategorySlideButton(
+                          size: size,
+                          leftTitle: "home_expense_view".tr,
+                          rightTitle: "home_income_view".tr,
+                          controller: controller,
+                          control1: () {
+                            controller.slideOnEnd.value = false;
+                          },
+                          control2: () {
+                            controller.slideOnEnd.value = true;
+                          },
                         ),
 
                         //body
@@ -104,7 +104,7 @@ class AddTransection extends StatelessWidget {
                                     color: Colors.grey.shade200,
                                   ),
                                   child: Obx(
-                                    () => controller.slideOnEnd.value == true
+                                    () => controller.slideOnEnd.value == false
                                         ? ExpenseTexField(
                                             controller: controller,
                                           )
@@ -129,7 +129,7 @@ class AddTransection extends StatelessWidget {
                                       ),
                                     ),
                                     onPressed: () {
-                                      controller.slideOnEnd.value == true
+                                      controller.slideOnEnd.value == false
                                           ? controller.expenseSave()
                                           : controller.incomeSave();
                                     },

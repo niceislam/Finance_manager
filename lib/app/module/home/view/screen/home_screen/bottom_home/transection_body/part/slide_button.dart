@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../Global_widget/CategorySlideBtn.dart';
+import '../../../../../../Global_widget/category_slider/CategorySlideBtn.dart';
 import '../../../../../../controller/transection_controller/transection_controller.dart';
 
 class SlideButtoon extends StatelessWidget {
@@ -16,16 +16,17 @@ class SlideButtoon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => CategorySlideButton(
-        size: size,
-        leftTitle: "Tr_slideBtn_left".tr,
-        rightTitle: "Tr_slideBtn_right".tr,
-        onendText: Trcontroller.slideOnEnd.value,
-        onEndbutton: () {
-          Trcontroller.slideOnEnd.value = !Trcontroller.slideOnEnd.value;
-        },
-      ),
+    return CategorySlideButton(
+      size: size,
+      leftTitle: "Tr_slideBtn_left".tr,
+      rightTitle: "Tr_slideBtn_right".tr,
+      controller: Trcontroller,
+      control1: () {
+        Trcontroller.slideOnEnd.value = false;
+      },
+      control2: () {
+        Trcontroller.slideOnEnd.value = true;
+      },
     );
   }
 }

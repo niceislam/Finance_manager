@@ -1,7 +1,7 @@
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/Global_widget/history_card.dart';
 import 'package:finance_management/app/module/home/controller/transection_controller/transection_controller.dart';
-import 'package:finance_management/app/module/home/Global_widget/CategorySlideBtn.dart';
+import 'package:finance_management/app/module/home/Global_widget/category_slider/CategorySlideBtn.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/transection_body/part/history_list.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/transection_body/part/search_bar.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/transection_body/part/slide_button.dart';
@@ -48,8 +48,9 @@ class TransectionBody extends StatelessWidget {
                           CustomText(
                             fontsize: 17,
                             fontWeight: FontWeight.w600,
-                            text:
-                                "${Trcontroller.slideOnEnd.value == false ? "Tr_slideBtn_right".tr : "Tr_slideBtn_left".tr}",
+                            text: Trcontroller.slideOnEnd.value == true
+                                ? "Tr_slideBtn_right".tr
+                                : "Tr_slideBtn_left".tr,
                           ),
                         ],
                       ),
@@ -57,8 +58,7 @@ class TransectionBody extends StatelessWidget {
                     SizedBox(height: 10),
 
                     //History List
-                    History_list(controller: Trcontroller,
-                    ),
+                    History_list(controller: Trcontroller),
                   ],
                 ),
               ),

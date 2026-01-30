@@ -1,6 +1,4 @@
-import 'dart:developer';
 import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
-import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:finance_management/app/module/home/controller/languages_controller/languages_controller.dart';
 import 'package:finance_management/app/module/home/view/screen/splash_sreen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,30 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:workmanager/workmanager.dart';
-
-@pragma('vm:entry-point')
-void callbackDispatcher() {
-  Workmanager().executeTask((task, inputData) async {
-    if (task == "delete") {
-      HomeController controller = Get.put(HomeController());
-      controller.deleteData();
-    }
-    return Future.value(true);
-  });
-}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   var es = await LocalStorage().readData(key: "language");
-  Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
-  Workmanager().registerPeriodicTask(
-    "task_unique_101",
-    "delete",
-    frequency: Duration(hours: 1),
-  );
   runApp(MyApp(status: es));
 }
 

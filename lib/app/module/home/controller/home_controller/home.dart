@@ -105,18 +105,28 @@ class HomeController extends GetxController
     }
   }
 
-  void deleteData() async {
-    try {
-      var uid = await LocalStorage().readData(key: "login");
-      var callRef = FirebaseFirestore.instance.collection("users").doc(uid);
-      callRef.update({"tExpense": []});
-    } catch (error) {
-      log("======Error$error}");
+  void deleteTodayInfo() async {
+    var TodayTime = DateTime.now().toString().split(" ")[0];
+    var uid = await LocalStorage().readData(key: "login");
+    var storeTime = await LocalStorage().readData(key: "time");
+
+    if (storeTime != null) {
+      if (storeTime != TodayTime) {
+        var callRef = FirebaseFirestore.instance.collection("users").doc(uid);
+        callRef.update({"tExpense": []});
+        await LocalStorage().writeData(
+          key: "time",
+          value: DateTime.now().toString().split(" ")[0],
+        );
+      }
+    } else {
+      await LocalStorage().writeData(key: "time", value: TodayTime);
     }
   }
 
   @override
   void onInit() {
+    deleteTodayInfo();
     localeCheck();
     getAllData();
     floatingSlide();

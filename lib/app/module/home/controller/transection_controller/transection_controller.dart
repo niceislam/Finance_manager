@@ -6,7 +6,7 @@ class TransectionController extends GetxController {
   TextEditingController searchController = TextEditingController();
   final homeController = Get.find<HomeController>();
   RxBool iconActive = false.obs;
-  RxBool slideOnEnd = true.obs;
+  RxBool slideOnEnd = false.obs;
 
   searchClearTap() {
     if (searchController.text.isNotEmpty) {
