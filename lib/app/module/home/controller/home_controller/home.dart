@@ -95,10 +95,13 @@ class HomeController extends GetxController
   }
 
   Future<void> getAllData() async {
+    final imageData = await LocalStorage().readData(key: "image");
     isLoading.value = true;
     dynamic uid = await LocalStorage().readData(key: "login");
     userAllData.value = await GetUserData().GetData(uid: uid);
-    showImage.value = await LocalStorage().readData(key: "image");
+    if (imageData != null) {
+      showImage.value = imageData;
+    }
     isLoading.value = false;
   }
 

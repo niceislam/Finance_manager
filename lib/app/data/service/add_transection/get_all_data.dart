@@ -21,14 +21,6 @@ class GetUserData {
         } else {
           EasyLoading.showInfo("Something went wrong");
         }
-      } else {
-        Get.dialog(
-          LoginDialogue(
-            yesButton: () {
-              Get.offAll(() => AuthPage());
-            },
-          ),
-        );
       }
     } catch (error) {
       log("====Error:$error");

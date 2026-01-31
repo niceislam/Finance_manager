@@ -30,6 +30,8 @@ class main_body extends StatelessWidget {
             //percent part
             Obx(() {
               final item = controller.userAllData.value;
+              final itemExpense = item.expense ?? 0;
+              final itemIncome = item.income ?? 0;
               return percent_part(
                 size: size,
                 name: item.name ?? "Example",
@@ -38,7 +40,7 @@ class main_body extends StatelessWidget {
                 monthlyIncome: item.income ?? 0,
                 expense: item.expense ?? 0,
                 percent: double.parse(
-                  "${item.expense! < item.income! ? item.expense! / item.income! : 1}",
+                  "${itemExpense < itemIncome ? itemExpense / itemIncome : 1}",
                 ),
               );
             }),
@@ -78,7 +80,8 @@ class main_body extends StatelessWidget {
                 ),
                 Obx(
                   () => CustomText(
-                    text: "${controller.userAllData.value.tExpense!.length}",
+                    text:
+                        "${controller.userAllData.value.tExpense?.length ?? 0}",
                     fontWeight: FontWeight.w900,
                     fontsize: 17,
                     textColor: Colors.grey,
@@ -87,12 +90,15 @@ class main_body extends StatelessWidget {
               ],
             ),
             Obx(() {
-              final item = controller.userAllData.value.tExpense!.reversed
-                  .toList();
+              final item =
+                  controller.userAllData.value.tExpense?.reversed.toList() ??
+                  [];
               return item.isEmpty
                   ? Padding(
                       padding: const EdgeInsets.only(top: 50),
-                      child: Center(child: CustomText(text: "No_data_today".tr)),
+                      child: Center(
+                        child: CustomText(text: "No_data_today".tr),
+                      ),
                     )
                   : ListView.builder(
                       shrinkWrap: true,

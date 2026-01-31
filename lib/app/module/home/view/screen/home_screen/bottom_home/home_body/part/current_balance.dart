@@ -11,6 +11,7 @@ class CurrentBalance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
+
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 15),
       height: 90,
@@ -32,14 +33,20 @@ class CurrentBalance extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomText(text: "current_balance".tr),
-            Obx(
-              () => CustomText(
-                text:
-                    "\$${double.parse("${(controller.userAllData.value.income! - controller.userAllData.value.expense!)}")}",
+            Obx(() {
+              double currentBalance = 0.00;
+              if (controller.userAllData.value.income != null ||
+                  controller.userAllData.value.expense != null) {
+                currentBalance = double.parse(
+                  "${(controller.userAllData.value.income! - controller.userAllData.value.expense!)}",
+                );
+              }
+              return CustomText(
+                text: "\$$currentBalance",
                 fontsize: 25,
                 fontWeight: FontWeight.bold,
-              ),
-            ),
+              );
+            }),
           ],
         ),
       ),

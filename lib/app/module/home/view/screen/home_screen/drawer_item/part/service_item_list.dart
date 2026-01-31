@@ -103,7 +103,9 @@ class ServiceItemList extends StatelessWidget {
                   icon: Icons.logout_outlined,
                   yesButton: () async {
                     await LocalStorage().deleteData(key: "login");
-                    Get.off(() => AuthPage());
+                    Get.offAll(
+                      () => AuthPage(),
+                    )?.then((v) => controller.homeController.getAllData());
                   },
                   yesTitlle: "Log out",
                   body: "Are you sure to Log out",
