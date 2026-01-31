@@ -11,7 +11,7 @@ class SplashController extends GetxController {
     var loginstatus = await LocalStorage().readData(key: "login");
     await Future.delayed(Duration(milliseconds: 100));
     isSkip.value = true;
-    await Future.delayed(Duration(milliseconds: 2000));
+    await Future.delayed(Duration(milliseconds: 2500));
     if (onbordingstatus != null && loginstatus != null) {
       Get.offAll(() => HomeScreen());
     } else {

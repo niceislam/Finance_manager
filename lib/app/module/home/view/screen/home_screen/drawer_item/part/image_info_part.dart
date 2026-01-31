@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:finance_management/app/module/home/controller/drawer_controller/drawer_controller.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +14,23 @@ class ImageAndInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       final item = controller.homeController.userAllData.value;
+      final imageItem = controller.homeController.showImage.value;
       return Row(
         spacing: 5,
         children: [
-          CircleAvatar(
-            backgroundColor: Colors.teal,
-            radius: 35,
-            backgroundImage: AssetImage("assets/image/noImage.webp"),
+          Container(
+            padding: EdgeInsets.all(2),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: BoxBorder.all(color: Colors.teal, width: 1),
+            ),
+            child: CircleAvatar(
+              backgroundColor: Colors.teal,
+              radius: 33,
+              backgroundImage: imageItem != ""
+                  ? FileImage(File(imageItem))
+                  : AssetImage("assets/image/noImage.webp"),
+            ),
           ),
           Expanded(
             flex: 11,

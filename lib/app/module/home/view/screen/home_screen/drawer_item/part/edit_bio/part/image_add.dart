@@ -16,12 +16,19 @@ class AddImage extends StatelessWidget {
       alignment: Alignment.bottomRight,
       children: [
         Obx(
-          () => CircleAvatar(
-            backgroundColor: Colors.teal,
-            radius: 40,
-            backgroundImage: controller.imagePath.value.isEmpty
-                ? const AssetImage("assets/image/noImage.webp")
-                : FileImage(File(controller.imagePath.value)),
+          () => Container(
+            padding: EdgeInsets.all(2),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: BoxBorder.all(color: Colors.teal, width: 1),
+            ),
+            child: CircleAvatar(
+              backgroundColor: Colors.teal,
+              radius: 40,
+              backgroundImage: controller.imagePath.value.isEmpty
+                  ? const AssetImage("assets/image/noImage.webp")
+                  : FileImage(File(controller.imagePath.value)),
+            ),
           ),
         ),
         Positioned(

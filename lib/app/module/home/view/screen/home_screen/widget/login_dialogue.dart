@@ -4,11 +4,23 @@ import 'package:get/get.dart';
 import '../../../../Global_widget/custom_text.dart';
 
 class LoginDialogue extends StatelessWidget {
-  const LoginDialogue({super.key});
+  const LoginDialogue({
+    super.key,
+    this.body,
+    required this.yesButton,
+    this.yesTitlle,
+    this.titleWidget, this.icon,
+  });
+  final String? body;
+  final String? yesTitlle;
+  final VoidCallback yesButton;
+  final Widget? titleWidget;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      title: titleWidget,
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.circular(5),
@@ -17,11 +29,15 @@ class LoginDialogue extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Center(
-            child: Icon(Icons.login_outlined, size: 70, color: Colors.teal),
+            child: Icon(
+              icon ?? Icons.login_outlined,
+              size: 70,
+              color: Colors.teal,
+            ),
           ),
           SizedBox(height: 10),
           CustomText(
-            text: "Please Login Again",
+            text: body ?? "Please Login Again",
             textColor: Colors.black,
             fontsize: 17,
             fontWeight: FontWeight.w900,
@@ -29,10 +45,8 @@ class LoginDialogue extends StatelessWidget {
           SizedBox(height: 20),
           DialogueButton(
             backColor: Colors.teal.shade100,
-            title: 'Login',
-            ontap: () {
-              Get.off(AuthPage());
-            },
+            title: yesTitlle ?? 'Login',
+            ontap: yesButton,
           ),
           SizedBox(height: 10),
           ElevatedButton(

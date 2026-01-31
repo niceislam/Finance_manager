@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../view/screen/authentication_screen/Auth_main.dart';
 import '../../view/screen/home_screen/bottom_home/home_body/home_body.dart';
 import '../../view/screen/home_screen/drawer_item/part/edit_bio/edit_bio.dart';
 import '../../view/screen/home_screen/bottom_home/report_body/report_body.dart';
@@ -37,18 +38,21 @@ class HomeController extends GetxController
   RxBool updateInfoLoading = false.obs;
   final ImagePicker picker = ImagePicker();
   RxString imagePath = "".obs;
+  RxString showImage = "".obs;
 
   void cameraImage() async {
     XFile? path = await picker.pickImage(source: ImageSource.camera);
-    imagePath.value = path!.path;
-    log("==========path $imagePath");
+    if (path != null) {
+      imagePath.value = path.path;
+    }
     Get.back();
   }
 
   void galleryImage() async {
     XFile? path = await picker.pickImage(source: ImageSource.gallery);
-    imagePath.value = path!.path;
-    log("==========path $imagePath");
+    if (path != null) {
+      imagePath.value = path.path;
+    }
     Get.back();
   }
 
@@ -57,7 +61,13 @@ class HomeController extends GetxController
     if (status != null) {
       Get.to(() => AddTransection())!.then((v) => getAllData());
     } else {
-      Get.dialog(LoginDialogue());
+      Get.dialog(
+        LoginDialogue(
+          yesButton: () {
+            Get.off(AuthPage());
+          },
+        ),
+      );
     }
   }
 
@@ -88,6 +98,7 @@ class HomeController extends GetxController
     isLoading.value = true;
     dynamic uid = await LocalStorage().readData(key: "login");
     userAllData.value = await GetUserData().GetData(uid: uid);
+    showImage.value = await LocalStorage().readData(key: "image");
     isLoading.value = false;
   }
 
@@ -103,11 +114,13 @@ class HomeController extends GetxController
 
   void updateInfoButton() async {
     updateInfoLoading.value = true;
+
     await UpdateBiodata()
         .update(
           namecontroller: nameEditController,
           professionController: professionEditController,
           ageController: ageEditController,
+          imageUrl: '$imagePath',
         )
         .then((v) => getAllData());
     Get.back();

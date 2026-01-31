@@ -23,10 +23,13 @@ class CustomBottombar extends StatelessWidget {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Btm_home".tr),
           BottomNavigationBarItem(
-            icon: Icon(Icons.receipt),
+            icon: Icon(Icons.view_list),
             label: "Btm_Tr".tr,
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.report), label: "Btm_Rp".tr),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bar_chart),
+            label: "Btm_Rp".tr,
+          ),
         ],
       ),
     );

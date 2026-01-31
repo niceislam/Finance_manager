@@ -1,8 +1,12 @@
+import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
+import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/view/screen/add_transection_screen/add_transection.dart';
+import 'package:finance_management/app/module/home/view/screen/authentication_screen/Auth_main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../controller/drawer_controller/drawer_controller.dart';
 import '../../widget/language_slide.dart';
+import '../../widget/login_dialogue.dart';
 import 'custom_listTile.dart';
 
 class ServiceItemList extends StatelessWidget {
@@ -94,6 +98,24 @@ class ServiceItemList extends StatelessWidget {
             leadingIcon: Icons.power_settings_new,
             ontap: () {
               controller.selectedIndex.value = 7;
+              Get.dialog(
+                LoginDialogue(
+                  icon: Icons.logout_outlined,
+                  yesButton: () async {
+                    await LocalStorage().deleteData(key: "login");
+                    Get.off(() => AuthPage());
+                  },
+                  yesTitlle: "Log out",
+                  body: "Are you sure to Log out",
+                  titleWidget: Center(
+                    child: CustomText(
+                      text: "Confirmation",
+                      fontWeight: FontWeight.w700,
+                      fontsize: 22,
+                    ),
+                  ),
+                ),
+              );
             },
           ),
         ],

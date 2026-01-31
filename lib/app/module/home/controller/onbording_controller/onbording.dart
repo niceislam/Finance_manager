@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/module/home/view/screen/authentication_screen/Auth_main.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/home_screen.dart';
@@ -9,9 +7,9 @@ class OnbordingController extends GetxController {
   RxBool isLoading = false.obs;
   RxInt onchangedPage = 0.obs;
 
-  startButton() async {
+  Future<void> startButton() async {
     isLoading.value = true;
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(milliseconds: 500));
     await LocalStorage().writeData(key: "onbording", value: "yes");
     var status = await LocalStorage().readData(key: "login");
     if (status != null) {

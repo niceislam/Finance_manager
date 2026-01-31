@@ -13,13 +13,26 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Obx(
-          () => AnimatedContainer(
-            height: controller.isSkip.value == true ? 400 : 350,
-            width: controller.isSkip.value == true ? 390 : 350,
-            duration: Duration(seconds: 3),
-            child: Image.asset(fit: BoxFit.fill, "assets/image/splash.png"),
-          ),
+        child: Column(
+          spacing: 10,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/image/splashpro.png",
+              height: 230,
+              width: 230,
+              fit: BoxFit.fill,
+            ),
+            Obx(
+              () => AnimatedContainer(
+                curve: Curves.bounceOut,
+                height: controller.isSkip.value == true ? 80 : 20,
+                width: controller.isSkip.value == true ? 280 : 70,
+                duration: Duration(milliseconds: 2500),
+                child: Image.asset("assets/image/splashText.png"),
+              ),
+            ),
+          ],
         ),
       ),
     );

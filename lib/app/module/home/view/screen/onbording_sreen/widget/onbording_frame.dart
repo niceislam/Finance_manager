@@ -28,11 +28,7 @@ class Onbording_frame extends StatelessWidget {
             //top image
             Column(
               children: [
-                Image.asset(
-                  height: 65,
-                  width: 65,
-                  "assets/image/onbordingTop.png",
-                ),
+                Image.asset(height: 65, width: 65, "assets/image/splash.png"),
                 CustomText(
                   text: "Your Personal Finance Assistant",
                   fontsize: 13,
