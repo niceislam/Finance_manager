@@ -15,7 +15,7 @@ class MainDrawerItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         gradient: LinearGradient(
-          stops: [0, 0.3],
+          stops: [0, 0.4],
           begin: Alignment.topCenter,
           end: Alignment.center,
           colors: [Colors.teal.shade200, Colors.white],
