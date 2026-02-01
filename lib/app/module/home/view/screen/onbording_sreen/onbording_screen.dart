@@ -17,7 +17,7 @@ class OnbordingScreen extends StatelessWidget {
           isProgress: controller.onchangedPage.value == 2 ? false : true,
           dotsDecorator: DotsDecorator(
             color: Colors.grey,
-            activeColor: Colors.indigo,
+            activeColor: Colors.teal,
             size: Size(7, 7),
             activeSize: Size(11, 11),
           ),

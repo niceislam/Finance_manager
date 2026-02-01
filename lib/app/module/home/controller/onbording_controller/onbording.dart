@@ -11,12 +11,13 @@ class OnbordingController extends GetxController {
     isLoading.value = true;
     await Future.delayed(Duration(milliseconds: 500));
     await LocalStorage().writeData(key: "onbording", value: "yes");
-    var status = await LocalStorage().readData(key: "login");
-    if (status != null) {
-      Get.offAll(() => HomeScreen());
-    } else {
-      Get.to(() => AuthPage());
-    }
+    Get.offAll(() => HomeScreen());
+    // var status = await LocalStorage().readData(key: "login");
+    // if (status != null) {
+    //   Get.offAll(() => HomeScreen());
+    // } else {
+    //   Get.to(() => AuthPage());
+    // }
     isLoading.value = false;
   }
 }

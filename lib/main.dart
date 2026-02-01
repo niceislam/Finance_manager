@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       translations: LanguagesController(),
-      locale: status == "E" ? Locale("en", "US") : Locale("bn", "BD"),
+      locale: status == "B" ? Locale("bn", "BD") : Locale("en", "US"),
       fallbackLocale: Locale("en", "US"),
       builder: EasyLoading.init(),
       debugShowCheckedModeBanner: false,

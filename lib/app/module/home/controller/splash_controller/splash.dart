@@ -1,4 +1,5 @@
 import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
+import 'package:finance_management/app/module/home/view/screen/authentication_screen/Auth_main.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/home_screen.dart';
 import 'package:finance_management/app/module/home/view/screen/onbording_sreen/onbording_screen.dart';
 import 'package:get/get.dart';
@@ -15,7 +16,7 @@ class SplashController extends GetxController {
     if (onbordingstatus != null && loginstatus != null) {
       Get.offAll(() => HomeScreen());
     } else {
-      Get.offAll(() => OnbordingScreen());
+      Get.offAll(() => AuthPage());
     }
   }
 

@@ -1,10 +1,5 @@
-import 'dart:ffi';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:get/get.dart';
-import '../../../module/home/view/screen/home_screen/home_screen.dart';
 import '../../local/secure_storage/secure_storage.dart';
 
 class LoginService {
