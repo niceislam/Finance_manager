@@ -29,7 +29,7 @@ class RegTextfields extends StatelessWidget {
               return "Field can't be empty";
             }
           },
-          controller: controller.namecontroller,
+          controller: controller.nameController,
           hintText: "Enter your Name",
         ),
         SizedBox(height: 23),
@@ -48,7 +48,7 @@ class RegTextfields extends StatelessWidget {
         ),
         SizedBox(height: 5),
         CustomTextField(
-          controller: controller.emailcontroller,
+          controller: controller.emailController,
           hintText: "Enter your email",
           validator: (value) {
             if (value == null || value == "") {
@@ -86,7 +86,7 @@ class RegTextfields extends StatelessWidget {
                 return "Must be 8 character or over";
               }
             },
-            controller: controller.passcontroller,
+            controller: controller.passController,
             obsecureText: controller.visibility.value,
             hintText: "*************",
             sufIcon: InkWell(

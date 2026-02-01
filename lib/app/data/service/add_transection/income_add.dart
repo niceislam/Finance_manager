@@ -10,7 +10,7 @@ class IncomeAddFirebase {
       var uid = await LocalStorage().readData(key: "login");
       var calRef = FirebaseFirestore.instance.collection("users").doc(uid);
       calRef.update({"income": int.parse(incomeController.text)});
-      await EasyLoading.showSuccess("Income Added");
+      return true;
     } catch (error) {
       log("=====Error:$error");
     }

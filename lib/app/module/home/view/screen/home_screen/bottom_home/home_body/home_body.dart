@@ -4,6 +4,8 @@ import 'package:finance_management/app/module/home/view/screen/home_screen/botto
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../../core/utils/shimmer/home_shimmer.dart';
+
 class home_body extends StatelessWidget {
   const home_body({super.key});
 
@@ -12,7 +14,7 @@ class home_body extends StatelessWidget {
     HomeController controller = Get.put(HomeController());
     return Obx(
       () => controller.isLoading.value == true
-          ? Center(child: CircularProgressIndicator())
+          ? HomeShimmer()
           : Stack(
               children: [
                 SingleChildScrollView(

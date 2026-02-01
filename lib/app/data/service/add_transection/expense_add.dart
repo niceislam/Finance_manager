@@ -40,7 +40,7 @@ class ExpenseAddFirebase {
       calRef.update({
         "expense": FieldValue.increment(int.parse(costPriceController.text)),
       });
-      await EasyLoading.showSuccess("Expense Added");
+      return true;
     } catch (error) {
       log("======Error:${error}");
     }

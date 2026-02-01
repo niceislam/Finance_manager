@@ -15,7 +15,7 @@ class OnbordingController extends GetxController {
     if (status != null) {
       Get.offAll(() => HomeScreen());
     } else {
-      Get.to(AuthPage());
+      Get.to(() => AuthPage());
     }
     isLoading.value = false;
   }

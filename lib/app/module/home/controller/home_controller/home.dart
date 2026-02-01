@@ -118,15 +118,21 @@ class HomeController extends GetxController
   void updateInfoButton() async {
     updateInfoLoading.value = true;
 
-    await UpdateBiodata()
-        .update(
-          namecontroller: nameEditController,
-          professionController: professionEditController,
-          ageController: ageEditController,
-          imageUrl: '$imagePath',
-        )
-        .then((v) => getAllData());
-    Get.back();
+    bool status = await UpdateBiodata().update(
+      namecontroller: nameEditController,
+      professionController: professionEditController,
+      ageController: ageEditController,
+      imageUrl: '$imagePath',
+    );
+
+    if (status) {
+      Get.back();
+      getAllData();
+      EasyLoading.showSuccess("Data Updated");
+    } else {
+      EasyLoading.showError("Something wrong");
+    }
+
     updateInfoLoading.value = false;
   }
 
@@ -158,11 +164,15 @@ class HomeController extends GetxController
     }
   }
 
+  void inintData() async {
+    await getAllData();
+    deleteTodayInfo();
+  }
+
   @override
   void onInit() {
-    deleteTodayInfo();
+    inintData();
     localeCheck();
-    getAllData();
     floatingSlide();
     homeScroll();
     super.onInit();

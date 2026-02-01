@@ -6,13 +6,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/service/add_transection/register.dart';
+
 class RegController extends GetxController {
   final mykey = GlobalKey<FormState>();
   RxBool visibility = false.obs;
   RxBool isLoading = false.obs;
-  TextEditingController namecontroller = TextEditingController();
-  TextEditingController emailcontroller = TextEditingController();
-  TextEditingController passcontroller = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
 
   passTap() {
     visibility.value = !visibility.value;
@@ -21,34 +23,18 @@ class RegController extends GetxController {
   register() async {
     if (mykey.currentState!.validate()) {
       isLoading.value = true;
-      try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(
-              email: emailcontroller.text,
-              password: passcontroller.text,
-            );
-        if (userCredential.additionalUserInfo!.isNewUser == true) {
-          EasyLoading.showSuccess("you are registered");
-
-          String uid = userCredential.user!.uid;
-          await FirebaseFirestore.instance.collection("users").doc(uid).set({
-            "name": "${namecontroller.text}",
-            "profession": "Example",
-            "age": 0,
-            "income": 0,
-            "expense": 0,
-            "tExpense": [],
-            "allExpense": [],
-          });
-
-          emailcontroller.clear();
-          namecontroller.clear();
-          passcontroller.clear();
-        }
-      } on FirebaseAuthException catch (error) {
-        if (error.code == "email-already-in-use") {
-          EasyLoading.showError("This email has been taken");
-        }
+      bool status = await RegisterService().reg(
+        emailController: emailController,
+        passController: passController,
+        nameController: nameController,
+      );
+      if (status) {
+        EasyLoading.showSuccess("you are registered");
+        emailController.clear();
+        nameController.clear();
+        passController.clear();
+      } else {
+        EasyLoading.showError("This email has been taken");
       }
       isLoading.value = false;
     }

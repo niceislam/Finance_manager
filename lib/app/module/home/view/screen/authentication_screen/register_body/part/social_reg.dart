@@ -1,12 +1,9 @@
-import 'package:get/get.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
-
 import '../../widget/orLogin.dart';
 
 class SocialRegister extends StatelessWidget {
-  const SocialRegister({
-    super.key,
-  });
+  const SocialRegister({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +24,17 @@ class SocialRegister extends StatelessWidget {
         ),
         SizedBox(height: 20),
         OrLogin(
-          ontap: () {},
+          ontap: () async {
+            await Fluttertoast.showToast(msg: "Upcoming...");
+          },
           image: "assets/image/google.png",
           title: "Sign up with google",
         ),
         SizedBox(height: 15),
         OrLogin(
-          ontap: () {},
+          ontap: () async {
+            await Fluttertoast.showToast(msg: "Upcoming...");
+          },
           image: "assets/image/facebook.png",
           title: "Sign up with facebook",
         ),

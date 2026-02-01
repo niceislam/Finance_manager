@@ -10,25 +10,33 @@ class MainDrawerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppDrawerController controller = Get.put(AppDrawerController());
-    return GestureDetector(
-      onTap: () {
-        controller.selectedIndex.value = 0;
-      },
-      child: Drawer(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(15),
+    return Container(
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        gradient: LinearGradient(
+          stops: [0, 0.3],
+          begin: Alignment.topCenter,
+          end: Alignment.center,
+          colors: [Colors.teal.shade200, Colors.white],
         ),
-        width: 280,
-        backgroundColor: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 40, left: 20, right: 5),
-          child: Column(
-            spacing: 10,
-            children: [
-              ImageAndInfo(controller: controller),
-              Divider(),
-              ServiceItemList(controller: controller),
-            ],
+      ),
+      child: GestureDetector(
+        onTap: () {
+          controller.selectedIndex.value = 0;
+        },
+        child: Drawer(
+          backgroundColor: Colors.transparent,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50, left: 20, right: 5),
+            child: Column(
+              spacing: 10,
+              children: [
+                ImageAndInfo(controller: controller),
+                Divider(),
+                ServiceItemList(controller: controller),
+              ],
+            ),
           ),
         ),
       ),

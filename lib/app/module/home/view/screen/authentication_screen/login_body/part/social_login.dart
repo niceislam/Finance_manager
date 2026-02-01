@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../../../Global_widget/custom_text.dart';
 import '../../widget/orLogin.dart';
@@ -19,13 +20,17 @@ class SocialLoginPart extends StatelessWidget {
         ),
         SizedBox(height: 20),
         OrLogin(
-          ontap: () {},
+          ontap: () async {
+            await Fluttertoast.showToast(msg: "Upcoming...");
+          },
           image: "assets/image/google.png",
           title: "Sign in with google",
         ),
         SizedBox(height: 15),
         OrLogin(
-          ontap: () {},
+          ontap: () async {
+            await Fluttertoast.showToast(msg: "Upcoming...");
+          },
           image: "assets/image/facebook.png",
           title: "Sign in with facebook",
         ),

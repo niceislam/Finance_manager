@@ -34,9 +34,9 @@ class UpdateBiodata {
       await callRef.update(UpdateData);
 
       if (callRef.id != "") {
-        EasyLoading.showSuccess("Data Updated");
+        return true;
       } else {
-        EasyLoading.showError("Something wrong");
+        return false;
       }
     } catch (error) {
       log("========Error $error");

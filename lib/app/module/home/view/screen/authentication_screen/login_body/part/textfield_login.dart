@@ -17,7 +17,7 @@ class TextfieldLogin extends StatelessWidget {
         CustomText(text: "Email", fontWeight: FontWeight.w500, fontsize: 16),
         SizedBox(height: 5),
         CustomTextField(
-          controller: controller.emailControllerlogin,
+          controller: controller.emailControllerLogin,
           validator: (value) {
             if (value == "" || value == null) {
               return "Field can't be empty";
@@ -32,7 +32,7 @@ class TextfieldLogin extends StatelessWidget {
         SizedBox(height: 5),
         Obx(
           () => CustomTextField(
-            controller: controller.passwordControllerlogin,
+            controller: controller.passwordControllerLogin,
             validator: (value) {
               if (value == "" || value == null) {
                 return "Field can't be empty";
