@@ -17,6 +17,7 @@ class Onbording_frame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.sizeOf(context);
     return Container(
       padding: EdgeInsets.only(top: 50),
       color: Colors.white,
@@ -37,7 +38,12 @@ class Onbording_frame extends StatelessWidget {
             ),
 
             //onbording center image
-            Image.asset(fit: BoxFit.fill, height: 340, width: 340, "${image}"),
+            Image.asset(
+              fit: BoxFit.fill,
+              height: size.height * 0.4,
+              width: size.width * 0.88,
+              "${image}",
+            ),
             SizedBox(height: 10),
 
             //title and body text

@@ -33,12 +33,15 @@ class CategorySlideButton extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            AnimatedPositioned(
-              left: controller.slideOnEnd.value == true ? 182 : 0,
-              duration: Duration(milliseconds: 250),
+            AnimatedAlign(
+              alignment: controller.slideOnEnd.value == true
+                  ? Alignment.centerRight
+                  : Alignment.centerLeft,
+              //left: controller.slideOnEnd.value == true ? 182 : 0,
+              duration: Duration(milliseconds: 200),
               child: Container(
                 height: 40,
-                width: 170,
+                width: size.width * 0.45,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   color: Colors.teal,

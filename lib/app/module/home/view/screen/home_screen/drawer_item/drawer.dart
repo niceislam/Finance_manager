@@ -10,8 +10,9 @@ class MainDrawerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppDrawerController controller = Get.put(AppDrawerController());
+    Size size = MediaQuery.sizeOf(context);
     return Container(
-      width: 280,
+      width: size.width * 0.73,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         gradient: LinearGradient(
