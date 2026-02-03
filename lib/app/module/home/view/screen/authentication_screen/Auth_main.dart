@@ -1,7 +1,6 @@
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../Global_widget/custom_appbar.dart';
 import '../../../controller/authentication_controller/login_controller.dart';
 

@@ -15,6 +15,7 @@ class LoginAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginController controller = Get.put(LoginController());
+    Size size = MediaQuery.sizeOf(context);
     return Form(
       key: controller.mykey,
       child: SingleChildScrollView(
@@ -24,18 +25,18 @@ class LoginAuth extends StatelessWidget {
             CustomText(
               text: "Welcome Back!",
               fontWeight: FontWeight.bold,
-              fontsize: 22,
+              fontsize: size.flipped.aspectRatio * 10,
             ),
             SizedBox(height: 8),
             CustomText(
               text: "Please enter your details to login.",
-              fontsize: 14,
+              fontsize: size.flipped.aspectRatio * 6.5,
               fontWeight: FontWeight.w400,
             ),
             SizedBox(height: 25),
 
             //Login Textfields
-            TextfieldLogin(controller: controller),
+            TextfieldLogin(controller: controller, size: size),
             SizedBox(height: 10),
 
             //forgot password
@@ -47,7 +48,7 @@ class LoginAuth extends StatelessWidget {
                   onTap: () {},
                   child: CustomText(
                     text: "Forgot Password",
-                    fontsize: 14,
+                    fontsize: size.flipped.aspectRatio * 6.5,
                     fontWeight: FontWeight.w600,
                     textColor: Colors.black,
                   ),
@@ -57,7 +58,7 @@ class LoginAuth extends StatelessWidget {
             SizedBox(height: 30),
 
             //login button
-            LoginButton(controller: controller),
+            LoginButton(controller: controller, size: size),
             SizedBox(height: 20),
 
             //Social login
@@ -92,4 +93,3 @@ class LoginAuth extends StatelessWidget {
     );
   }
 }
-

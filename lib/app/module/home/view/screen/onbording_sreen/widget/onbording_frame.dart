@@ -23,49 +23,56 @@ class Onbording_frame extends StatelessWidget {
       color: Colors.white,
       child: SingleChildScrollView(
         child: Column(
-          spacing: 40,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             //top image
             Column(
               children: [
-                Image.asset(height: 65, width: 65, "assets/image/splash.png"),
+                Image.asset(
+                  height: size.height / 13.2,
+                  width: size.width / 5.50,
+                  "assets/image/splash.png",
+                ),
                 CustomText(
                   text: "Your Personal Finance Assistant",
                   fontsize: 13,
                 ),
               ],
             ),
+            SizedBox(height: 20),
 
             //onbording center image
             Image.asset(
               fit: BoxFit.fill,
               height: size.height * 0.4,
               width: size.width * 0.88,
-              "${image}",
+              "$image",
             ),
             SizedBox(height: 10),
 
             //title and body text
+            SizedBox(height: 80),
             Column(
               spacing: 10,
               children: [
                 CustomText(
-                  text: "${title}",
-                  fontsize: 28,
+                  text: "$title",
+                  fontsize: size.flipped.aspectRatio * 11,
                   fontWeight: FontWeight.w900,
                 ),
                 SizedBox(
                   width: 300,
                   child: CustomText(
                     textAlign: TextAlign.center,
-                    text: "${body}",
-                    fontsize: 18,
+                    text: "$body",
+                    fontsize: size.flipped.aspectRatio * 8,
                   ),
                 ),
               ],
             ),
+            SizedBox(height: 40),
             widget ?? SizedBox(),
+            SizedBox(height: 10),
           ],
         ),
       ),

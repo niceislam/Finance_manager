@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import '../../../../../Global_widget/custom_text.dart';
 import '../../widget/orLogin.dart';
 

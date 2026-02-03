@@ -5,16 +5,24 @@ import '../../../../../Global_widget/custom_text.dart';
 import '../../../../../controller/authentication_controller/login_controller.dart';
 
 class TextfieldLogin extends StatelessWidget {
-  const TextfieldLogin({super.key, required this.controller});
+  const TextfieldLogin({
+    super.key,
+    required this.controller,
+    required this.size,
+  });
 
   final LoginController controller;
-
+  final Size size;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomText(text: "Email", fontWeight: FontWeight.w500, fontsize: 16),
+        CustomText(
+          text: "Email",
+          fontWeight: FontWeight.w500,
+          fontsize: size.flipped.aspectRatio * 7.5,
+        ),
         SizedBox(height: 5),
         CustomTextField(
           controller: controller.emailControllerLogin,
@@ -28,7 +36,11 @@ class TextfieldLogin extends StatelessWidget {
           hintText: "Email",
         ),
         SizedBox(height: 23),
-        CustomText(text: "Password", fontWeight: FontWeight.w500, fontsize: 16),
+        CustomText(
+          text: "Password",
+          fontWeight: FontWeight.w500,
+          fontsize: size.flipped.aspectRatio * 7.5,
+        ),
         SizedBox(height: 5),
         Obx(
           () => CustomTextField(
