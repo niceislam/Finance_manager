@@ -19,6 +19,7 @@ class home_body extends StatelessWidget {
           : Stack(
               children: [
                 SingleChildScrollView(
+                  controller: controller.scrollController,
                   child: Column(
                     children: [
                       Stack(

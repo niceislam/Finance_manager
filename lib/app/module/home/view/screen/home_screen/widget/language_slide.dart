@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../Global_widget/custom_text.dart';
@@ -16,8 +17,8 @@ class LanguageSlide extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(1),
       margin: EdgeInsets.only(right: 5),
-      height: 30,
-      width: 65,
+      height: 25.h,
+      width: 59.5.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadiusGeometry.circular(10),
         color: Colors.transparent,
@@ -26,23 +27,21 @@ class LanguageSlide extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Row(
-            children: [
-              Obx(
-                () => AnimatedContainer(
-                  margin: EdgeInsets.only(
-                    left: controller.languageSlide.value == true ? 0 : 30.5,
-                  ),
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadiusGeometry.circular(8),
-                    color: Colors.teal,
-                  ),
-                  duration: Duration(milliseconds: 200),
+          Obx(
+            () => AnimatedAlign(
+              duration: Duration(milliseconds: 200),
+              alignment: controller.languageSlide.value == true
+                  ? Alignment.centerLeft
+                  : Alignment.centerRight,
+              child: Container(
+                height: 22.h,
+                width: 27.5.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadiusGeometry.circular(8),
+                  color: Colors.teal,
                 ),
               ),
-            ],
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -55,7 +54,7 @@ class LanguageSlide extends StatelessWidget {
                 },
                 child: CustomText(
                   text: "BN",
-                  fontsize: 12,
+                  fontsize: 11.sp,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -67,7 +66,7 @@ class LanguageSlide extends StatelessWidget {
                 },
                 child: CustomText(
                   text: "EN",
-                  fontsize: 12,
+                  fontsize: 11.sp,
                   fontWeight: FontWeight.w600,
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../Global_widget/custom_text.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -28,17 +29,17 @@ class CustomListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       trailing: trailing,
-      minTileHeight: 45,
+      minTileHeight: 36.h,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.circular(10),
       ),
       onTap: ontap,
       dense: false,
-      leading: Icon(leadingIcon, color: iconColor ?? Colors.teal),
+      leading: Icon(leadingIcon, color: iconColor ?? Colors.teal, size: 22.r),
       title: CustomText(
         text: title ?? "",
         fontWeight: FontWeight.w500,
-        fontsize: 16,
+        fontsize: 14.sp,
         textColor: titleColor ?? Colors.black,
       ),
       selected: true,

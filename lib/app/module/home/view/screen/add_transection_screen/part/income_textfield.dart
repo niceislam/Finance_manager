@@ -1,5 +1,6 @@
 import 'package:finance_management/app/module/home/controller/add_transection_controller/add_transection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Global_widget/custom_Textfield.dart';
 import '../../../../Global_widget/custom_text.dart';
@@ -29,7 +30,11 @@ class IncomeTexField extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          CustomText(text: "Add_Tr_Income".tr, fontWeight: FontWeight.w600, fontsize: 16),
+          CustomText(
+            text: "Add_Tr_Income".tr,
+            fontWeight: FontWeight.w600,
+            fontsize: 14.5.sp,
+          ),
           CustomTextField(
             validator: (value) {
               if (value == "" || value == null) {
@@ -48,8 +53,8 @@ class IncomeTexField extends StatelessWidget {
 
   Container _buildContainer({required Widget child}) {
     return Container(
-      height: 50,
-      width: 140,
+      height: 40.h,
+      width: 130.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadiusGeometry.circular(10),
         color: Colors.teal.shade100,

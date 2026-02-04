@@ -4,6 +4,7 @@ import 'package:finance_management/app/data/dummy_data/cost_type_data.dart';
 import 'package:finance_management/app/data/dummy_data/iconData.dart';
 import 'package:finance_management/app/module/home/controller/add_transection_controller/add_transection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../Global_widget/custom_Textfield.dart';
 import 'package:get/get.dart';
@@ -39,19 +40,19 @@ class ExpenseTexField extends StatelessWidget {
           CustomText(
             text: "Add_Tr_ProductField".tr,
             fontWeight: FontWeight.w600,
-            fontsize: 16,
+            fontsize: 14.5.sp,
           ),
           CustomTextField(
             controller: controller.productsControleller,
             hintText: "Add_Tr_ProductField_hint".tr,
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 9.h),
 
           //Type
           CustomText(
             text: "Add_Tr_Type_Field".tr,
             fontWeight: FontWeight.w600,
-            fontsize: 16,
+            fontsize: 14.5.sp,
           ),
           Obx(
             () => DropdownButtonFormField(
@@ -72,7 +73,10 @@ class ExpenseTexField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              hint: CustomText(text: "Add_Tr_Type_Field_hint".tr,textColor: Colors.grey,),
+              hint: CustomText(
+                text: "Add_Tr_Type_Field_hint".tr,
+                textColor: Colors.grey,
+              ),
               initialValue: controller.costType.value != ""
                   ? controller.costType.value
                   : null,
@@ -84,7 +88,7 @@ class ExpenseTexField extends StatelessWidget {
                         spacing: 8,
                         children: [
                           CustomIconData().data(ticket: v),
-                          CustomText(text: "${v}"),
+                          CustomText(text: v),
                         ],
                       ),
                     ),
@@ -101,7 +105,7 @@ class ExpenseTexField extends StatelessWidget {
           CustomText(
             text: "Add_Tr_Cost_Field".tr,
             fontWeight: FontWeight.w600,
-            fontsize: 16,
+            fontsize: 14.5.sp,
           ),
           CustomTextField(
             validator: (value) {
@@ -121,8 +125,8 @@ class ExpenseTexField extends StatelessWidget {
 
   Container _buildContainer({required Widget child}) {
     return Container(
-      height: 50,
-      width: 140,
+      height: 40.h,
+      width: 130.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadiusGeometry.circular(10),
         color: Colors.teal.shade100,

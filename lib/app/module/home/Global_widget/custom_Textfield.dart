@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -47,7 +48,7 @@ class CustomTextField extends StatelessWidget {
       style: TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.w500,
-        fontSize: 16,
+        fontSize: 15.sp,
       ),
       cursorColor: Colors.grey,
       cursorHeight: 23,
@@ -62,9 +63,9 @@ class CustomTextField extends StatelessWidget {
           color: Color(0xffC7C7C7),
           fontWeight: FontWeight.w500,
           fontFamily: "myFont",
-          fontSize: 16,
+          fontSize: 15.sp,
         ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 12),
+        contentPadding: EdgeInsets.symmetric(horizontal: 11.w, vertical: 8.h),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: borderSide ?? BorderSide(color: Colors.grey),

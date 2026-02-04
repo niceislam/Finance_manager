@@ -72,6 +72,7 @@ class HomeController extends GetxController
   }
 
   void homeScroll() {
+    log("=======scroll $scrollToSlide");
     scrollController.addListener(() {
       if (scrollController.offset > 100) {
         scrollToSlide.value = true;

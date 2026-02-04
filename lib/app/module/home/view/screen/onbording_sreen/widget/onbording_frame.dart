@@ -18,7 +18,6 @@ class Onbording_frame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.sizeOf(context);
     return Container(
       padding: EdgeInsets.only(top: 50),
       color: Colors.white,

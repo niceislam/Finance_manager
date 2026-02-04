@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../custom_text.dart';
 import 'package:get/get.dart';
 
@@ -24,8 +25,8 @@ class CategorySlideButton extends StatelessWidget {
     return Obx(
       () => Container(
         padding: EdgeInsets.symmetric(horizontal: 5),
-        height: 50,
-        width: size.width,
+        height: 40.h,
+        width: 335.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: Colors.teal.shade50,
@@ -37,11 +38,10 @@ class CategorySlideButton extends StatelessWidget {
               alignment: controller.slideOnEnd.value == true
                   ? Alignment.centerRight
                   : Alignment.centerLeft,
-              //left: controller.slideOnEnd.value == true ? 182 : 0,
               duration: Duration(milliseconds: 200),
               child: Container(
-                height: 40,
-                width: size.width * 0.45,
+                height: 33.h,
+                width: 163.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   color: Colors.teal,
@@ -60,6 +60,7 @@ class CategorySlideButton extends StatelessWidget {
                         child: CustomText(
                           text: leftTitle ?? "",
                           textColor: Colors.black,
+                          fontsize: 15.sp,
                         ),
                       ),
                     ),
@@ -74,6 +75,7 @@ class CategorySlideButton extends StatelessWidget {
                         child: CustomText(
                           text: rightTitle ?? "",
                           textColor: Colors.black,
+                          fontsize: 15.sp,
                         ),
                       ),
                     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../Global_widget/custom_Textfield.dart';
@@ -18,7 +19,7 @@ class CustomSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15),
-      height: 80,
+      height: 70.h,
       width: size.width,
       color: Colors.teal,
       child: Obx(

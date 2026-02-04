@@ -3,6 +3,7 @@ import 'package:finance_management/app/module/home/view/screen/home_screen/drawe
 import 'package:finance_management/app/module/home/view/screen/home_screen/drawer_item/part/service_item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MainDrawerItem extends StatelessWidget {
   const MainDrawerItem({super.key});
@@ -10,9 +11,8 @@ class MainDrawerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppDrawerController controller = Get.put(AppDrawerController());
-    Size size = MediaQuery.sizeOf(context);
     return Container(
-      width: size.width * 0.73,
+      width: 280.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         gradient: LinearGradient(
@@ -29,9 +29,9 @@ class MainDrawerItem extends StatelessWidget {
         child: Drawer(
           backgroundColor: Colors.transparent,
           child: Padding(
-            padding: const EdgeInsets.only(top: 50, left: 20, right: 5),
+            padding: const EdgeInsets.only(top: 50, left: 20, right: 8),
             child: Column(
-              spacing: 10,
+              spacing: 8.h,
               children: [
                 ImageAndInfo(controller: controller),
                 Divider(),

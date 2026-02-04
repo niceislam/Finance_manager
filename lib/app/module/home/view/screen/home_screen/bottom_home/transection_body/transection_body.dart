@@ -6,6 +6,7 @@ import 'package:finance_management/app/module/home/view/screen/home_screen/botto
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/transection_body/part/search_bar.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/transection_body/part/slide_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class TransectionBody extends StatelessWidget {
@@ -41,12 +42,12 @@ class TransectionBody extends StatelessWidget {
                 child: Column(
                   children: [
                     SlideButtoon(size: size, Trcontroller: Trcontroller),
-                    SizedBox(height: 10),
+                    SizedBox(height: 9.h),
                     Obx(
                       () => Row(
                         children: [
                           CustomText(
-                            fontsize: 17,
+                            fontsize: 15.sp,
                             fontWeight: FontWeight.w600,
                             text: Trcontroller.slideOnEnd.value == true
                                 ? "Tr_slideBtn_right".tr
@@ -55,7 +56,7 @@ class TransectionBody extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 8.h),
 
                     //History List
                     History_list(controller: Trcontroller),

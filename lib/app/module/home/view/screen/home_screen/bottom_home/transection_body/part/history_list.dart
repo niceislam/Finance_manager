@@ -16,20 +16,21 @@ class History_list extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
-        ),
-        child: Obx(() {
-          final item = controller.homeController.userAllData.value;
-          final item2 = item.tExpense!.reversed.toList();
-          final item3 = item.allExpense!.reversed.toList();
-          return controller.slideOnEnd.value == true
-              ? item2.isEmpty
-                    ? Center(child: CustomText(text: "No_data_today".tr))
-                    : ListView.builder(
+      child: Obx(() {
+        final item = controller.homeController.userAllData.value;
+        final item2 = item.tExpense!.reversed.toList();
+        final item3 = item.allExpense!.reversed.toList();
+        return controller.slideOnEnd.value == true
+            ? item2.isEmpty
+                  ? Center(child: CustomText(text: "No_data_today".tr))
+                  : Scrollbar(
+                      thickness: 5,
+                      radius: Radius.circular(20),
+                      child: ListView.builder(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 10,
+                        ),
                         itemCount: item2.length,
                         itemBuilder: (context, index) {
                           return HistoryCard(
@@ -42,10 +43,15 @@ class History_list extends StatelessWidget {
                             actionTk: item2[index].cost,
                           );
                         },
-                      )
-              : item3.isEmpty
-              ? Center(child: CustomText(text: "No_data".tr))
-              : ListView.builder(
+                      ),
+                    )
+            : item3.isEmpty
+            ? Center(child: CustomText(text: "No_data".tr))
+            : Scrollbar(
+                thickness: 5,
+                radius: Radius.circular(20),
+                child: ListView.builder(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   shrinkWrap: true,
                   itemCount: item3.length,
                   itemBuilder: (context, index) {
@@ -61,9 +67,9 @@ class History_list extends StatelessWidget {
                       actionTk: item3[index].cost,
                     );
                   },
-                );
-        }),
-      ),
+                ),
+              );
+      }),
     );
   }
 }

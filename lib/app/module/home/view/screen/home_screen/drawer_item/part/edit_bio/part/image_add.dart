@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:finance_management/app/module/home/controller/drawer_controller/drawer_controller.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class AddImage extends StatelessWidget {
@@ -24,7 +25,7 @@ class AddImage extends StatelessWidget {
             ),
             child: CircleAvatar(
               backgroundColor: Colors.teal,
-              radius: 40,
+              radius: 37.r,
               backgroundImage: controller.imagePath.value.isEmpty
                   ? const AssetImage("assets/image/noImage.webp")
                   : FileImage(File(controller.imagePath.value)),
@@ -41,7 +42,7 @@ class AddImage extends StatelessWidget {
                   builder: (v) {
                     return Container(
                       padding: EdgeInsets.only(left: 25),
-                      height: 80,
+                      height: 60.h,
                       width: MediaQuery.sizeOf(context).width,
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -73,11 +74,11 @@ class AddImage extends StatelessWidget {
             },
             child: CircleAvatar(
               backgroundColor: Colors.teal.shade50,
-              radius: 16,
+              radius: 15.r,
               child: Center(
                 child: Icon(
                   Icons.add_a_photo_outlined,
-                  size: 20,
+                  size: 19.r,
                   color: Colors.teal,
                 ),
               ),
@@ -95,15 +96,15 @@ class AddImage extends StatelessWidget {
     return GestureDetector(
       onTap: ontap,
       child: Container(
-        height: 55,
-        width: 55,
+        height: 45.h,
+        width: 50.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.teal.shade50,
         ),
         child: Icon(
           icon ?? Icons.add_photo_alternate_outlined,
-          size: 45,
+          size: 40.r,
           color: Colors.grey,
         ),
       ),

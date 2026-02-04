@@ -4,6 +4,7 @@ import 'package:finance_management/app/module/home/view/screen/add_transection_s
 import 'package:finance_management/app/module/home/view/screen/authentication_screen/Auth_main.dart';
 import 'package:finance_management/app/module/home/view/screen/splash_sreen/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../controller/drawer_controller/drawer_controller.dart';
 import '../../widget/language_slide.dart';
@@ -19,7 +20,7 @@ class ServiceItemList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Column(
-        spacing: 3,
+        spacing: 2.h,
         children: [
           CustomListTile(
             title: "home_title".tr,
