@@ -1,5 +1,6 @@
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../Global_widget/custom_appbar.dart';
 import '../../../controller/authentication_controller/login_controller.dart';
@@ -21,7 +22,7 @@ class AuthPage extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(53),
-          child: CustomAppbar(centerText: "Welcome"),
+          child: CustomAppbar(centerText: "Poysha"),
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
@@ -57,7 +58,7 @@ class AuthPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 15),
                 Expanded(
                   child: SizedBox(
                     height: MediaQuery.sizeOf(context).height,
@@ -87,7 +88,7 @@ class AuthPage extends StatelessWidget {
         children: [
           CustomText(
             text: "${title}",
-            fontsize: 16,
+            fontsize: 14.w,
             fontWeight: FontWeight.w500,
           ),
           Container(

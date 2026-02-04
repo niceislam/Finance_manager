@@ -1,5 +1,6 @@
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OrLogin extends StatelessWidget {
   const OrLogin({super.key, this.title, this.image, this.ontap});
@@ -13,7 +14,7 @@ class OrLogin extends StatelessWidget {
       borderRadius: BorderRadius.circular(8),
       onTap: ontap,
       child: Container(
-        height: 52,
+        height: 42.h,
         width: MediaQuery.sizeOf(context).width,
         decoration: BoxDecoration(
           border: Border.all(
@@ -28,11 +29,11 @@ class OrLogin extends StatelessWidget {
             spacing: 10,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(height: 18, width: 18, "${image}"),
+              Image.asset(height: 18.w, width: 18.w, "${image}"),
               CustomText(
                 text: "${title}",
                 fontWeight: FontWeight.w500,
-                fontsize: 14,
+                fontsize: 14.w,
               ),
             ],
           ),

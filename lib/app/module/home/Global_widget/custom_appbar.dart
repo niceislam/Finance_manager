@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomAppbar extends StatelessWidget {
   const CustomAppbar({
@@ -28,10 +29,10 @@ class CustomAppbar extends StatelessWidget {
       ),
       centerTitle: true,
       title: Text(
-        "${centerText ?? ""}",
+        centerText ?? "",
         style: TextStyle(
           color: Colors.white,
-          fontSize: 19,
+          fontSize: 17.w,
           fontFamily: "myFont",
         ),
       ),

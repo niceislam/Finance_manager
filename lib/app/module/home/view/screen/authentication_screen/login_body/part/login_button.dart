@@ -1,13 +1,13 @@
 import 'package:finance_management/app/module/home/controller/authentication_controller/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Global_widget/custom_text.dart';
 
 class LoginButton extends StatelessWidget {
-  const LoginButton({super.key, required this.controller, required this.size});
+  const LoginButton({super.key, required this.controller});
 
   final LoginController controller;
-  final Size size;
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -16,7 +16,7 @@ class LoginButton extends StatelessWidget {
           controller.loginTap();
         },
         child: Container(
-          height: 52,
+          height: 39.h,
           width: MediaQuery.sizeOf(context).width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -33,7 +33,7 @@ class LoginButton extends StatelessWidget {
                   child: CustomText(
                     text: "Login",
                     fontWeight: FontWeight.w600,
-                    fontsize: size.flipped.aspectRatio * 8,
+                    fontsize: 16.w,
                     textColor: Colors.white,
                   ),
                 ),

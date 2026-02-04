@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 class HomeShimmer extends StatelessWidget {
@@ -22,12 +23,12 @@ class HomeShimmer extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.grey,
                 ),
-                height: 100,
+                height: 100.h,
                 width: MediaQuery.sizeOf(context).width,
               ),
             ),
             Container(
-              height: 180,
+              height: 180.h,
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -40,7 +41,7 @@ class HomeShimmer extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    height: 80,
+                    height: 80.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey,
@@ -49,7 +50,7 @@ class HomeShimmer extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
-                    height: 80,
+                    height: 80.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey,
@@ -60,8 +61,8 @@ class HomeShimmer extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Container(
-              height: 20,
-              width: 200,
+              height: 20.h,
+              width: 200.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 color: Colors.grey,
@@ -70,7 +71,7 @@ class HomeShimmer extends StatelessWidget {
             SizedBox(height: 10),
             Container(
               margin: EdgeInsets.symmetric(vertical: 5),
-              height: 60,
+              height: 60.h,
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -78,7 +79,7 @@ class HomeShimmer extends StatelessWidget {
               ),
             ),
             Container(
-              height: 60,
+              height: 60.h,
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),

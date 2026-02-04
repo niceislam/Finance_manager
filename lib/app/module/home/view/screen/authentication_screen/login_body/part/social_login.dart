@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../../../../Global_widget/custom_text.dart';
 import '../../widget/orLogin.dart';
@@ -13,7 +14,7 @@ class SocialLoginPart extends StatelessWidget {
         Center(
           child: CustomText(
             text: "Or",
-            fontsize: 16,
+            fontsize: 16.w,
             fontWeight: FontWeight.w400,
           ),
         ),

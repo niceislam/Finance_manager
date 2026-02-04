@@ -4,6 +4,7 @@ import 'package:finance_management/app/module/home/view/screen/authentication_sc
 import 'package:finance_management/app/module/home/view/screen/authentication_screen/login_body/part/social_login.dart';
 import 'package:finance_management/app/module/home/view/screen/authentication_screen/login_body/part/textfield_login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../Global_widget/custom_Textfield.dart';
@@ -15,7 +16,6 @@ class LoginAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginController controller = Get.put(LoginController());
-    Size size = MediaQuery.sizeOf(context);
     return Form(
       key: controller.mykey,
       child: SingleChildScrollView(
@@ -25,18 +25,18 @@ class LoginAuth extends StatelessWidget {
             CustomText(
               text: "Welcome Back!",
               fontWeight: FontWeight.bold,
-              fontsize: size.flipped.aspectRatio * 10,
+              fontsize: 22.w,
             ),
             SizedBox(height: 8),
             CustomText(
               text: "Please enter your details to login.",
-              fontsize: size.flipped.aspectRatio * 6.5,
+              fontsize: 14.w,
               fontWeight: FontWeight.w400,
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 25.h),
 
             //Login Textfields
-            TextfieldLogin(controller: controller, size: size),
+            TextfieldLogin(controller: controller),
             SizedBox(height: 10),
 
             //forgot password
@@ -48,7 +48,7 @@ class LoginAuth extends StatelessWidget {
                   onTap: () {},
                   child: CustomText(
                     text: "Forgot Password",
-                    fontsize: size.flipped.aspectRatio * 6.5,
+                    fontsize: 14.w,
                     fontWeight: FontWeight.w600,
                     textColor: Colors.black,
                   ),
@@ -58,12 +58,12 @@ class LoginAuth extends StatelessWidget {
             SizedBox(height: 30),
 
             //login button
-            LoginButton(controller: controller, size: size),
+            LoginButton(controller: controller),
             SizedBox(height: 20),
 
             //Social login
             SocialLoginPart(),
-            SizedBox(height: 70),
+            SizedBox(height: 50),
             Row(
               spacing: 3,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -71,7 +71,7 @@ class LoginAuth extends StatelessWidget {
                 CustomText(
                   text: "Don’t have an account?",
                   fontWeight: FontWeight.w400,
-                  fontsize: 16,
+                  fontsize: 14.w,
                 ),
                 InkWell(
                   borderRadius: BorderRadius.circular(20),
@@ -80,13 +80,14 @@ class LoginAuth extends StatelessWidget {
                   },
                   child: CustomText(
                     text: "Register here",
-                    fontsize: 16,
+                    fontsize: 14.w,
                     fontWeight: FontWeight.w900,
                     textColor: Colors.grey,
                   ),
                 ),
               ],
             ),
+            SizedBox(height: 20,)
           ],
         ),
       ),

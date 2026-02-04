@@ -1,11 +1,12 @@
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../controller/authentication_controller/reg_controller.dart';
 
 class RegisterButton extends StatelessWidget {
-  const RegisterButton({super.key, required this.controller});
+  const RegisterButton({super.key, required this.controller,});
 
   final RegController controller;
 
@@ -17,7 +18,7 @@ class RegisterButton extends StatelessWidget {
           controller.register();
         },
         child: Container(
-          height: 52,
+          height: 39.h,
           width: MediaQuery.sizeOf(context).width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -33,7 +34,7 @@ class RegisterButton extends StatelessWidget {
               : Center(
                   child: CustomText(
                     text: "Register",
-                    fontsize: 18,
+                    fontsize: 16.w,
                     fontWeight: FontWeight.w600,
                     textColor: Colors.white,
                   ),

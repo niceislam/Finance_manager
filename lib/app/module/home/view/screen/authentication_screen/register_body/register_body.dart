@@ -5,6 +5,7 @@ import 'package:finance_management/app/module/home/view/screen/authentication_sc
 import 'package:finance_management/app/module/home/view/screen/authentication_screen/register_body/part/Reg_Textfields.dart';
 import 'package:finance_management/app/module/home/view/screen/authentication_screen/register_body/part/social_reg.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Global_widget/custom_Textfield.dart';
 import '../../../../controller/authentication_controller/login_controller.dart';
@@ -26,7 +27,7 @@ class RegisterAuth extends StatelessWidget {
             CustomText(
               text: "Let’s Get Started!",
               fontWeight: FontWeight.bold,
-              fontsize: 22,
+              fontsize: 22.w,
             ),
             SizedBox(height: 8),
             CustomText(
@@ -56,7 +57,7 @@ class RegisterAuth extends StatelessWidget {
                 CustomText(
                   text: "Already have an account?",
                   fontWeight: FontWeight.w400,
-                  fontsize: 16,
+                  fontsize: 14.w,
                 ),
                 InkWell(
                   borderRadius: BorderRadius.circular(10),
@@ -65,7 +66,7 @@ class RegisterAuth extends StatelessWidget {
                   },
                   child: CustomText(
                     text: "Login",
-                    fontsize: 16,
+                    fontsize: 14.w,
                     fontWeight: FontWeight.w600,
                     textColor: Colors.grey,
                   ),

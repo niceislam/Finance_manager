@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../../../../../Global_widget/custom_text.dart';
 
@@ -28,7 +29,7 @@ class percent_part extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 10),
-      height: 175,
+      height: 170,
       width: size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),

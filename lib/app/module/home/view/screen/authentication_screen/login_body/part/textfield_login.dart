@@ -1,28 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Global_widget/custom_Textfield.dart';
 import '../../../../../Global_widget/custom_text.dart';
 import '../../../../../controller/authentication_controller/login_controller.dart';
 
 class TextfieldLogin extends StatelessWidget {
-  const TextfieldLogin({
-    super.key,
-    required this.controller,
-    required this.size,
-  });
+  const TextfieldLogin({super.key, required this.controller});
 
   final LoginController controller;
-  final Size size;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomText(
-          text: "Email",
-          fontWeight: FontWeight.w500,
-          fontsize: size.flipped.aspectRatio * 7.5,
-        ),
+        CustomText(text: "Email", fontWeight: FontWeight.w500, fontsize: 15.w),
         SizedBox(height: 5),
         CustomTextField(
           controller: controller.emailControllerLogin,
@@ -39,7 +32,7 @@ class TextfieldLogin extends StatelessWidget {
         CustomText(
           text: "Password",
           fontWeight: FontWeight.w500,
-          fontsize: size.flipped.aspectRatio * 7.5,
+          fontsize: 15.w,
         ),
         SizedBox(height: 5),
         Obx(
@@ -68,12 +61,12 @@ class TextfieldLogin extends StatelessWidget {
                   ? Icon(
                       Icons.visibility_off_outlined,
                       color: Color(0xffD1D1D1),
-                      size: 20,
+                      size: 20.w,
                     )
                   : Icon(
                       Icons.visibility_outlined,
                       color: Color(0xffD1D1D1),
-                      size: 20,
+                      size: 20.w,
                     ),
             ),
           ),

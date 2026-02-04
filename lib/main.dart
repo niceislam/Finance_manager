@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 void main() async {
@@ -17,7 +18,11 @@ void main() async {
   runApp(
     DevicePreview(
       builder: (BuildContext context) {
-        return MyApp(status: es);
+        return ScreenUtilInit(
+          builder: (_, constrains) {
+            return MyApp(status: es);
+          },
+        );
       },
     ),
   );

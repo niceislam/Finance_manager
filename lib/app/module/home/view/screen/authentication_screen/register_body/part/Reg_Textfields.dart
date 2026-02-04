@@ -1,5 +1,6 @@
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../Global_widget/custom_Textfield.dart';
 import '../../../../../controller/authentication_controller/reg_controller.dart';
@@ -15,13 +16,7 @@ class RegTextfields extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //Name field
-        Row(
-          spacing: 2,
-          children: [
-            CustomText(text: "Name", fontWeight: FontWeight.w500, fontsize: 16),
-            Text("*", style: TextStyle(color: Colors.red, fontSize: 16)),
-          ],
-        ),
+        RequiredRow(title: "Name"),
         SizedBox(height: 5),
         CustomTextField(
           validator: (value) {
@@ -35,17 +30,7 @@ class RegTextfields extends StatelessWidget {
         SizedBox(height: 23),
 
         //Email field
-        Row(
-          spacing: 2,
-          children: [
-            CustomText(
-              text: "Email",
-              fontWeight: FontWeight.w500,
-              fontsize: 16,
-            ),
-            Text("*", style: TextStyle(color: Colors.red, fontSize: 16)),
-          ],
-        ),
+        RequiredRow(title: 'Email'),
         SizedBox(height: 5),
         CustomTextField(
           controller: controller.emailController,
@@ -61,17 +46,7 @@ class RegTextfields extends StatelessWidget {
         SizedBox(height: 23),
 
         //password field
-        Row(
-          spacing: 2,
-          children: [
-            CustomText(
-              text: "Password",
-              fontWeight: FontWeight.w500,
-              fontsize: 16,
-            ),
-            Text("*", style: TextStyle(color: Colors.red, fontSize: 16)),
-          ],
-        ),
+        RequiredRow(title: 'Password'),
         SizedBox(height: 5),
         Obx(
           () => CustomTextField(
@@ -95,21 +70,41 @@ class RegTextfields extends StatelessWidget {
               onTap: () {
                 controller.passTap();
               },
-              child: controller.visibility.value == true
+              child: controller.visibility.value == false
                   ? Icon(
                       Icons.visibility_off_outlined,
                       color: Color(0xffD1D1D1),
-                      size: 20,
+                      size: 20.w,
                     )
                   : Icon(
                       Icons.visibility_outlined,
                       color: Color(0xffD1D1D1),
-                      size: 20,
+                      size: 20.w,
                     ),
             ),
           ),
         ),
         SizedBox(height: 10),
+      ],
+    );
+  }
+
+  Row RequiredRow({required String title}) {
+    return Row(
+      spacing: 2,
+      children: [
+        CustomText(
+          text: title,
+          fontWeight: FontWeight.w500,
+          fontsize: 14.w,
+        ),
+        Text(
+          "*",
+          style: TextStyle(
+            color: Colors.red,
+            fontSize: 16,
+          ),
+        ),
       ],
     );
   }
