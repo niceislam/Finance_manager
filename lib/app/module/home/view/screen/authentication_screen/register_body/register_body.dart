@@ -27,15 +27,15 @@ class RegisterAuth extends StatelessWidget {
             CustomText(
               text: "Let’s Get Started!",
               fontWeight: FontWeight.bold,
-              fontsize: 22.w,
+              fontsize: 20.sp,
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 2.h),
             CustomText(
               text: "Create an account.",
-              fontsize: 14,
+              fontsize: 14.sp,
               fontWeight: FontWeight.w400,
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 22.h),
 
             //Register Textfields
             RegTextfields(controller: controller),

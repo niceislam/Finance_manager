@@ -5,6 +5,7 @@ import 'package:finance_management/app/module/home/Global_widget/custom_text.dar
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/home_body/part/percent_part.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../../Global_widget/history_card.dart';
 import '../../../drawer_item/part/edit_bio/edit_bio.dart';
@@ -25,7 +26,7 @@ class main_body extends StatelessWidget {
         padding: const EdgeInsets.only(top: 65, left: 15, right: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 10,
+          spacing: 8.h,
           children: [
             //percent part
             Obx(() {
@@ -69,21 +70,21 @@ class main_body extends StatelessWidget {
             }),
 
             //recent transaction
-            SizedBox(height: 20),
+            SizedBox(height: 18.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomText(
                   text: "home_TrView".tr,
                   fontWeight: FontWeight.w600,
-                  fontsize: 17,
+                  fontsize: 16.sp,
                 ),
                 Obx(
                   () => CustomText(
                     text:
                         "${controller.userAllData.value.tExpense?.length ?? 0}",
                     fontWeight: FontWeight.w900,
-                    fontsize: 17,
+                    fontsize: 16.sp,
                     textColor: Colors.grey,
                   ),
                 ),
@@ -97,7 +98,10 @@ class main_body extends StatelessWidget {
                   ? Padding(
                       padding: const EdgeInsets.only(top: 50),
                       child: Center(
-                        child: CustomText(text: "No_data_today".tr),
+                        child: CustomText(
+                          text: "No_data_today".tr,
+                          fontsize: 15.sp,
+                        ),
                       ),
                     )
                   : ListView.builder(
@@ -131,8 +135,7 @@ class main_body extends StatelessWidget {
     return Expanded(
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10),
-        height: 70,
-        width: size.width,
+        height: 56.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
@@ -145,7 +148,7 @@ class main_body extends StatelessWidget {
           color: conColor,
         ),
         child: Row(
-          spacing: 10,
+          spacing: 10.w,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
@@ -153,20 +156,20 @@ class main_body extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomText(
-                  text: "${title}",
+                  text: title,
                   fontWeight: FontWeight.w600,
                   textColor: textColor,
-                  fontsize: 15,
+                  fontsize: 14.sp,
                 ),
                 CustomText(
                   text: "\$${double.parse("$tk")}",
                   fontWeight: FontWeight.w600,
                   textColor: textColor,
-                  fontsize: 15,
+                  fontsize: 14.sp,
                 ),
               ],
             ),
-            Icon(Icons.arrow_downward, size: 25, color: textColor),
+            Icon(Icons.arrow_downward, size: 23.r, color: textColor),
           ],
         ),
       ),

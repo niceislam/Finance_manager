@@ -29,7 +29,7 @@ class percent_part extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 10),
-      height: 170,
+      height: 135.h,
       width: size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -44,29 +44,29 @@ class percent_part extends StatelessWidget {
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: 15,
+        spacing: 13.w,
         children: [
           Expanded(
             flex: 8,
             child: CircularPercentIndicator(
-              radius: 75.0,
+              radius: 72.r,
               lineWidth: 12.0,
               percent: percent ?? 0.0,
               animation: true,
-              animationDuration: 1000,
+              animationDuration: 700,
               center: Column(
                 spacing: 3,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 110,
+                    width: 110.w,
                     child: Center(
                       child: CustomText(
                         maxline: 1,
                         text: double.parse(
                           "${percent! * 100}",
                         ).toStringAsFixed(1),
-                        fontsize: 30,
+                        fontsize: 29.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -89,19 +89,19 @@ class percent_part extends StatelessWidget {
                     text: name != "" ? name : "N/A",
                     fontWeight: FontWeight.w600,
                     textOverflow: TextOverflow.ellipsis,
-                    fontsize: 20,
+                    fontsize: 18.sp,
                   ),
                   CustomText(
                     maxline: 1,
                     text: profession == "" ? "N/A" : profession,
-                    fontsize: 15,
+                    fontsize: 14.sp,
                     textColor: Colors.grey,
                     textOverflow: TextOverflow.ellipsis,
                   ),
                   CustomText(
                     text: "${age != "" ? age : "0"}",
                     textColor: Colors.grey,
-                    fontsize: 15,
+                    fontsize: 14.sp,
                   ),
                 ],
               ),

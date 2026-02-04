@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class floating_action extends StatelessWidget {
@@ -15,17 +18,18 @@ class floating_action extends StatelessWidget {
               position: controller.offsetAnimation,
               child: GestureDetector(
                 onTap: () {
+                  log("==========Size ${MediaQuery.sizeOf(context)}");
                   controller.floatingTap();
                 },
                 child: Container(
-                  height: 55,
-                  width: 55,
+                  height: 51.h,
+                  width: 51.w,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.teal,
                   ),
                   child: Center(
-                    child: Icon(Icons.add, size: 25, color: Colors.white),
+                    child: Icon(Icons.add, size: 23.r, color: Colors.white),
                   ),
                 ),
               ),

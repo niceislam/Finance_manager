@@ -1,5 +1,6 @@
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../Global_widget/custom_text.dart';
@@ -10,12 +11,9 @@ class CurrentBalance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.sizeOf(context);
-
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 15),
-      height: 90,
-      width: size.width,
+      height: 72.h,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -29,10 +27,10 @@ class CurrentBalance extends StatelessWidget {
       ),
       child: Center(
         child: Column(
-          spacing: 5,
+          spacing: 3.h,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomText(text: "current_balance".tr),
+            CustomText(text: "current_balance".tr, fontsize: 15.5.sp),
             Obx(() {
               double currentBalance = 0.00;
               if (controller.userAllData.value.income != null ||
@@ -43,7 +41,7 @@ class CurrentBalance extends StatelessWidget {
               }
               return CustomText(
                 text: "\$$currentBalance",
-                fontsize: 25,
+                fontsize: 23.sp,
                 fontWeight: FontWeight.bold,
               );
             }),

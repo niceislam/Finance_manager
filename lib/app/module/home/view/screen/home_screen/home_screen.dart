@@ -2,6 +2,7 @@ import 'package:finance_management/app/module/home/controller/home_controller/ho
 import 'package:finance_management/app/module/home/view/screen/home_screen/widget/custom_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'bottom_home/home_body/part/bottombar.dart';
 import 'bottom_home/widget/floating_action.dart';
@@ -41,7 +42,7 @@ class HomeScreen extends StatelessWidget {
           drawer: MainDrawerItem(),
           backgroundColor: Colors.white,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(48),
+            preferredSize: Size.fromHeight(41.h),
             child: AllAppbar(controller: controller),
           ),
           body: Obx(() => controller.bottomPage[controller.bottomIndex.value]),

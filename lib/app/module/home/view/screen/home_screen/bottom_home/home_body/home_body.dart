@@ -13,7 +13,6 @@ class home_body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController controller = Get.put(HomeController());
-    Size size = MediaQuery.sizeOf(context);
     return Obx(
       () => controller.isLoading.value == true
           ? HomeShimmer()

@@ -23,12 +23,12 @@ class HomeShimmer extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.grey,
                 ),
-                height: 100.h,
+                height: 80.h,
                 width: MediaQuery.sizeOf(context).width,
               ),
             ),
             Container(
-              height: 180.h,
+              height: 140.h,
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -41,7 +41,7 @@ class HomeShimmer extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    height: 80.h,
+                    height: 60.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey,
@@ -50,7 +50,7 @@ class HomeShimmer extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
-                    height: 80.h,
+                    height: 60.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey,
@@ -68,10 +68,10 @@ class HomeShimmer extends StatelessWidget {
                 color: Colors.grey,
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 2),
             Container(
               margin: EdgeInsets.symmetric(vertical: 5),
-              height: 60.h,
+              height: 45.h,
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -79,7 +79,7 @@ class HomeShimmer extends StatelessWidget {
               ),
             ),
             Container(
-              height: 60.h,
+              height: 45.h,
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),

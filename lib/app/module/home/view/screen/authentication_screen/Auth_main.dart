@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../Global_widget/custom_appbar.dart';
 import '../../../controller/authentication_controller/login_controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -21,7 +22,7 @@ class AuthPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(53),
+          preferredSize: Size.fromHeight(45.h),
           child: CustomAppbar(centerText: "Poysha"),
         ),
         body: Padding(
@@ -58,7 +59,7 @@ class AuthPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 7.h),
                 Expanded(
                   child: SizedBox(
                     height: MediaQuery.sizeOf(context).height,
@@ -83,16 +84,12 @@ class AuthPage extends StatelessWidget {
     return GestureDetector(
       onTap: ontap,
       child: Column(
-        spacing: 6,
+        spacing: 6.h,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomText(
-            text: "${title}",
-            fontsize: 14.w,
-            fontWeight: FontWeight.w500,
-          ),
+          CustomText(text: title, fontsize: 14.w, fontWeight: FontWeight.w500),
           Container(
-            height: 3,
+            height: 2.5.h,
             width: MediaQuery.sizeOf(context).width,
             color: conColor,
           ),

@@ -16,7 +16,7 @@ class LoginButton extends StatelessWidget {
           controller.loginTap();
         },
         child: Container(
-          height: 39.h,
+          height: 37.h,
           width: MediaQuery.sizeOf(context).width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -33,7 +33,7 @@ class LoginButton extends StatelessWidget {
                   child: CustomText(
                     text: "Login",
                     fontWeight: FontWeight.w600,
-                    fontsize: 16.w,
+                    fontsize: 15.sp,
                     textColor: Colors.white,
                   ),
                 ),

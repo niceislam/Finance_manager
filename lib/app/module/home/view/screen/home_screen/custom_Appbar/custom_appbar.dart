@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:finance_management/app/module/home/Global_widget/custom_appbar.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../widget/language_slide.dart';
 
@@ -17,7 +18,7 @@ class AllAppbar extends StatelessWidget {
       return val == 0
           ? CustomAppbar(
               centerText: "home_title".tr,
-              leadingIcon: Icon(Icons.menu, color: Colors.white, size: 28),
+              leadingIcon: Icon(Icons.menu, color: Colors.white, size: 27.5.r),
               leadingTap: () {
                 Scaffold.of(context).openDrawer();
               },
@@ -25,7 +26,11 @@ class AllAppbar extends StatelessWidget {
           : val == 1
           ? CustomAppbar(
               centerText: "Btm_Tr".tr,
-              actionIcon: Icon(Icons.more_vert, color: Colors.white, size: 30),
+              actionIcon: Icon(
+                Icons.more_vert,
+                color: Colors.white,
+                size: 27.5.r,
+              ),
             )
           : val == 2
           ? CustomAppbar(centerText: "Btm_Rp".tr)

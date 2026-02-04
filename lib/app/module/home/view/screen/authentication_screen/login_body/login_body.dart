@@ -7,9 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../Global_widget/custom_Textfield.dart';
-import '../widget/orLogin.dart';
-
 class LoginAuth extends StatelessWidget {
   const LoginAuth({super.key});
 
@@ -25,19 +22,19 @@ class LoginAuth extends StatelessWidget {
             CustomText(
               text: "Welcome Back!",
               fontWeight: FontWeight.bold,
-              fontsize: 22.w,
+              fontsize: 20.sp,
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 2.h),
             CustomText(
               text: "Please enter your details to login.",
-              fontsize: 14.w,
+              fontsize: 14.sp,
               fontWeight: FontWeight.w400,
             ),
             SizedBox(height: 25.h),
 
             //Login Textfields
             TextfieldLogin(controller: controller),
-            SizedBox(height: 10),
+            SizedBox(height: 8.h),
 
             //forgot password
             Row(
@@ -48,30 +45,30 @@ class LoginAuth extends StatelessWidget {
                   onTap: () {},
                   child: CustomText(
                     text: "Forgot Password",
-                    fontsize: 14.w,
+                    fontsize: 13.sp,
                     fontWeight: FontWeight.w600,
                     textColor: Colors.black,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 25.h),
 
             //login button
             LoginButton(controller: controller),
-            SizedBox(height: 20),
+            SizedBox(height: 17.h),
 
             //Social login
             SocialLoginPart(),
-            SizedBox(height: 50),
+            SizedBox(height: 40.h),
             Row(
-              spacing: 3,
+              spacing: 3.w,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomText(
                   text: "Don’t have an account?",
                   fontWeight: FontWeight.w400,
-                  fontsize: 14.w,
+                  fontsize: 14.sp,
                 ),
                 InkWell(
                   borderRadius: BorderRadius.circular(20),
@@ -80,14 +77,14 @@ class LoginAuth extends StatelessWidget {
                   },
                   child: CustomText(
                     text: "Register here",
-                    fontsize: 14.w,
+                    fontsize: 14.sp,
                     fontWeight: FontWeight.w900,
                     textColor: Colors.grey,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 20,)
+            SizedBox(height: 17.h),
           ],
         ),
       ),

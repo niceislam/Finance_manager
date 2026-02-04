@@ -15,8 +15,8 @@ class TextfieldLogin extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomText(text: "Email", fontWeight: FontWeight.w500, fontsize: 15.w),
-        SizedBox(height: 5),
+        CustomText(text: "Email", fontWeight: FontWeight.w500, fontsize: 14.sp),
+        SizedBox(height: 3.h),
         CustomTextField(
           controller: controller.emailControllerLogin,
           validator: (value) {
@@ -28,13 +28,13 @@ class TextfieldLogin extends StatelessWidget {
           },
           hintText: "Email",
         ),
-        SizedBox(height: 23),
+        SizedBox(height: 18.h),
         CustomText(
           text: "Password",
           fontWeight: FontWeight.w500,
-          fontsize: 15.w,
+          fontsize: 14.sp,
         ),
-        SizedBox(height: 5),
+        SizedBox(height: 3.h),
         Obx(
           () => CustomTextField(
             controller: controller.passwordControllerLogin,
@@ -53,7 +53,7 @@ class TextfieldLogin extends StatelessWidget {
             hintText: "*************",
             sufIcon: InkWell(
               borderRadius: BorderRadius.circular(20),
-              radius: 10,
+              radius: 10.r,
               onTap: () {
                 controller.visibilityButton();
               },
@@ -61,12 +61,12 @@ class TextfieldLogin extends StatelessWidget {
                   ? Icon(
                       Icons.visibility_off_outlined,
                       color: Color(0xffD1D1D1),
-                      size: 20.w,
+                      size: 18.r,
                     )
                   : Icon(
                       Icons.visibility_outlined,
                       color: Color(0xffD1D1D1),
-                      size: 20.w,
+                      size: 18.r,
                     ),
             ),
           ),

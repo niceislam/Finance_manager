@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 class SplashController extends GetxController {
   RxBool isSkip = false.obs;
 
-  splashFun() async {
+  Future<void> splashFun() async {
     var onbordingStatus = await LocalStorage().readData(key: "onbording");
     var loginStatus = await LocalStorage().readData(key: "login");
     await Future.delayed(Duration(milliseconds: 100));

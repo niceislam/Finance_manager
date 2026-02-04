@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../../controller/home_controller/home.dart';
 
@@ -11,7 +12,7 @@ class CustomBottombar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => BottomNavigationBar(
-        selectedIconTheme: IconThemeData(size: 30, color: Colors.teal),
+        selectedIconTheme: IconThemeData(size: 27.r, color: Colors.teal),
         selectedItemColor: Colors.teal,
         unselectedLabelStyle: TextStyle(fontFamily: "myFont"),
         selectedLabelStyle: TextStyle(fontFamily: "myFont"),

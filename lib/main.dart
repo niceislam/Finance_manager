@@ -19,6 +19,9 @@ void main() async {
     DevicePreview(
       builder: (BuildContext context) {
         return ScreenUtilInit(
+          minTextAdapt: true,
+          splitScreenMode: true,
+          designSize: const Size(360, 690),
           builder: (_, constrains) {
             return MyApp(status: es);
           },

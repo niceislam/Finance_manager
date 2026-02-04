@@ -32,13 +32,13 @@ class CustomAppbar extends StatelessWidget {
         centerText ?? "",
         style: TextStyle(
           color: Colors.white,
-          fontSize: 17.w,
+          fontSize: 17.sp,
           fontFamily: "myFont",
         ),
       ),
       actions: [
         GestureDetector(onTap: actionTap, child: actionIcon ?? SizedBox()),
-        SizedBox(width: 10),
+        SizedBox(width: 10.w),
       ],
     );
   }

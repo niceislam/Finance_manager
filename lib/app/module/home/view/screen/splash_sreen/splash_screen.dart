@@ -1,8 +1,6 @@
-import 'dart:developer';
-import 'dart:ui';
-
 import 'package:finance_management/app/module/home/controller/splash_controller/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -11,8 +9,6 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SplashController controller = Get.put(SplashController());
-    Size size = MediaQuery.sizeOf(context);
-    log("=======Size $size}");
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
@@ -22,17 +18,15 @@ class SplashScreen extends StatelessWidget {
           children: [
             Image.asset(
               "assets/image/splashpro.png",
-              height: size.height / 3.73,
-              width: size.width / 1.7,
+              height: 180.h,
+              width: 220.w,
               fit: BoxFit.fill,
             ),
             Obx(
               () => AnimatedContainer(
                 curve: Curves.bounceOut,
-                height: controller.isSkip.value == true
-                    ? size.height / 10.72
-                    : 20,
-                width: controller.isSkip.value == true ? size.width / 1.40 : 70,
+                height: controller.isSkip.value == true ? 65.h : 20,
+                width: controller.isSkip.value == true ? 250.w : 70,
                 duration: Duration(milliseconds: 2500),
                 child: Image.asset("assets/image/splashText.png"),
               ),

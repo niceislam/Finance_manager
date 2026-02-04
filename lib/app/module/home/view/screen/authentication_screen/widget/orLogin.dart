@@ -26,14 +26,14 @@ class OrLogin extends StatelessWidget {
         ),
         child: Center(
           child: Row(
-            spacing: 10,
+            spacing: 10.w,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(height: 18.w, width: 18.w, "${image}"),
               CustomText(
                 text: "${title}",
                 fontWeight: FontWeight.w500,
-                fontsize: 14.w,
+                fontsize: 14.sp,
               ),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../Global_widget/custom_text.dart';
 
@@ -15,14 +16,16 @@ class CustomAlertDia extends StatelessWidget {
       title: Center(
         child: CustomText(
           text: "Exit App",
-          fontsize: 20,
+          fontsize: 18.sp,
           fontWeight: FontWeight.w900,
         ),
       ),
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
-        children: [CustomText(text: "Are you sure to Exit this app?")],
+        children: [
+          CustomText(text: "Are you sure to Exit this app?", fontsize: 15.sp),
+        ],
       ),
       actions: [
         ElevatedButton(

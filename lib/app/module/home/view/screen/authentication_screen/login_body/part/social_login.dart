@@ -14,11 +14,11 @@ class SocialLoginPart extends StatelessWidget {
         Center(
           child: CustomText(
             text: "Or",
-            fontsize: 16.w,
+            fontsize: 16.sp,
             fontWeight: FontWeight.w400,
           ),
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 17.h),
         OrLogin(
           ontap: () async {
             await Fluttertoast.showToast(msg: "Upcoming...");
@@ -26,7 +26,7 @@ class SocialLoginPart extends StatelessWidget {
           image: "assets/image/google.png",
           title: "Sign in with google",
         ),
-        SizedBox(height: 15),
+        SizedBox(height: 12.h),
         OrLogin(
           ontap: () async {
             await Fluttertoast.showToast(msg: "Upcoming...");

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'custom_text.dart';
 
@@ -43,20 +44,20 @@ class HistoryCard extends StatelessWidget {
           maxline: 1,
           text: title ?? "",
           fontWeight: FontWeight.w600,
-          fontsize: 15,
+          fontsize: 14.sp,
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomText(
               text: subTitle ?? "",
-              fontsize: 13,
+              fontsize: 12.sp,
               textColor: Colors.grey,
             ),
             ShowTime == true
                 ? CustomText(
                     text: subTitle2 ?? "",
-                    fontsize: 13,
+                    fontsize: 12.sp,
                     textColor: Colors.grey,
                   )
                 : SizedBox(),
@@ -67,7 +68,7 @@ class HistoryCard extends StatelessWidget {
             CustomText(
               text: "${double.parse("${actionTk ?? 0}")}",
               fontWeight: FontWeight.w600,
-              fontsize: 15,
+              fontsize: 13.5.sp,
               textColor: Colors.red,
             ),
       ),

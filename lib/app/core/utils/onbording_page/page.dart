@@ -1,6 +1,7 @@
 import 'package:finance_management/app/module/home/controller/onbording_controller/onbording.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../module/home/Global_widget/custom_text.dart';
 import '../../../module/home/view/screen/onbording_sreen/widget/onbording_frame.dart';
@@ -27,8 +28,8 @@ class OnBordingPage {
           Get.put(OnbordingController()).startButton();
         },
         child: Container(
-          height: 48,
-          width: 320,
+          height: 38.h,
+          width: 320.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Colors.teal,
@@ -43,7 +44,7 @@ class OnBordingPage {
                     )
                   : CustomText(
                       text: "Get Started",
-                      fontsize: 20,
+                      fontsize: 16.sp,
                       textColor: Colors.white,
                     );
             }),

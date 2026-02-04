@@ -17,7 +17,7 @@ class RegTextfields extends StatelessWidget {
       children: [
         //Name field
         RequiredRow(title: "Name"),
-        SizedBox(height: 5),
+        SizedBox(height: 3.h),
         CustomTextField(
           validator: (value) {
             if (value == "" || value == null) {
@@ -27,11 +27,11 @@ class RegTextfields extends StatelessWidget {
           controller: controller.nameController,
           hintText: "Enter your Name",
         ),
-        SizedBox(height: 23),
+        SizedBox(height: 18.h),
 
         //Email field
         RequiredRow(title: 'Email'),
-        SizedBox(height: 5),
+        SizedBox(height: 3.h),
         CustomTextField(
           controller: controller.emailController,
           hintText: "Enter your email",
@@ -43,11 +43,11 @@ class RegTextfields extends StatelessWidget {
             }
           },
         ),
-        SizedBox(height: 23),
+        SizedBox(height: 18.h),
 
         //password field
         RequiredRow(title: 'Password'),
-        SizedBox(height: 5),
+        SizedBox(height: 3.h),
         Obx(
           () => CustomTextField(
             validator: (value) {
@@ -66,7 +66,7 @@ class RegTextfields extends StatelessWidget {
             hintText: "*************",
             sufIcon: InkWell(
               borderRadius: BorderRadius.circular(20),
-              radius: 10,
+              radius: 10.r,
               onTap: () {
                 controller.passTap();
               },
@@ -74,17 +74,17 @@ class RegTextfields extends StatelessWidget {
                   ? Icon(
                       Icons.visibility_off_outlined,
                       color: Color(0xffD1D1D1),
-                      size: 20.w,
+                      size: 20.r,
                     )
                   : Icon(
                       Icons.visibility_outlined,
                       color: Color(0xffD1D1D1),
-                      size: 20.w,
+                      size: 20.r,
                     ),
             ),
           ),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 8.h),
       ],
     );
   }
@@ -93,17 +93,10 @@ class RegTextfields extends StatelessWidget {
     return Row(
       spacing: 2,
       children: [
-        CustomText(
-          text: title,
-          fontWeight: FontWeight.w500,
-          fontsize: 14.w,
-        ),
+        CustomText(text: title, fontWeight: FontWeight.w500, fontsize: 14.sp),
         Text(
           "*",
-          style: TextStyle(
-            color: Colors.red,
-            fontSize: 16,
-          ),
+          style: TextStyle(color: Colors.red, fontSize: 14.sp),
         ),
       ],
     );

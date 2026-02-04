@@ -34,7 +34,7 @@ class HomeController extends GetxController
   TextEditingController nameEditController = TextEditingController();
   TextEditingController professionEditController = TextEditingController();
   TextEditingController ageEditController = TextEditingController();
-  RxBool isLoading = false.obs;
+  RxBool isLoading = true.obs;
   RxBool updateInfoLoading = false.obs;
   final ImagePicker picker = ImagePicker();
   RxString imagePath = "".obs;

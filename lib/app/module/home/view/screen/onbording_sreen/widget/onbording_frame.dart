@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../Global_widget/custom_text.dart';
 
@@ -29,50 +30,50 @@ class Onbording_frame extends StatelessWidget {
             Column(
               children: [
                 Image.asset(
-                  height: size.height / 13.2,
-                  width: size.width / 5.50,
+                  height: 65.h,
+                  width: 65.w,
                   "assets/image/splash.png",
                 ),
                 CustomText(
                   text: "Your Personal Finance Assistant",
-                  fontsize: 13,
+                  fontsize: 13.sp,
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 20.h),
 
             //onbording center image
             Image.asset(
               fit: BoxFit.fill,
-              height: size.height * 0.4,
-              width: size.width * 0.88,
+              height: 280.h,
+              width: 310.w,
               "$image",
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 10.h),
 
             //title and body text
-            SizedBox(height: 80),
+            SizedBox(height: 40.h),
             Column(
-              spacing: 10,
+              spacing: 10.h,
               children: [
                 CustomText(
                   text: "$title",
-                  fontsize: size.flipped.aspectRatio * 11,
+                  fontsize: 22.sp,
                   fontWeight: FontWeight.w900,
                 ),
                 SizedBox(
-                  width: 300,
+                  width: 300.w,
                   child: CustomText(
                     textAlign: TextAlign.center,
                     text: "$body",
-                    fontsize: size.flipped.aspectRatio * 8,
+                    fontsize: 16.sp,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 30.h),
             widget ?? SizedBox(),
-            SizedBox(height: 10),
+            SizedBox(height: 10.h),
           ],
         ),
       ),
