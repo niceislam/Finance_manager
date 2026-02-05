@@ -29,7 +29,7 @@ class percent_part extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 10),
-      height: 135.h,
+      height: 128.h,
       width: size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -49,8 +49,8 @@ class percent_part extends StatelessWidget {
           Expanded(
             flex: 8,
             child: CircularPercentIndicator(
-              radius: 72.r,
-              lineWidth: 12.0,
+              radius: 60.r,
+              lineWidth: 10.0,
               percent: percent ?? 0.0,
               animation: true,
               animationDuration: 700,
@@ -59,14 +59,14 @@ class percent_part extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 110.w,
+                    width: 100.w,
                     child: Center(
                       child: CustomText(
                         maxline: 1,
                         text: double.parse(
                           "${percent! * 100}",
                         ).toStringAsFixed(1),
-                        fontsize: 29.sp,
+                        fontsize: 27.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -89,19 +89,19 @@ class percent_part extends StatelessWidget {
                     text: name != "" ? name : "N/A",
                     fontWeight: FontWeight.w600,
                     textOverflow: TextOverflow.ellipsis,
-                    fontsize: 18.sp,
+                    fontsize: 17.sp,
                   ),
                   CustomText(
                     maxline: 1,
                     text: profession == "" ? "N/A" : profession,
-                    fontsize: 14.sp,
+                    fontsize: 13.sp,
                     textColor: Colors.grey,
                     textOverflow: TextOverflow.ellipsis,
                   ),
                   CustomText(
                     text: "${age != "" ? age : "0"}",
                     textColor: Colors.grey,
-                    fontsize: 14.sp,
+                    fontsize: 13.sp,
                   ),
                 ],
               ),

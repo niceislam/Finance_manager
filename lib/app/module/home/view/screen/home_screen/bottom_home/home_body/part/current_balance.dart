@@ -30,7 +30,7 @@ class CurrentBalance extends StatelessWidget {
           spacing: 3.h,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomText(text: "current_balance".tr, fontsize: 15.5.sp),
+            CustomText(text: "current_balance".tr, fontsize: 14.sp),
             Obx(() {
               double currentBalance = 0.00;
               if (controller.userAllData.value.income != null ||
@@ -41,7 +41,7 @@ class CurrentBalance extends StatelessWidget {
               }
               return CustomText(
                 text: "\$$currentBalance",
-                fontsize: 23.sp,
+                fontsize: 20.sp,
                 fontWeight: FontWeight.bold,
               );
             }),

@@ -77,14 +77,14 @@ class main_body extends StatelessWidget {
                 CustomText(
                   text: "home_TrView".tr,
                   fontWeight: FontWeight.w600,
-                  fontsize: 16.sp,
+                  fontsize: 15.sp,
                 ),
                 Obx(
                   () => CustomText(
                     text:
                         "${controller.userAllData.value.tExpense?.length ?? 0}",
                     fontWeight: FontWeight.w900,
-                    fontsize: 16.sp,
+                    fontsize: 15.sp,
                     textColor: Colors.grey,
                   ),
                 ),
@@ -159,17 +159,17 @@ class main_body extends StatelessWidget {
                   text: title,
                   fontWeight: FontWeight.w600,
                   textColor: textColor,
-                  fontsize: 14.sp,
+                  fontsize: 13.sp,
                 ),
                 CustomText(
                   text: "\$${double.parse("$tk")}",
                   fontWeight: FontWeight.w600,
                   textColor: textColor,
-                  fontsize: 14.sp,
+                  fontsize: 13.sp,
                 ),
               ],
             ),
-            Icon(Icons.arrow_downward, size: 23.r, color: textColor),
+            Icon(Icons.arrow_downward, size: 22.r, color: textColor),
           ],
         ),
       ),

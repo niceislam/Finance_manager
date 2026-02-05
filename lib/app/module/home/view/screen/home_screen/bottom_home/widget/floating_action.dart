@@ -22,8 +22,8 @@ class floating_action extends StatelessWidget {
                   controller.floatingTap();
                 },
                 child: Container(
-                  height: 51.h,
-                  width: 51.w,
+                  height: 48.h,
+                  width: 48.w,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.teal,
