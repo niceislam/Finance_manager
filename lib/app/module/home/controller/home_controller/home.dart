@@ -1,13 +1,10 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/data/service/add_transection/get_all_data.dart';
 import 'package:finance_management/app/data/service/add_transection/update_bioData.dart';
-import 'package:finance_management/app/module/home/Global_widget/custom_Textfield.dart';
-import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/view/screen/add_transection_screen/add_transection.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/widget/login_dialogue.dart';
 import 'package:flutter/cupertino.dart';
@@ -72,7 +69,6 @@ class HomeController extends GetxController
   }
 
   void homeScroll() {
-    log("=======scroll $scrollToSlide");
     scrollController.addListener(() {
       if (scrollController.offset > 100) {
         scrollToSlide.value = true;

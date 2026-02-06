@@ -13,25 +13,14 @@ class ReportBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ReportController controller = Get.put(ReportController());
+    HomeController controller = Get.put(HomeController());
     return Padding(
       padding: const EdgeInsets.only(top: 20, right: 15, left: 15),
       child: Column(
         children: [
-          StreamBuilder(
-            stream: controller.userStream,
-            builder: (context, snapShot) {
-              if (snapShot.hasError) {
-                EasyLoading.showError("something went wrong");
-              }
-              if (snapShot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
-              }
-              dynamic Data = snapShot.data?.data();
-              //controller.mapgetData = Data;
-              return CustomText(text: "${Data}");
-            },
-          ),
+          // Obx(
+          //   () => Center(child: CustomText(text: "${controller.streamData}")),
+          // ),
 
           // Obx(
           //   () => Center(child: CustomText(text: "${controller.mapgetData}")),

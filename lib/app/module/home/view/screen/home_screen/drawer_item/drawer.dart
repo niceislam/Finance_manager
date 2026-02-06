@@ -12,7 +12,7 @@ class MainDrawerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     AppDrawerController controller = Get.put(AppDrawerController());
     return Container(
-      width: 280.w,
+      width: 260.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         gradient: LinearGradient(

@@ -18,15 +18,15 @@ class SplashScreen extends StatelessWidget {
           children: [
             Image.asset(
               "assets/image/splashpro.png",
-              height: 180.h,
-              width: 220.w,
+              height: 150.h,
+              width: 190.w,
               fit: BoxFit.fill,
             ),
             Obx(
               () => AnimatedContainer(
                 curve: Curves.bounceOut,
-                height: controller.isSkip.value == true ? 65.h : 20,
-                width: controller.isSkip.value == true ? 250.w : 70,
+                height: controller.isSkip.value == true ? 55.h : 55.h,
+                width: controller.isSkip.value == true ? 230.w : 120.w,
                 duration: Duration(milliseconds: 2500),
                 child: Image.asset("assets/image/splashText.png"),
               ),
