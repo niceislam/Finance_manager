@@ -2,5 +2,7 @@ import 'package:finance_management/app/module/home/controller/home_controller/ho
 import 'package:get/get.dart';
 
 class ReportController extends GetxController {
-  HomeController HController = Get.find<HomeController>();
+  HomeController Hcontroller = Get.find<HomeController>();
+  RxList<String> reportList = ["All", "Today", "Weekly", "Monthly"].obs;
+  RxString initialValue = "All".obs;
 }
