@@ -1,11 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
+import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
-import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:finance_management/app/module/home/controller/report_controller/report.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ReportBody extends StatelessWidget {
@@ -13,29 +11,57 @@ class ReportBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeController controller = Get.put(HomeController());
-    return Padding(
-      padding: const EdgeInsets.only(top: 20, right: 15, left: 15),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Card(
-            child: ExpansionTile(
-              shape: Border(),
-              expansionAnimationStyle: AnimationStyle(curve: Curves.easeOutBack),
-              title: CustomText(text: "Nice"),
-              iconColor: Colors.red,
-              dense: true,
-              maintainState: false,
-              backgroundColor: Colors.white,
-              expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [Container(height: 200, width: 300, color: Colors.red)],
-            ),
+    Size size = MediaQuery.sizeOf(context);
+    ReportController controller = Get.put(ReportController());
+    return Column(
+      children: [
+        Expanded(
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Container(height: 20.h, width: size.width, color: Colors.teal),
+              Padding(
+                padding: EdgeInsets.only(top: 1),
+                child: Container(
+                  padding: EdgeInsets.only(top: 10, left: 15, right: 15),
+                  height: size.height,
+                  width: size.width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      topLeft: Radius.circular(15),
+                    ),
+                    color: Colors.white,
+                  ),
+                  child: Obx(() {
+                    final check = controller.HController.userAllData.value;
+                    if (check == FirebaseGetModel()) {
+                      return Center(
+                        child: CustomText(text: "Something went wrong"),
+                      );
+                    }
+                    return Column(
+                      children: [
+                        AspectRatio(
+                          aspectRatio: 1.5,
+                          child: PieChart(
+                            PieChartData(
+                              centerSpaceRadius: 0,
+                              sections: [
+                                PieChartSectionData(value: 10, radius: 120),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  }),
+                ),
+              ),
+            ],
           ),
-
-          SizedBox(height: 40),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
