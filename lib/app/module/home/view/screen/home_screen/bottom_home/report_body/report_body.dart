@@ -17,61 +17,25 @@ class ReportBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 20, right: 15, left: 15),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // Obx(
-          //   () => Center(child: CustomText(text: "${controller.streamData}")),
-          // ),
+          Card(
+            child: ExpansionTile(
+              shape: Border(),
+              expansionAnimationStyle: AnimationStyle(curve: Curves.easeOutBack),
+              title: CustomText(text: "Nice"),
+              iconColor: Colors.red,
+              dense: true,
+              maintainState: false,
+              backgroundColor: Colors.white,
+              expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [Container(height: 200, width: 300, color: Colors.red)],
+            ),
+          ),
 
-          // Obx(
-          //   () => Center(child: CustomText(text: "${controller.mapgetData}")),
-          // ),
-          // Container(
-          //   height: 200,
-          //   color: Colors.white,
-          //   child: BarChart(
-          //     BarChartData(
-          //       minY: 10,
-          //       maxY: 10000,
-          //       alignment: BarChartAlignment.start,
-          //
-          //       backgroundColor: Colors.greenAccent.shade100,
-          //       borderData: FlBorderData(show: false),
-          //       gridData: FlGridData(show: false),
-          //       titlesData: FlTitlesData(
-          //         topTitles: AxisTitles(drawBelowEverything: false),
-          //         rightTitles: AxisTitles(drawBelowEverything: false),
-          //       ),
-          //       barGroups: controller.userAllData.value.allExpense!.map((data) {
-          //         return _BarChartData(
-          //           x: data.cost!.toInt(),
-          //           toY: double.parse("${data.cost}"),
-          //           color: Colors.red,
-          //         );
-          //       }).toList(),
-          //     ),
-          //   ),
-          // ),
           SizedBox(height: 40),
         ],
       ),
-    );
-  }
-
-  BarChartGroupData _BarChartData({
-    required int x,
-    required double toY,
-    required Color color,
-  }) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [
-        BarChartRodData(
-          toY: toY,
-          color: color,
-          width: 16,
-          borderRadius: BorderRadius.circular(4),
-        ),
-      ],
     );
   }
 }

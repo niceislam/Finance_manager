@@ -36,6 +36,15 @@ class HomeController extends GetxController
   final ImagePicker picker = ImagePicker();
   RxString imagePath = "".obs;
   RxString showImage = "".obs;
+  Stream<DocumentSnapshot<Map<String, dynamic>>>? userStream;
+
+  void setStream() async {
+    String uid = await LocalStorage().readData(key: "login");
+    userStream = FirebaseFirestore.instance
+        .collection("users")
+        .doc(uid)
+        .snapshots();
+  }
 
   void cameraImage() async {
     XFile? path = await picker.pickImage(source: ImageSource.camera);
@@ -168,6 +177,7 @@ class HomeController extends GetxController
 
   @override
   void onInit() {
+    setStream();
     inintData();
     localeCheck();
     floatingSlide();

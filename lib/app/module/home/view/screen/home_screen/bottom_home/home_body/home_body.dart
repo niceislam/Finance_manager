@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/home_body/part/current_balance.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/home_body/part/main_body.dart';
