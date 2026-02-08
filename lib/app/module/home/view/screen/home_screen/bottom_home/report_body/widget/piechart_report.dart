@@ -15,6 +15,7 @@ class PieChartCustom extends StatelessWidget {
         sectionsSpace: 0,
         sections: [
           PieChartSectionData(value: 70, radius: 115.r, color: Colors.red),
+          PieChartSectionData(value: 300, radius: 115.r, color: Colors.green),
           PieChartSectionData(value: 100, radius: 115.r, color: Colors.teal),
         ],
       ),

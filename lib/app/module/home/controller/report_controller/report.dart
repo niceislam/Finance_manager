@@ -3,6 +3,11 @@ import 'package:get/get.dart';
 
 class ReportController extends GetxController {
   HomeController Hcontroller = Get.find<HomeController>();
-  RxList<String> reportList = ["All", "Today", "Weekly", "Monthly"].obs;
-  RxString initialValue = "All".obs;
+  RxList<String> ReportDayCategory = ["All", "Today", "Weekly", "Monthly"].obs;
+  RxList<String> ReportChartCategory = ["Pie Chart", "Bar Chart"].obs;
+  RxString storeDayValue = "All".obs;
+  RxString storeChartValue = "Pie Chart".obs;
+  RxList barChartReport = [].obs;
+
+  void BarChartControl({required String value}) {}
 }
