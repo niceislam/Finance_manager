@@ -3,8 +3,6 @@ import 'package:finance_management/app/module/home/controller/report_controller/
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-
 import '../../../../../../../Global_widget/custom_text.dart';
 
 class BarchartReport extends StatelessWidget {
@@ -16,6 +14,7 @@ class BarchartReport extends StatelessWidget {
     return BarChart(
       duration: Duration(seconds: 1),
       BarChartData(
+        groupsSpace: 10,
         titlesData: FlTitlesData(
           rightTitles: AxisTitles(),
           topTitles: AxisTitles(),
@@ -23,13 +22,24 @@ class BarchartReport extends StatelessWidget {
             sideTitles: SideTitles(
               showTitles: true,
               getTitlesWidget: (value, Titlemeta) {
-                return CustomText(text: "d");
+                if (controller.barChartReport.isNotEmpty) {
+                  for (var i in controller.barChartReport) {
+                    return CustomText(
+                      text: i.dateTime.toString().substring(0, 3),
+                      fontsize: 10,
+                    );
+                  }
+                }
+                return SizedBox();
               },
             ),
             axisNameSize: 25.h,
             axisNameWidget: Row(
               spacing: 15,
               mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _bottomWidget(title: "Expense", conColor: Colors.teal),
+              ],
             ),
           ),
         ),
@@ -37,10 +47,14 @@ class BarchartReport extends StatelessWidget {
         alignment: BarChartAlignment.start,
         gridData: FlGridData(show: false),
         backgroundColor: Colors.grey.shade100,
-        barGroups: [
-          _BarChartGroupData(incomeValue: 1000, costValue: 500, xvalue: 30),
-          _BarChartGroupData(incomeValue: 300, costValue: 50, xvalue: 10),
-        ],
+        barGroups: controller.barChartReport
+            .map(
+              (v) => _BarChartGroupData(
+                costValue: double.parse("${v.cost}"),
+                xvalue: 10,
+              ),
+            )
+            .toList(),
         borderData: FlBorderData(
           border: Border.all(color: Colors.grey.shade200),
         ),
@@ -66,7 +80,6 @@ class BarchartReport extends StatelessWidget {
   }
 
   BarChartGroupData _BarChartGroupData({
-    required double incomeValue,
     required double costValue,
     required int xvalue,
   }) {
@@ -74,16 +87,9 @@ class BarchartReport extends StatelessWidget {
       x: xvalue,
       barRods: [
         BarChartRodData(
-          toY: incomeValue,
-          color: Colors.teal,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(2),
-            topRight: Radius.circular(2),
-          ),
-        ),
-        BarChartRodData(
+          width: 15,
           toY: costValue,
-          color: Colors.red,
+          color: Colors.teal,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(3),
             topRight: Radius.circular(3),

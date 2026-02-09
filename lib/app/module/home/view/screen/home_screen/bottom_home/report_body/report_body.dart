@@ -1,12 +1,15 @@
-import 'dart:convert';
 import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/report_controller/report.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/report_body/widget/BarChart/barChart_Report.dart';
+import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/report_body/widget/pie_chart/piechart_report.dart';
+import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/report_body/widget/report_details.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/report_body/widget/report_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
+import '../../../../../../../data/dummy_data/report_page_color.dart';
 
 class ReportBody extends StatelessWidget {
   const ReportBody({super.key});
@@ -85,11 +88,17 @@ class ReportBody extends StatelessWidget {
                       //PieChart
                       AspectRatio(
                         aspectRatio: 1.3.r,
-                        child: BarchartReport(controller: controller),
+                        child: controller.storeChartValue.value == "Pie Chart"
+                            ? PieChartCustom(controller: controller)
+                            : BarchartReport(controller: controller),
                       ),
 
                       SizedBox(height: 20),
-                      CustomText(text: jsonEncode(controller.barChartReport)),
+                      CustomText(text: "Details", fontWeight: FontWeight.w600),
+                      SizedBox(height: 10),
+
+                      //Details
+                      ReportDetails(controller: controller),
                     ],
                   );
                 }),

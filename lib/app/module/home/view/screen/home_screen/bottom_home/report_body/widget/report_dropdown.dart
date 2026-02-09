@@ -35,7 +35,7 @@ class ReportDropdown extends StatelessWidget {
           items: itemList?.map<DropdownMenuItem<String>>((v) {
             return DropdownMenuItem(
               value: v,
-              child: CustomText(text: v, fontsize: 15.sp),
+              child: CustomText(text: v, fontsize: 13.sp),
             );
           }).toList(),
           onChanged: onchanged,
