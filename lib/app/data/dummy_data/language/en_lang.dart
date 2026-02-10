@@ -27,10 +27,12 @@ class EnglshLanguage {
     "No_data": "No Data Found",
     "updateInfo_title": "Information",
     "No_data_today": "Today No Data Found",
-    "drawer_Budget" :"Budget",
-    "drawer_settings" :"Settings",
-    "drawer_language" :"Language",
-    "drawer_logOut" :"Log out",
-    "Drawer_privacy":"Privacy Policy"
+    "drawer_Budget": "Budget",
+    "drawer_settings": "Settings",
+    "drawer_language": "Language",
+    "drawer_logOut": "Log out",
+    "Drawer_privacy": "Privacy Policy",
+    "No_data_found": "No Data Found",
+    "Details": "Details",
   };
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/report_controller/report.dart';
@@ -25,7 +27,6 @@ class ReportBody extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Container(height: 20.h, width: size.width, color: Colors.teal),
-
               //body
               Container(
                 padding: EdgeInsets.only(top: 10, left: 15, right: 15),
@@ -41,15 +42,7 @@ class ReportBody extends StatelessWidget {
                 ),
                 child: Obx(() {
                   final check = controller.Hcontroller.userAllData.value;
-                  if (controller.storeDayValue.value == "All") {
-                    List<TExpense>? data =
-                        controller.Hcontroller.userAllData.value.allExpense;
-                    controller.barChartReport.assignAll(data ?? []);
-                  } else if (controller.storeDayValue.value == "Today") {
-                    List<TExpense>? data =
-                        controller.Hcontroller.userAllData.value.tExpense;
-                    controller.barChartReport.assignAll(data ?? []);
-                  }
+                  controller.categoryChecker();
                   if (check == FirebaseGetModel()) {
                     return Center(
                       child: CustomText(text: "Something went wrong"),
@@ -86,15 +79,21 @@ class ReportBody extends StatelessWidget {
                       SizedBox(height: 10),
 
                       //PieChart
-                      AspectRatio(
-                        aspectRatio: 1.3.r,
-                        child: controller.storeChartValue.value == "Pie Chart"
-                            ? PieChartCustom(controller: controller)
-                            : BarchartReport(controller: controller),
+                      Center(
+                        child: SizedBox(
+                          height: 205.h,
+                          width: MediaQuery.sizeOf(context).width,
+                          child: controller.storeChartValue.value == "Pie Chart"
+                              ? PieChartCustom(controller: controller)
+                              : BarchartReport(controller: controller),
+                        ),
                       ),
 
                       SizedBox(height: 20),
-                      CustomText(text: "Details", fontWeight: FontWeight.w600),
+                      CustomText(
+                        text: "Details".tr,
+                        fontWeight: FontWeight.w600,
+                      ),
                       SizedBox(height: 10),
 
                       //Details

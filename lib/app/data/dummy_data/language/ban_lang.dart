@@ -32,5 +32,7 @@ class BanglaLanguage {
     "drawer_language" : "ভাষা",
     "drawer_logOut" : "লগ আউট",
     "Drawer_privacy" : "প্রাইভেসি পলিসি",
+    "No_data_found": "কোনো তথ্য পাওয়া যায়নি",
+    "Details": "বিস্তারিত"
   };
 }

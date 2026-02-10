@@ -1,8 +1,10 @@
-import 'package:finance_management/app/data/model/firebase_get_model.dart';
+import 'dart:developer';
+
 import 'package:finance_management/app/module/home/controller/report_controller/report.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../../../../../../Global_widget/custom_text.dart';
 
 class BarchartReport extends StatelessWidget {
@@ -11,55 +13,63 @@ class BarchartReport extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BarChart(
-      duration: Duration(seconds: 1),
-      BarChartData(
-        groupsSpace: 10,
-        titlesData: FlTitlesData(
-          rightTitles: AxisTitles(),
-          topTitles: AxisTitles(),
-          bottomTitles: AxisTitles(
-            sideTitles: SideTitles(
-              showTitles: true,
-              getTitlesWidget: (value, Titlemeta) {
-                if (controller.barChartReport.isNotEmpty) {
-                  for (var i in controller.barChartReport) {
-                    return CustomText(
-                      text: i.dateTime.toString().substring(0, 3),
-                      fontsize: 10,
-                    );
+    if (controller.barChartReport.isNotEmpty) {
+      return BarChart(
+        duration: Duration(seconds: 1),
+        BarChartData(
+          groupsSpace: 15,
+          titlesData: FlTitlesData(
+            rightTitles: AxisTitles(),
+            topTitles: AxisTitles(),
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                getTitlesWidget: (value, Titlemeta) {
+                  int index = value.toInt();
+                  if (index >= 0 && index < controller.barChartReport.length) {
+                    if (controller.barChartReport[index].dateTime != "") {
+                      return SideTitleWidget(
+                        meta: Titlemeta,
+                        child: CustomText(
+                          text: controller.barChartReport[index].dateTime
+                              .toString()
+                              .substring(0, 3),
+                        ),
+                      );
+                    }
+                    return SizedBox();
                   }
-                }
-                return SizedBox();
-              },
-            ),
-            axisNameSize: 25.h,
-            axisNameWidget: Row(
-              spacing: 15,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _bottomWidget(title: "Expense", conColor: Colors.teal),
-              ],
+                  return SizedBox();
+                },
+              ),
+              axisNameSize: 25.h,
+              axisNameWidget: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _bottomWidget(title: "Expense", conColor: Colors.teal),
+                ],
+              ),
             ),
           ),
-        ),
 
-        alignment: BarChartAlignment.start,
-        gridData: FlGridData(show: false),
-        backgroundColor: Colors.grey.shade100,
-        barGroups: controller.barChartReport
-            .map(
-              (v) => _BarChartGroupData(
-                costValue: double.parse("${v.cost}"),
-                xvalue: 10,
-              ),
-            )
-            .toList(),
-        borderData: FlBorderData(
-          border: Border.all(color: Colors.grey.shade200),
+          alignment: BarChartAlignment.start,
+          gridData: FlGridData(show: false),
+          backgroundColor: Colors.grey.shade100,
+          barGroups: controller.barChartReport.asMap().entries.map((v) {
+            int index = v.key;
+            var value = v.value;
+            return _BarChartGroupData(
+              costValue: double.parse("${value.cost}"),
+              xvalue: index,
+            );
+          }).toList(),
+          borderData: FlBorderData(
+            border: Border.all(color: Colors.grey.shade200),
+          ),
         ),
-      ),
-    );
+      );
+    }
+    return Center(child: CustomText(text: "No_data_found".tr));
   }
 
   Row _bottomWidget({required String title, required Color conColor}) {
@@ -87,7 +97,7 @@ class BarchartReport extends StatelessWidget {
       x: xvalue,
       barRods: [
         BarChartRodData(
-          width: 15,
+          width: 13.w,
           toY: costValue,
           color: Colors.teal,
           borderRadius: BorderRadius.only(
