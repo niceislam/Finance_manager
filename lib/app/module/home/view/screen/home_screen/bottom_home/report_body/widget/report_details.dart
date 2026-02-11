@@ -13,7 +13,7 @@ class ReportDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final item = controller.barChartReport;
+    final item = controller.barChartReport.reversed.toList();
     if (controller.barChartReport.isNotEmpty) {
       return Expanded(
         child: ListView.builder(
@@ -31,11 +31,11 @@ class ReportDetails extends StatelessWidget {
                     .myColors[index % ReportPageColor().myColors.length],
               ),
               title: CustomText(
-                text: "${controller.barChartReport[index].product}",
+                text: "${item[index].product}",
                 fontsize: 15.sp,
               ),
               subtitle: CustomText(
-                text: "${controller.barChartReport[index].costType}",
+                text: "${item[index].costType}",
                 textColor: Colors.grey,
                 fontsize: 11.sp,
               ),

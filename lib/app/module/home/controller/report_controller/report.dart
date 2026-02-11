@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class ReportController extends GetxController {
   HomeController Hcontroller = Get.find<HomeController>();
@@ -13,7 +14,7 @@ class ReportController extends GetxController {
   RxString storeChartValue = "Pie Chart".obs;
   RxList<TExpense> barChartReport = <TExpense>[].obs;
 
-  void categoryChecker() {
+  void categoryChecker()async{
     final fromData = Hcontroller.userAllData.value.allExpense;
     if (storeDayValue.value == "All") {
       List<TExpense>? data = Hcontroller.userAllData.value.allExpense;
@@ -27,9 +28,9 @@ class ReportController extends GetxController {
         for (int i = 0; i < fromData.length; i += 7) {
           double sum = 0.00;
           for (
-          int iData = i;
-          iData < i + 7 && iData < fromData.length;
-          iData++
+            int iData = i;
+            iData < i + 7 && iData < fromData.length;
+            iData++
           ) {
             sum = sum + fromData[iData].cost!.toDouble();
           }
@@ -46,17 +47,7 @@ class ReportController extends GetxController {
         barChartReport.assignAll([]);
       }
     } else if (storeDayValue.value == "Monthly") {
-      // if (fromData!.isNotEmpty) {
-      // log("==============${fromData[0].dateTime.toString().substring(3, 6)}");
-      // List monthlyData = [];
-      // var data = fromData
-      //     .where((v) => v.dateTime.toString().substring(3, 6) == "Jan")
-      //     .toList();
-      // log("========Data ${jsonEncode(data)}");
-      // } else {
-      //   barChartReport.assignAll([]);
-      // }
+      barChartReport.assignAll([]);
     }
   }
-
 }

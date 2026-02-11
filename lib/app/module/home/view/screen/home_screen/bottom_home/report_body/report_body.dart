@@ -76,7 +76,7 @@ class ReportBody extends StatelessWidget {
                         ],
                       ),
                       Divider(),
-                      SizedBox(height: 10),
+                      SizedBox(height: 8.h),
 
                       //PieChart
                       Center(
@@ -89,12 +89,12 @@ class ReportBody extends StatelessWidget {
                         ),
                       ),
 
-                      SizedBox(height: 20),
+                      SizedBox(height: 18.h),
                       CustomText(
                         text: "Details".tr,
                         fontWeight: FontWeight.w600,
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 8.h),
 
                       //Details
                       ReportDetails(controller: controller),
