@@ -23,8 +23,46 @@ class SettingsUi extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
+          spacing: 5,
           children: [
             CouponCardCusotm(
+              conColor: Colors.amber,
+              size: size,
+              firstText: [
+                CustomText(
+                  text: "FLAT",
+                  fontWeight: FontWeight.w900,
+                  textColor: Colors.white,
+                ),
+                CustomText(
+                  text: "50% off",
+                  textColor: Colors.white,
+                  fontsize: 18,
+                  fontWeight: FontWeight.w900,
+                ),
+                CustomText(
+                  text: "On your first order",
+                  textColor: Colors.white,
+                  fontsize: 13,
+                ),
+                CustomText(
+                  text: "use coupon code to get OFFER",
+                  textColor: Colors.white,
+                  fontsize: 12,
+                ),
+              ],
+              scndText: [
+                CustomText(text: "code", textColor: Colors.white),
+                CustomText(
+                  text: "GETFIRST",
+                  textColor: Colors.white,
+                  fontWeight: FontWeight.w900,
+                  fontsize: 15,
+                ),
+              ],
+            ),
+            CouponCardCusotm(
+              conColor: Colors.green,
               size: size,
               firstText: [
                 CustomText(
@@ -72,11 +110,13 @@ class CouponCardCusotm extends StatelessWidget {
     required this.size,
     this.firstText,
     this.scndText,
+    this.conColor,
   });
 
   final Size size;
   final List<Widget>? firstText;
   final List<Widget>? scndText;
+  final Color? conColor;
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +141,7 @@ class CouponCardCusotm extends StatelessWidget {
                     topLeft: Radius.circular(15),
                     bottomLeft: Radius.circular(15),
                   ),
-                  color: Colors.amber,
+                  color: conColor,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,7 +170,7 @@ class CouponCardCusotm extends StatelessWidget {
                     topRight: Radius.circular(15),
                     bottomRight: Radius.circular(15),
                   ),
-                  color: Colors.amber,
+                  color: conColor,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
