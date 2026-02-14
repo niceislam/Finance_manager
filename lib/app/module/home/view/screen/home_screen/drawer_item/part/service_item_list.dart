@@ -2,6 +2,7 @@ import 'package:finance_management/app/data/local/secure_storage/secure_storage.
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/view/screen/add_transection_screen/add_transection.dart';
 import 'package:finance_management/app/module/home/view/screen/authentication_screen/Auth_main.dart';
+import 'package:finance_management/app/module/home/view/screen/home_screen/settings_screen/settings_ui.dart';
 import 'package:finance_management/app/module/home/view/screen/splash_sreen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -81,6 +82,7 @@ class ServiceItemList extends StatelessWidget {
             leadingIcon: Icons.settings,
             ontap: () {
               controller.selectedIndex.value = 6;
+              Get.to(() => SettingsUi());
             },
           ),
           CustomListTile(
