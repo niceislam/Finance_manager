@@ -1,19 +1,21 @@
-import 'package:finance_management/app/module/home/Global_widget/custom_appbar.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
+import 'package:finance_management/app/module/home/controller/settings_controller/settings_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../Global_widget/custom_appbar.dart';
 
 class SettingsUi extends StatelessWidget {
   const SettingsUi({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.sizeOf(context);
+    SettingsController controller = Get.put(SettingsController());
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(49),
+        preferredSize: Size.fromHeight(48),
         child: CustomAppbar(
-          leadingIcon: Icon(Icons.arrow_back_ios_sharp, color: Colors.white),
+          leadingIcon: Icon(Icons.arrow_back_ios, color: Colors.white),
           leadingTap: () {
             Get.back();
           },
@@ -21,203 +23,71 @@ class SettingsUi extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
         child: Column(
-          spacing: 5,
+          spacing: 10,
           children: [
-            CouponCardCusotm(
-              conColor: Colors.amber,
-              size: size,
-              firstText: [
-                CustomText(
-                  text: "FLAT",
-                  fontWeight: FontWeight.w900,
-                  textColor: Colors.white,
-                ),
-                CustomText(
-                  text: "50% off",
-                  textColor: Colors.white,
-                  fontsize: 18,
-                  fontWeight: FontWeight.w900,
-                ),
-                CustomText(
-                  text: "On your first order",
-                  textColor: Colors.white,
-                  fontsize: 13,
-                ),
-                CustomText(
-                  text: "use coupon code to get OFFER",
-                  textColor: Colors.white,
-                  fontsize: 12,
-                ),
-              ],
-              scndText: [
-                CustomText(text: "code", textColor: Colors.white),
-                CustomText(
-                  text: "GETFIRST",
-                  textColor: Colors.white,
-                  fontWeight: FontWeight.w900,
-                  fontsize: 15,
-                ),
-              ],
+            _buildAnimatedContainer(
+              context,
+              controller: controller,
+              index: 1,
+              title: "Delete All Data",
             ),
-            CouponCardCusotm(
-              conColor: Colors.green,
-              size: size,
-              firstText: [
-                CustomText(
-                  text: "FLAT",
-                  fontWeight: FontWeight.w900,
-                  textColor: Colors.white,
-                ),
-                CustomText(
-                  text: "50% off",
-                  textColor: Colors.white,
-                  fontsize: 18,
-                  fontWeight: FontWeight.w900,
-                ),
-                CustomText(
-                  text: "On your first order",
-                  textColor: Colors.white,
-                  fontsize: 13,
-                ),
-                CustomText(
-                  text: "use coupon code to get OFFER",
-                  textColor: Colors.white,
-                  fontsize: 12,
-                ),
-              ],
-              scndText: [
-                CustomText(text: "code", textColor: Colors.white),
-                CustomText(
-                  text: "GETFIRST",
-                  textColor: Colors.white,
-                  fontWeight: FontWeight.w900,
-                  fontsize: 15,
-                ),
-              ],
+            _buildAnimatedContainer(
+              context,
+              controller: controller,
+              index: 2,
+              title: "Delete Today Data",
             ),
           ],
         ),
       ),
     );
   }
-}
 
-class CouponCardCusotm extends StatelessWidget {
-  const CouponCardCusotm({
-    super.key,
-    required this.size,
-    this.firstText,
-    this.scndText,
-    this.conColor,
-  });
-
-  final Size size;
-  final List<Widget>? firstText;
-  final List<Widget>? scndText;
-  final Color? conColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      spacing: 1,
-      children: [
-        Flexible(
-          flex: 10,
-          child: Stack(
-            children: [
-              Container(
-                padding: EdgeInsets.only(
-                  top: 13,
-                  left: 40,
-                  bottom: 13,
-                  right: 20,
+  Obx _buildAnimatedContainer(
+    BuildContext context, {
+    String? title,
+    VoidCallback? ontap,
+    required int index,
+    required SettingsController controller,
+  }) {
+    return Obx(
+      () => GestureDetector(
+        onTap: ontap,
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 300 + (index * 200)),
+          curve: Curves.decelerate,
+          transform: Matrix4.translationValues(
+            controller.isSlide.isTrue ? 0 : 500,
+            0,
+            0,
+          ),
+          child: Container(
+            height: 40.h,
+            width: MediaQuery.sizeOf(context).width,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade400,
+                  offset: Offset(3, 5),
+                  blurRadius: 5,
+                  spreadRadius: 0,
                 ),
-                height: 112,
-                width: size.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    bottomLeft: Radius.circular(15),
-                  ),
-                  color: conColor,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: firstText ?? [],
-                ),
+              ],
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.teal.shade200,
+            ),
+            child: Center(
+              child: CustomText(
+                text: title ?? "",
+                textColor: Colors.red,
+                fontsize: 14.sp,
               ),
-              CloseIconShow(top: 6, left: 6),
-              CloseIconShow(top: 6, right: 6),
-              CloseIconShow(bottom: 6, left: 6),
-              CloseIconShow(bottom: 6, right: 6),
-
-              WhiteCircle(top: -10, right: -10),
-              WhiteCircle(bottom: -10, right: -10),
-            ],
+            ),
           ),
         ),
-        Flexible(
-          flex: 4,
-          child: Stack(
-            children: [
-              Container(
-                height: 112,
-                width: size.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(15),
-                    bottomRight: Radius.circular(15),
-                  ),
-                  color: conColor,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: scndText ?? [],
-                ),
-              ),
-              CloseIconShow(top: 6, left: 6),
-              CloseIconShow(top: 6, right: 6),
-              CloseIconShow(bottom: 6, left: 6),
-              CloseIconShow(bottom: 6, right: 6),
-              WhiteCircle(top: -10, left: -10),
-              WhiteCircle(bottom: -10, left: -10),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Positioned WhiteCircle({
-    double? top,
-    double? bottom,
-    double? left,
-    double? right,
-  }) {
-    return Positioned(
-      top: top,
-      bottom: bottom,
-      left: left,
-      right: right,
-      child: CircleAvatar(radius: 10, backgroundColor: Colors.white),
-    );
-  }
-
-  Positioned CloseIconShow({
-    double? top,
-    double? bottom,
-    double? left,
-    double? right,
-  }) {
-    return Positioned(
-      top: top,
-      bottom: bottom,
-      left: left,
-      right: right,
-      child: Icon(Icons.close, color: Colors.white60, size: 22),
+      ),
     );
   }
 }
