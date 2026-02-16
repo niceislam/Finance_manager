@@ -28,12 +28,18 @@ class SettingsUi extends StatelessWidget {
           spacing: 10,
           children: [
             _buildAnimatedContainer(
+              ontap: () {
+                controller.deleteAllData();
+              },
               context,
               controller: controller,
               index: 1,
               title: "Delete All Data",
             ),
             _buildAnimatedContainer(
+              ontap: () {
+                controller.deleteTodayData();
+              },
               context,
               controller: controller,
               index: 2,
@@ -69,7 +75,7 @@ class SettingsUi extends StatelessWidget {
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.shade400,
+                  color: Colors.grey.shade300,
                   offset: Offset(3, 5),
                   blurRadius: 5,
                   spreadRadius: 0,

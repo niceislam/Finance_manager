@@ -3,7 +3,6 @@ import 'package:finance_management/app/module/home/Global_widget/custom_text.dar
 import 'package:finance_management/app/module/home/view/screen/add_transection_screen/add_transection.dart';
 import 'package:finance_management/app/module/home/view/screen/authentication_screen/Auth_main.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/settings_screen/settings_ui.dart';
-import 'package:finance_management/app/module/home/view/screen/splash_sreen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
