@@ -1,3 +1,4 @@
+import 'package:finance_management/app/data/dummy_data/privacy_data.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_appbar.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/privacy_controller/privacy_controller.dart';
@@ -29,12 +30,12 @@ class PrivacyPolicy extends StatelessWidget {
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: 10,
+                itemCount: PrivacyData().privacyPolicyListEn.length,
                 itemBuilder: (context, index) {
+                  final item = PrivacyData().privacyPolicyListEn;
                   return ExpansionCardCustom(
-                    title: "Nice asce",
-                    body:
-                        "ami akta kharap chele amake chere jaite tomar aktutku ab",
+                    title: item[index]['title'],
+                    body: item[index]['body'],
                     index: index + 1,
                     controller: controller,
                   );

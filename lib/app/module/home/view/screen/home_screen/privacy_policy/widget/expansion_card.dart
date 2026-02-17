@@ -1,5 +1,6 @@
 import 'package:finance_management/app/module/home/controller/privacy_controller/privacy_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../Global_widget/custom_text.dart';
@@ -29,6 +30,10 @@ class ExpansionCardCustom extends StatelessWidget {
         ),
         duration: Duration(milliseconds: 100 + (index * 200)),
         child: ExpansionTile(
+          collapsedIconColor: Colors.teal,
+          splashColor: Colors.teal.shade300,
+
+          iconColor: Colors.teal,
           childrenPadding: EdgeInsets.all(10),
           collapsedShape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
@@ -37,17 +42,13 @@ class ExpansionCardCustom extends StatelessWidget {
           collapsedBackgroundColor: Colors.teal.shade100,
           dense: false,
           leading: CircleAvatar(
-            radius: 15,
+            radius: 13.r,
             backgroundColor: Colors.teal,
-            child: CustomText(text: "5", textColor: Colors.white),
+            child: CustomText(text: "$index", textColor: Colors.white),
           ),
-          title: CustomText(text: "Nice Islam"),
+          title: CustomText(text: title ?? ""),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          children: [
-            CustomText(
-              text: "ami akta nice amake keu chinen, ami kauke chinni na ",
-            ),
-          ],
+          children: [CustomText(text: body ?? "")],
         ),
       ),
     );
