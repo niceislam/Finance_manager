@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../controller/drawer_controller/drawer_controller.dart';
+import '../../privacy_policy/privacy_policy.dart';
 import '../../widget/language_slide.dart';
 import '../../widget/login_dialogue.dart';
 import 'custom_listTile.dart';
@@ -30,7 +31,9 @@ class ServiceItemList extends StatelessWidget {
             ontap: () {
               controller.selectedIndex.value = 1;
               Get.back();
-            }, index: 1, controller: controller,
+            },
+            index: 1,
+            controller: controller,
           ),
           CustomListTile(
             title: "Tr_title".tr,
@@ -41,7 +44,9 @@ class ServiceItemList extends StatelessWidget {
               controller.selectedIndex.value = 2;
               Get.back();
               controller.homeController.bottomIndex.value = 1;
-            }, index: 2, controller: controller,
+            },
+            index: 2,
+            controller: controller,
           ),
           CustomListTile(
             title: "Btm_Rp".tr,
@@ -52,10 +57,13 @@ class ServiceItemList extends StatelessWidget {
               controller.selectedIndex.value = 3;
               Get.back();
               controller.homeController.bottomIndex.value = 2;
-            }, index: 3, controller: controller,
+            },
+            index: 3,
+            controller: controller,
           ),
           CustomListTile(
-            index: 4, controller: controller,
+            index: 4,
+            controller: controller,
             title: "drawer_Budget".tr,
             Tileno: 4,
             selectedindex: controller.selectedIndex.value,
@@ -66,18 +74,21 @@ class ServiceItemList extends StatelessWidget {
             },
           ),
           CustomListTile(
-            index: 5, controller: controller,
+            index: 5,
+            controller: controller,
             title: "Drawer_privacy".tr,
             Tileno: 5,
             selectedindex: controller.selectedIndex.value,
             leadingIcon: Icons.privacy_tip,
             ontap: () {
               controller.selectedIndex.value = 5;
+              Get.to(() => PrivacyPolicy());
             },
           ),
           Divider(),
           CustomListTile(
-            index: 6, controller: controller,
+            index: 6,
+            controller: controller,
             title: "drawer_settings".tr,
             Tileno: 6,
             selectedindex: controller.selectedIndex.value,
@@ -88,7 +99,8 @@ class ServiceItemList extends StatelessWidget {
             },
           ),
           CustomListTile(
-            index: 7, controller: controller,
+            index: 7,
+            controller: controller,
             title: "drawer_language".tr,
             selectedindex: controller.selectedIndex.value,
             leadingIcon: Icons.language,
@@ -96,7 +108,8 @@ class ServiceItemList extends StatelessWidget {
           ),
           Divider(),
           CustomListTile(
-            index: 8, controller: controller,
+            index: 8,
+            controller: controller,
             titleColor: Colors.red,
             iconColor: Colors.red,
             selectColor: Colors.red.shade50,
