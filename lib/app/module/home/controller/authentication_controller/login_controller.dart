@@ -1,14 +1,10 @@
-import 'dart:developer';
-
-import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
-import 'package:finance_management/app/data/service/add_transection/login.dart';
 import 'package:finance_management/app/module/home/view/screen/authentication_screen/login_body/login_body.dart';
 import 'package:finance_management/app/module/home/view/screen/authentication_screen/register_body/register_body.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/home_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import '../../../../data/service/login.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> mykey = GlobalKey<FormState>();

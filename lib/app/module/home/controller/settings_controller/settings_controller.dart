@@ -2,8 +2,9 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
-import 'package:finance_management/app/module/home/Global_widget/custom_Textfield.dart';
-import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
+import 'package:finance_management/app/data/model/firebase_get_model.dart';
+import 'package:finance_management/app/data/service/todayData_delete.dart';
+import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/widget/custom_alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import 'package:get/get.dart';
 import '../../view/screen/home_screen/settings_screen/widget/delete_dialogue.dart';
 
 class SettingsController extends GetxController {
+  HomeController HController = Get.find<HomeController>();
   RxBool isSlide = false.obs;
   RxBool isLoading = false.obs;
   TextEditingController deleteAllController = TextEditingController();
@@ -52,15 +54,9 @@ class SettingsController extends GetxController {
   }
 
   Future<void> deleteTodayConfirm() async {
-    try {
-      String uid = await LocalStorage().readData(key: "login");
-      var callRef = FirebaseFirestore.instance.collection("users").doc(uid);
-      callRef.update({"tExpense": []});
-      EasyLoading.showSuccess("Delete Successfully");
-      Get.back();
-    } catch (error) {
-      log("=====Error: $error");
-    }
+    await TodaydataDelete().deleteService(
+      list: HomeController().userAllData.value.tExpense ?? [],
+    );
   }
 
   @override

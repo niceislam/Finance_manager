@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
-import '../../../../data/service/add_transection/register.dart';
+import '../../../../data/service/register.dart';
 
 class RegController extends GetxController {
   final mykey = GlobalKey<FormState>();

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
-import '../../local/secure_storage/secure_storage.dart';
+import '../local/secure_storage/secure_storage.dart';
 
 class ExpenseAddFirebase {
   Future addData({

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../../local/secure_storage/secure_storage.dart';
+import '../local/secure_storage/secure_storage.dart';
 
 class LoginService {
   Future login({
