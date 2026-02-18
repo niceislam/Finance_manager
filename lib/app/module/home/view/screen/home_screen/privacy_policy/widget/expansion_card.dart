@@ -1,4 +1,5 @@
 import 'package:finance_management/app/module/home/controller/privacy_controller/privacy_controller.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -46,9 +47,15 @@ class ExpansionCardCustom extends StatelessWidget {
             backgroundColor: Colors.teal,
             child: CustomText(text: "$index", textColor: Colors.white),
           ),
-          title: CustomText(text: title ?? ""),
+          title: CustomText(text: title ?? "", fontsize: 14.sp),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          children: [CustomText(text: body ?? "")],
+          children: [
+            SelectableText(
+              selectionColor: Colors.grey,
+              body ?? "",
+              style: TextStyle(fontFamily: "myFont", fontSize: 14.sp),
+            ),
+          ],
         ),
       ),
     );

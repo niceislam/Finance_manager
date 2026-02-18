@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../../Global_widget/custom_text.dart';
 
 class CustomAlertDia extends StatelessWidget {
-  const CustomAlertDia({super.key});
+  const CustomAlertDia({
+    super.key,
+    this.title,
+    this.body,
+    this.yesOntap,
+    this.noOntap,
+  });
+  final String? title;
+  final String? body;
+  final VoidCallback? yesOntap;
+  final VoidCallback? noOntap;
 
   @override
   Widget build(BuildContext context) {
@@ -15,32 +26,26 @@ class CustomAlertDia extends StatelessWidget {
       ),
       title: Center(
         child: CustomText(
-          text: "Exit App",
+          text: title ?? "",
           fontsize: 18.sp,
-          fontWeight: FontWeight.w900,
+          fontWeight: FontWeight.w600,
         ),
       ),
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
-        children: [
-          CustomText(text: "Are you sure to Exit this app?", fontsize: 15.sp),
-        ],
+        children: [CustomText(text: body ?? "", fontsize: 15.sp)],
       ),
       actions: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-          onPressed: () {
-            Navigator.pop(context, true);
-          },
-          child: CustomText(text: "Yes", textColor: Colors.white),
+          onPressed: yesOntap,
+          child: CustomText(text: "yes".tr, textColor: Colors.white),
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-          onPressed: () {
-            Navigator.pop(context, false);
-          },
-          child: CustomText(text: "No", textColor: Colors.white),
+          onPressed: noOntap,
+          child: CustomText(text: "no".tr, textColor: Colors.white),
         ),
       ],
     );

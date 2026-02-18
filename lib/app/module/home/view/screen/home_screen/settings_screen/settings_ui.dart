@@ -19,7 +19,7 @@ class SettingsUi extends StatelessWidget {
           leadingTap: () {
             Get.back();
           },
-          centerText: "Settings",
+          centerText: "drawer_settings".tr,
         ),
       ),
       body: Padding(
@@ -34,7 +34,7 @@ class SettingsUi extends StatelessWidget {
               context,
               controller: controller,
               index: 1,
-              title: "Delete All Data",
+              title: "Delete_all".tr,
             ),
             _buildAnimatedContainer(
               ontap: () {
@@ -43,7 +43,7 @@ class SettingsUi extends StatelessWidget {
               context,
               controller: controller,
               index: 2,
-              title: "Delete Today Data",
+              title: "Delete_Today".tr,
             ),
           ],
         ),

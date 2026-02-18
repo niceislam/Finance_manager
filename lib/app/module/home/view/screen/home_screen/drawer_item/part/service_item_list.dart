@@ -1,5 +1,6 @@
 import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
+import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:finance_management/app/module/home/view/screen/add_transection_screen/add_transection.dart';
 import 'package:finance_management/app/module/home/view/screen/authentication_screen/Auth_main.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/settings_screen/settings_ui.dart';
@@ -32,7 +33,6 @@ class ServiceItemList extends StatelessWidget {
               controller.selectedIndex.value = 1;
               Get.back();
             },
-            index: 1,
             controller: controller,
           ),
           CustomListTile(
@@ -45,7 +45,6 @@ class ServiceItemList extends StatelessWidget {
               Get.back();
               controller.homeController.bottomIndex.value = 1;
             },
-            index: 2,
             controller: controller,
           ),
           CustomListTile(
@@ -58,11 +57,9 @@ class ServiceItemList extends StatelessWidget {
               Get.back();
               controller.homeController.bottomIndex.value = 2;
             },
-            index: 3,
             controller: controller,
           ),
           CustomListTile(
-            index: 4,
             controller: controller,
             title: "drawer_Budget".tr,
             Tileno: 4,
@@ -74,7 +71,6 @@ class ServiceItemList extends StatelessWidget {
             },
           ),
           CustomListTile(
-            index: 5,
             controller: controller,
             title: "Drawer_privacy".tr,
             Tileno: 5,
@@ -87,7 +83,6 @@ class ServiceItemList extends StatelessWidget {
           ),
           Divider(),
           CustomListTile(
-            index: 6,
             controller: controller,
             title: "drawer_settings".tr,
             Tileno: 6,
@@ -95,11 +90,12 @@ class ServiceItemList extends StatelessWidget {
             leadingIcon: Icons.settings,
             ontap: () {
               controller.selectedIndex.value = 6;
-              Get.to(() => SettingsUi());
+              Get.to(() => SettingsUi())?.then((v) {
+                return Get.find<HomeController>().getAllData();
+              });
             },
           ),
           CustomListTile(
-            index: 7,
             controller: controller,
             title: "drawer_language".tr,
             selectedindex: controller.selectedIndex.value,
@@ -108,7 +104,6 @@ class ServiceItemList extends StatelessWidget {
           ),
           Divider(),
           CustomListTile(
-            index: 8,
             controller: controller,
             titleColor: Colors.red,
             iconColor: Colors.red,
@@ -128,12 +123,12 @@ class ServiceItemList extends StatelessWidget {
                       () => AuthPage(),
                     )?.then((v) => controller.homeController.getAllData());
                   },
-                  yesTitlle: "Log out",
-                  body: "Are you sure to Log out",
+                  yesTitlle: "drawer_logOut".tr,
+                  body: "logout_body".tr,
                   titleWidget: Center(
                     child: CustomText(
-                      text: "Confirmation",
-                      fontWeight: FontWeight.w700,
+                      text: "Confirmation".tr,
+                      fontWeight: FontWeight.w600,
                       fontsize: 22,
                     ),
                   ),

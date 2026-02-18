@@ -1,12 +1,19 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_Textfield.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
+import 'package:finance_management/app/module/home/view/screen/home_screen/widget/custom_alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import '../../view/screen/home_screen/settings_screen/widget/delete_dialogue.dart';
 
 class SettingsController extends GetxController {
   RxBool isSlide = false.obs;
+  RxBool isLoading = false.obs;
   TextEditingController deleteAllController = TextEditingController();
 
   void animationSlide() async {
@@ -15,50 +22,46 @@ class SettingsController extends GetxController {
   }
 
   void deleteAllData() {
+    Get.dialog(DeleteDialogue());
+  }
+
+  void deleteTodayData() {
     Get.dialog(
-      AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        title: Center(child: CustomText(text: "Confirmation", fontsize: 20)),
-        content: Column(
-          spacing: 10,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CustomText(
-              text: "Please type #delete to confirm delete",
-              fontsize: 13,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: CustomTextField(
-                textAlign: TextAlign.center,
-                controller: deleteAllController,
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                if (deleteAllController.text == "delete") {
-                  EasyLoading.showSuccess("Delete Successfully");
-                } else {
-                  EasyLoading.showError("error");
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              child: CustomText(text: "Confirm", textColor: Colors.white),
-            ),
-          ],
-        ),
+      CustomAlertDia(
+        title: "Confirmation".tr,
+        body: "delete_today_body".tr,
+        yesOntap: () {
+          deleteTodayConfirm();
+        },
+        noOntap: () {
+          Get.back();
+        },
       ),
     );
   }
 
-  void deleteAllConfirm() {}
+  void deleteAllConfirm() async {
+    isLoading.value = true;
+    await Future.delayed(Duration(seconds: 1));
+    if (deleteAllController.text == "delete") {
+      EasyLoading.showSuccess("Delete Successfully");
+    } else {
+      EasyLoading.showError("Don't match");
+    }
+    isLoading.value = false;
+  }
 
-  void deleteTodayData() {}
+  Future<void> deleteTodayConfirm() async {
+    try {
+      String uid = await LocalStorage().readData(key: "login");
+      var callRef = FirebaseFirestore.instance.collection("users").doc(uid);
+      callRef.update({"tExpense": []});
+      EasyLoading.showSuccess("Delete Successfully");
+      Get.back();
+    } catch (error) {
+      log("=====Error: $error");
+    }
+  }
 
   @override
   void onInit() {

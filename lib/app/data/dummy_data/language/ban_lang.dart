@@ -31,8 +31,20 @@ class BanglaLanguage {
     "drawer_settings" : "সেটিংস",
     "drawer_language" : "ভাষা",
     "drawer_logOut" : "লগ আউট",
+    "Cancel": "বাতিল করুন",
+    "logout_body": "আপনি কি লগ আউট করতে নিশ্চিত?",
     "Drawer_privacy" : "প্রাইভেসি পলিসি",
     "No_data_found": "কোনো তথ্য পাওয়া যায়নি",
-    "Details": "বিস্তারিত"
+    "Details": "বিস্তারিত",
+    "Delete_all": "সব তথ্য মুছে ফেলুন",
+    "Delete_Today": "আজকের তথ্য মুছে ফেলুন",
+    "Confirmation": "নিশ্চিতকরণ",
+    "delete_all_body": "মুছে ফেলা নিশ্চিত করতে দয়া করে #delete টাইপ করুন",
+    "delete_today_body": "আপনি কি আজকের তথ্য মুছে ফেলার বিষয়ে নিশ্চিত?",
+    "Confirm": "নিশ্চিত করুন",
+    "yes": "হ্যাঁ",
+    "no": "না",
+    "PopApp_title": "অ্যাপ থেকে বের হন",
+    "PopApp_body": "আপনি কি নিশ্চিত যে এই অ্যাপটি থেকে বের হয়ে যাবেন?",
   };
 }

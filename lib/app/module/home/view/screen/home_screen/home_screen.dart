@@ -35,7 +35,16 @@ class HomeScreen extends StatelessWidget {
           final souldpop = await showDialog(
             context: context,
             builder: (context) {
-              return CustomAlertDia();
+              return CustomAlertDia(
+                yesOntap: () {
+                  Navigator.pop(context, true);
+                },
+                noOntap: () {
+                  Navigator.pop(context, false);
+                },
+                title: "PopApp_title".tr,
+                body: "PopApp_body".tr,
+              );
             },
           );
           if (souldpop == true) {

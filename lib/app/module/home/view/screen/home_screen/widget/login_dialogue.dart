@@ -9,7 +9,8 @@ class LoginDialogue extends StatelessWidget {
     this.body,
     required this.yesButton,
     this.yesTitlle,
-    this.titleWidget, this.icon,
+    this.titleWidget,
+    this.icon,
   });
   final String? body;
   final String? yesTitlle;
@@ -40,7 +41,8 @@ class LoginDialogue extends StatelessWidget {
             text: body ?? "Please Login Again",
             textColor: Colors.black,
             fontsize: 17,
-            fontWeight: FontWeight.w900,
+            fontWeight: FontWeight.w500,
+            textAlign: TextAlign.center,
           ),
           SizedBox(height: 20),
           DialogueButton(
@@ -55,7 +57,7 @@ class LoginDialogue extends StatelessWidget {
               Get.back();
             },
             child: CustomText(
-              text: "Cancel",
+              text: "Cancel".tr,
               fontWeight: FontWeight.w500,
               fontsize: 16,
               textColor: Colors.red,

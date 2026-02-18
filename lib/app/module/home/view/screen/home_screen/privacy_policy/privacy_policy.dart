@@ -1,6 +1,5 @@
 import 'package:finance_management/app/data/dummy_data/privacy_data.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_appbar.dart';
-import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/privacy_controller/privacy_controller.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/privacy_policy/widget/expansion_card.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,7 @@ class PrivacyPolicy extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(49),
         child: CustomAppbar(
-          centerText: "Privacy & Policy",
+          centerText: "Drawer_privacy".tr,
           leadingIcon: Icon(Icons.arrow_back_ios, color: Colors.white),
           leadingTap: () {
             Get.back();
