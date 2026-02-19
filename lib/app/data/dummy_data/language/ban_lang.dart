@@ -37,6 +37,7 @@ class BanglaLanguage {
     "No_data_found": "কোনো তথ্য পাওয়া যায়নি",
     "Details": "বিস্তারিত",
     "Delete_all": "সব তথ্য মুছে ফেলুন",
+    "update": "আপডেট করুন",
     "Delete_Today": "আজকের তথ্য মুছে ফেলুন",
     "Confirmation": "নিশ্চিতকরণ",
     "delete_all_body": "মুছে ফেলা নিশ্চিত করতে দয়া করে #delete টাইপ করুন",

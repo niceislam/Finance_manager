@@ -36,6 +36,7 @@ class EnglshLanguage {
     "Drawer_privacy": "Privacy Policy",
     "No_data_found": "No Data Found",
     "Details": "Details",
+    "update":"Update",
     "Delete_all": "Delete All Data",
     "Delete_Today": "Delete Today Data",
     "Confirmation": "Confirmation",

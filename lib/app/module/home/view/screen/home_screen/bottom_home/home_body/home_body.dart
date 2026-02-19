@@ -17,48 +17,46 @@ class home_body extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeController controller = Get.put(HomeController());
     return Obx(
-      () => controller.isLoading.value == true
-          ? HomeShimmer()
-          : Stack(
+      () => Stack(
+        children: [
+          SingleChildScrollView(
+            controller: controller.scrollController,
+            child: Column(
               children: [
-                SingleChildScrollView(
-                  controller: controller.scrollController,
-                  child: Column(
-                    children: [
-                      Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(top: 40),
-                            height: 80.h,
-                            width: MediaQuery.sizeOf(context).width,
-                            color: Colors.teal,
-                          ),
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 40),
+                      height: 80.h,
+                      width: MediaQuery.sizeOf(context).width,
+                      color: Colors.teal,
+                    ),
 
-                          //home body
-                          Container(
-                            margin: EdgeInsets.only(top: 60),
-                            child: main_body(controller: controller),
-                          ),
+                    //home body
+                    Container(
+                      margin: EdgeInsets.only(top: 60),
+                      child: main_body(controller: controller),
+                    ),
 
-                          //current balance
-                          Padding(
-                            padding: const EdgeInsets.only(top: 15),
-                            child: CurrentBalance(controller: controller),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                AnimatedPositioned(
-                  width: MediaQuery.sizeOf(context).width,
-                  top: controller.scrollToSlide.isTrue ? 5 : -100,
-                  duration: Duration(milliseconds: 100),
-                  child: CurrentBalance(controller: controller),
+                    //current balance
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: CurrentBalance(controller: controller),
+                    ),
+                  ],
                 ),
               ],
             ),
+          ),
+          AnimatedPositioned(
+            width: MediaQuery.sizeOf(context).width,
+            top: controller.scrollToSlide.isTrue ? 5 : -100,
+            duration: Duration(milliseconds: 100),
+            child: CurrentBalance(controller: controller),
+          ),
+        ],
+      )
     );
   }
 }

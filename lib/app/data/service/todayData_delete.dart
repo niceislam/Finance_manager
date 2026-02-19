@@ -5,21 +5,26 @@ import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class TodaydataDelete {
-  Future<void> deleteService({required List<TExpense> list}) async {
+  Future deleteService({required List<TExpense> list}) async {
     try {
       String uid = await LocalStorage().readData(key: "login");
       var callRef = FirebaseFirestore.instance.collection("users").doc(uid);
       if (list != <TExpense>[]) {
         int value = 0;
         for (var i in list) {
-          value += i.cost ?? 0;
+          value += i.cost!;
         }
-        log("========DAta ${list[0].cost}");
+        callRef.update({
+          "tExpense": [],
+          "expense": FieldValue.increment(-value),
+        });
+        return true;
       } else {
-        EasyLoading.showError("Error");
+        return false;
       }
     } catch (error) {
       log("===Error:$error");
+      return false;
     }
   }
 }

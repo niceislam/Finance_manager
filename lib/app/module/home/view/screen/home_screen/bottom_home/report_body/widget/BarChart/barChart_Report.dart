@@ -17,31 +17,12 @@ class BarchartReport extends StatelessWidget {
       return BarChart(
         duration: Duration(seconds: 1),
         BarChartData(
-          groupsSpace: 15,
+          groupsSpace: 5,
           titlesData: FlTitlesData(
             rightTitles: AxisTitles(),
             topTitles: AxisTitles(),
             bottomTitles: AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: true,
-                getTitlesWidget: (value, Titlemeta) {
-                  int index = value.toInt();
-                  if (index >= 0 && index < controller.barChartReport.length) {
-                    if (controller.barChartReport[index].dateTime != "") {
-                      return SideTitleWidget(
-                        meta: Titlemeta,
-                        child: CustomText(
-                          text: controller.barChartReport[index].dateTime
-                              .toString()
-                              .substring(0, 3),
-                        ),
-                      );
-                    }
-                    return SizedBox();
-                  }
-                  return SizedBox();
-                },
-              ),
+              sideTitles: SideTitles(showTitles: false),
               axisNameSize: 25.h,
               axisNameWidget: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +78,7 @@ class BarchartReport extends StatelessWidget {
       x: xvalue,
       barRods: [
         BarChartRodData(
-          width: 13.w,
+          width: 8.w,
           toY: costValue,
           color: Colors.teal,
           borderRadius: BorderRadius.only(

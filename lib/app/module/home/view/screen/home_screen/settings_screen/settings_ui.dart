@@ -12,6 +12,7 @@ class SettingsUi extends StatelessWidget {
   Widget build(BuildContext context) {
     SettingsController controller = Get.put(SettingsController());
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(48),
         child: CustomAppbar(

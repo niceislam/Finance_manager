@@ -1,3 +1,4 @@
+import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/Global_widget/history_card.dart';
 import 'package:finance_management/app/module/home/controller/transection_controller/transection_controller.dart';

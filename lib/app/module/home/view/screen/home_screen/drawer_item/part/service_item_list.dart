@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../controller/drawer_controller/drawer_controller.dart';
+import '../../../new_screen.dart';
 import '../../privacy_policy/privacy_policy.dart';
 import '../../widget/language_slide.dart';
 import '../../widget/login_dialogue.dart';
@@ -90,9 +91,7 @@ class ServiceItemList extends StatelessWidget {
             leadingIcon: Icons.settings,
             ontap: () {
               controller.selectedIndex.value = 6;
-              Get.to(() => SettingsUi())?.then((v) {
-                return Get.find<HomeController>().getAllData();
-              });
+              Get.to(() => SettingsUi());
             },
           ),
           CustomListTile(
@@ -119,9 +118,7 @@ class ServiceItemList extends StatelessWidget {
                   icon: Icons.logout_outlined,
                   yesButton: () async {
                     await LocalStorage().deleteData(key: "login");
-                    Get.offAll(
-                      () => AuthPage(),
-                    )?.then((v) => controller.homeController.getAllData());
+                    Get.offAll(() => AuthPage());
                   },
                   yesTitlle: "drawer_logOut".tr,
                   body: "logout_body".tr,

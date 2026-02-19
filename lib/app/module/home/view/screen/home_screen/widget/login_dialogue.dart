@@ -52,7 +52,12 @@ class LoginDialogue extends StatelessWidget {
           ),
           SizedBox(height: 10),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red.shade50,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadiusGeometry.circular(5),
+              ),
+            ),
             onPressed: () {
               Get.back();
             },
@@ -85,9 +90,9 @@ class LoginDialogue extends StatelessWidget {
         ),
         onPressed: ontap,
         child: CustomText(
-          text: "${title}",
-          fontWeight: FontWeight.w600,
-          fontsize: 18,
+          text: title,
+          fontWeight: FontWeight.w500,
+          fontsize: 17,
         ),
       ),
     );

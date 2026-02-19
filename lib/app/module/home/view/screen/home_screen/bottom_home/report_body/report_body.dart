@@ -76,12 +76,12 @@ class ReportBody extends StatelessWidget {
                         ],
                       ),
                       Divider(),
-                      SizedBox(height: 8.h),
+                      SizedBox(height: 10.h),
 
-                      //PieChart
+                      //PieChart or Barchart
                       Center(
                         child: SizedBox(
-                          height: 205.h,
+                          height: 180.h,
                           width: MediaQuery.sizeOf(context).width,
                           child: controller.storeChartValue.value == "Pie Chart"
                               ? PieChartCustom(controller: controller)

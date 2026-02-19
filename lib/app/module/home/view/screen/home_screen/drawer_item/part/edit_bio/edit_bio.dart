@@ -15,6 +15,7 @@ class EditBiodataDialogue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      insetPadding: EdgeInsets.only(bottom: 1),
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.circular(5),
@@ -48,7 +49,7 @@ class EditBiodataDialogue extends StatelessWidget {
             hintText: "Age",
             controller: controller.ageEditController,
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: 5.h),
           Obx(
             () => controller.updateInfoLoading.value == true
                 ? CircularProgressIndicator(
@@ -69,7 +70,7 @@ class EditBiodataDialogue extends StatelessWidget {
                         controller.updateInfoButton();
                       },
                       child: CustomText(
-                        text: "Update",
+                        text: "update".tr,
                         textColor: Colors.white,
                         fontsize: 15.sp,
                       ),

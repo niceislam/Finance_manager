@@ -1,6 +1,9 @@
+import 'dart:convert';
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finance_management/app/core/utils/shimmer/home_shimmer.dart';
+import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/widget/custom_alert.dart';
@@ -58,7 +61,32 @@ class HomeScreen extends StatelessWidget {
             preferredSize: Size.fromHeight(41.h),
             child: AllAppbar(controller: controller),
           ),
-          body: Obx(() => controller.bottomPage[controller.bottomIndex.value]),
+          body: GetBuilder<HomeController>(
+            builder: (con) {
+              if (con.userStream == null) {
+                return Center(child: HomeShimmer());
+              }
+              return StreamBuilder<DocumentSnapshot>(
+                stream: controller.userStream,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return HomeShimmer();
+                  }
+                  if (snapshot.hasData) {
+                    FirebaseGetModel modelData = FirebaseGetModel();
+                    Map<String, dynamic> data =
+                        snapshot.data!.data() as Map<String, dynamic>;
+                    modelData = FirebaseGetModel.fromJson(data);
+                    controller.userAllData.value = modelData;
+                    return Obx(
+                      () => con.bottomPage[controller.bottomIndex.value],
+                    );
+                  }
+                  return Center(child: HomeShimmer());
+                },
+              );
+            },
+          ),
           bottomNavigationBar: CustomBottombar(controller: controller),
           floatingActionButton: floating_action(controller: controller),
         ),

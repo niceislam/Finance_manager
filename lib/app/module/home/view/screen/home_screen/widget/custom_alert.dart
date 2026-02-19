@@ -9,13 +9,13 @@ class CustomAlertDia extends StatelessWidget {
     super.key,
     this.title,
     this.body,
-    this.yesOntap,
-    this.noOntap,
+    required this.yesOntap,
+    required this.noOntap,
   });
   final String? title;
   final String? body;
-  final VoidCallback? yesOntap;
-  final VoidCallback? noOntap;
+  final VoidCallback yesOntap;
+  final VoidCallback noOntap;
 
   @override
   Widget build(BuildContext context) {
@@ -37,17 +37,34 @@ class CustomAlertDia extends StatelessWidget {
         children: [CustomText(text: body ?? "", fontsize: 15.sp)],
       ),
       actions: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-          onPressed: yesOntap,
-          child: CustomText(text: "yes".tr, textColor: Colors.white),
+        _buildElevatedButton(
+          backColor: Colors.red,
+          title: "yes".tr,
+          ontap: yesOntap,
         ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-          onPressed: noOntap,
-          child: CustomText(text: "no".tr, textColor: Colors.white),
+        _buildElevatedButton(
+          backColor: Colors.green,
+          title: "no".tr,
+          ontap: noOntap,
         ),
       ],
+    );
+  }
+
+  ElevatedButton _buildElevatedButton({
+    required Color backColor,
+    required String title,
+    required VoidCallback ontap,
+  }) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: backColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(10),
+        ),
+      ),
+      onPressed: ontap,
+      child: CustomText(text: title, textColor: Colors.white),
     );
   }
 }

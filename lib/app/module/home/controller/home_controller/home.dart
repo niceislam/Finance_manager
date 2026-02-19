@@ -34,15 +34,7 @@ class HomeController extends GetxController
   final ImagePicker picker = ImagePicker();
   RxString imagePath = "".obs;
   RxString showImage = "".obs;
-  Stream<DocumentSnapshot<Map<String, dynamic>>>? userStream;
-
-  void setStream() async {
-    String uid = await LocalStorage().readData(key: "login");
-    userStream = FirebaseFirestore.instance
-        .collection("users")
-        .doc(uid)
-        .snapshots();
-  }
+  Stream<DocumentSnapshot>? userStream;
 
   void cameraImage() async {
     XFile? path = await picker.pickImage(source: ImageSource.camera);
@@ -50,6 +42,17 @@ class HomeController extends GetxController
       imagePath.value = path.path;
     }
     Get.back();
+  }
+
+  Future<void> getFirebaseData() async {
+    String? uid = await LocalStorage().readData(key: "login");
+    if (uid != null) {
+      userStream = FirebaseFirestore.instance
+          .collection("users")
+          .doc(uid)
+          .snapshots();
+      update();
+    }
   }
 
   void galleryImage() async {
@@ -63,7 +66,7 @@ class HomeController extends GetxController
   Future<void> floatingTap() async {
     var status = await LocalStorage().readData(key: "login");
     if (status != null) {
-      Get.to(() => AddTransection())!.then((v) => getAllData());
+      Get.to(() => AddTransection());
     } else {
       Get.dialog(
         LoginDialogue(
@@ -98,17 +101,6 @@ class HomeController extends GetxController
     animController.repeat(reverse: true);
   }
 
-  Future<void> getAllData() async {
-    final imageData = await LocalStorage().readData(key: "image");
-    isLoading.value = true;
-    dynamic uid = await LocalStorage().readData(key: "login");
-    userAllData.value = await GetUserData().GetData(uid: uid);
-    if (imageData != null) {
-      showImage.value = imageData;
-    }
-    isLoading.value = false;
-  }
-
   void updateInfo({required dynamic item}) {
     Get.dialog(
       EditBiodataDialogue(controller: Get.find<HomeController>()),
@@ -131,7 +123,6 @@ class HomeController extends GetxController
 
     if (status) {
       Get.back();
-      getAllData();
       EasyLoading.showSuccess("Data Updated");
     } else {
       EasyLoading.showError("Something wrong");
@@ -169,13 +160,12 @@ class HomeController extends GetxController
   }
 
   void inintData() async {
-    await getAllData();
     deleteTodayInfo();
+    await getFirebaseData();
   }
 
   @override
   void onInit() {
-    setStream();
     inintData();
     localeCheck();
     floatingSlide();

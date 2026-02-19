@@ -20,8 +20,8 @@ class History_list extends StatelessWidget {
       child: Obx(() {
         if (controller.homeController.userAllData.value != FirebaseGetModel()) {
           final item = controller.homeController.userAllData.value;
-          final item2 = item.tExpense!.reversed.toList();
-          final item3 = item.allExpense!.reversed.toList();
+          final item2 = item.tExpense?.reversed.toList() ?? [];
+          final item3 = item.allExpense?.reversed.toList() ?? [];
           return controller.slideOnEnd.value == true
               ? item2.isEmpty
                     ? Center(child: CustomText(text: "No_data_today".tr))

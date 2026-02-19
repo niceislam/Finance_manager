@@ -2,6 +2,7 @@ import 'package:finance_management/app/module/home/controller/settings_controlle
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import '../../../../../Global_widget/custom_Textfield.dart';
 import '../../../../../Global_widget/custom_text.dart';
@@ -14,6 +15,7 @@ class DeleteDialogue extends StatelessWidget {
   Widget build(BuildContext context) {
     SettingsController controller = Get.put(SettingsController());
     return AlertDialog(
+      backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       title: Center(
         child: CustomText(
@@ -26,6 +28,7 @@ class DeleteDialogue extends StatelessWidget {
         spacing: 10,
         mainAxisSize: MainAxisSize.min,
         children: [
+          Center(child: Text("⚠️", style: TextStyle(fontSize: 40))),
           CustomText(
             text: "delete_all_body".tr,
             fontsize: 14,
@@ -36,7 +39,7 @@ class DeleteDialogue extends StatelessWidget {
             child: CustomTextField(
               borderSide: BorderSide.none,
               filled: true,
-              fillColor: Colors.grey.shade100,
+              fillColor: Colors.grey.shade200,
               focusedBorder: BorderSide.none,
               hintText: "delete",
               textAlign: TextAlign.center,
