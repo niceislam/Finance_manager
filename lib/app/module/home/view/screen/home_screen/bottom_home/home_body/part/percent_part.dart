@@ -28,7 +28,7 @@ class percent_part extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 10),
+      padding: EdgeInsets.only(left: 5, right: 5),
       height: 128.h,
       width: size.width,
       decoration: BoxDecoration(

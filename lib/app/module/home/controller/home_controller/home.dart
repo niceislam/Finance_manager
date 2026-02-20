@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../data/service/get_all_data.dart';
 import '../../../../data/service/update_bioData.dart';
+import '../../new/new_screen.dart';
 import '../../view/screen/add_transection_screen/add_transection.dart';
 import '../../view/screen/authentication_screen/Auth_main.dart';
 import '../../view/screen/home_screen/bottom_home/home_body/home_body.dart';
@@ -51,6 +52,10 @@ class HomeController extends GetxController
           .collection("users")
           .doc(uid)
           .snapshots();
+      userStream!.listen((snapshot) {
+        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+        userAllData.value = FirebaseGetModel.fromJson(data);
+      });
       update();
     }
   }
@@ -66,7 +71,7 @@ class HomeController extends GetxController
   Future<void> floatingTap() async {
     var status = await LocalStorage().readData(key: "login");
     if (status != null) {
-      Get.to(() => AddTransection());
+      Get.to(() => NewScreen(), arguments: userAllData);
     } else {
       Get.dialog(
         LoginDialogue(
