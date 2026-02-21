@@ -27,7 +27,8 @@ class PieChartCustom extends StatelessWidget {
             }
             return PieChartSectionData(
               showTitle: true,
-              title: "$percent",
+              title:
+                  "${controller.storeDayValue.value == "Monthly" ? controller.barChartReport[index].product : percent}",
               titleStyle: TextStyle(
                 color: Colors.white,
                 fontSize: 10,

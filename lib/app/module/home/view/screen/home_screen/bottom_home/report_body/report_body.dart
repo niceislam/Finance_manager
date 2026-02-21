@@ -42,7 +42,6 @@ class ReportBody extends StatelessWidget {
                 ),
                 child: Obx(() {
                   final check = controller.Hcontroller.userAllData.value;
-                  controller.categoryChecker();
                   if (check == FirebaseGetModel()) {
                     return Center(
                       child: CustomText(text: "Something went wrong"),

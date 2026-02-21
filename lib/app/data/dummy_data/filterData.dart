@@ -34,7 +34,6 @@ class FilterdataMonthly {
           };
 
           data.add(MonthlyConvertModel.fromJson(smallData));
-          log("======monthly $data");
         }
       }
     } else {
