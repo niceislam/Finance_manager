@@ -1,8 +1,5 @@
-import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
-import 'package:finance_management/app/module/home/Global_widget/history_card.dart';
 import 'package:finance_management/app/module/home/controller/transection_controller/transection_controller.dart';
-import 'package:finance_management/app/module/home/Global_widget/category_slider/CategorySlideBtn.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/transection_body/part/history_list.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/transection_body/part/search_bar.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/bottom_home/transection_body/part/slide_button.dart';

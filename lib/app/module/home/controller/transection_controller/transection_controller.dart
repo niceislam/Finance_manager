@@ -1,4 +1,5 @@
 import 'package:finance_management/app/data/dummy_data/filterData.dart';
+import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/data/model/monthlyConvert_model.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,11 +8,12 @@ import 'package:get/get.dart';
 class TransectionController extends GetxController {
   TextEditingController searchController = TextEditingController();
   final homeController = Get.find<HomeController>();
+  Rx<FirebaseGetModel> userData = FirebaseGetModel().obs;
   RxBool iconActive = false.obs;
   RxBool slideOnEnd = false.obs;
   RxList<MonthlyConvertModel> monthlyData = <MonthlyConvertModel>[].obs;
 
-  searchClearTap() {
+  void searchClearTap() {
     if (searchController.text.isNotEmpty) {
       searchController.clear();
     }
@@ -27,7 +29,7 @@ class TransectionController extends GetxController {
     }
   }
 
-  onEndSlidebtn() {
+  void onEndSlidebtn() {
     slideOnEnd.value = !slideOnEnd.value;
   }
 

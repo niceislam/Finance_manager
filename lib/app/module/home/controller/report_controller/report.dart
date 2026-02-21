@@ -12,9 +12,10 @@ class ReportController extends GetxController {
   RxString storeChartValue = "Pie Chart".obs;
   RxList<TExpense> barChartReport = <TExpense>[].obs;
   RxList<MonthlyConvertModel> monthlyData = <MonthlyConvertModel>[].obs;
+  Rx<FirebaseGetModel> userData = FirebaseGetModel().obs;
 
   void categoryChecker() async {
-    final fromData = Hcontroller.userAllData.value;
+    final fromData = userData.value;
     if (storeDayValue.value == "All") {
       List<TExpense>? data = fromData.allExpense;
       barChartReport.assignAll(data ?? []);
@@ -48,9 +49,13 @@ class ReportController extends GetxController {
 
   @override
   void onInit() {
+    userData.value = Hcontroller.userAllData.value;
     categoryChecker();
     storeDayValue.listen((v) {
       categoryChecker();
+    });
+    Hcontroller.userAllData.listen((j) {
+      userData.value = j;
     });
     super.onInit();
   }
