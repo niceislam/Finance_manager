@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:finance_management/app/data/dummy_data/iconData.dart';
 import 'package:finance_management/app/data/model/firebase_get_model.dart';
+import 'package:finance_management/app/data/model/monthlyConvert_model.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/add_transection_controller/add_transection.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:finance_management/app/module/home/controller/transection_controller/transection_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../Global_widget/history_card.dart';
@@ -53,19 +57,52 @@ class History_list extends StatelessWidget {
                   thickness: 5,
                   radius: Radius.circular(20),
                   child: ListView.builder(
+                    shrinkWrap: true,
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    itemCount: item3.length,
+                    itemCount: controller.monthlyData.length,
                     itemBuilder: (context, index) {
-                      return HistoryCard(
-                        ShowTime: true,
-                        subTitle2: item3[index].dateTime,
-                        icon: CustomIconData().data(
-                          ticket: item3[index].costType,
-                        ),
-                        title: item3[index].product,
-                        subTitle: item3[index].costType,
+                      final expansionData = controller.monthlyData[index];
+                      List<MonthlyData> expansionInData =
+                          expansionData.monthlyData ?? [];
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        child: ExpansionTile(
+                          collapsedIconColor: Colors.teal,
+                          splashColor: Colors.teal.shade300,
 
-                        actionTk: item3[index].cost,
+                          iconColor: Colors.teal,
+                          childrenPadding: EdgeInsets.all(10),
+                          collapsedShape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          backgroundColor: Colors.teal.shade100,
+                          collapsedBackgroundColor: Colors.teal.shade100,
+                          dense: false,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          title: CustomText(text: "${expansionData.monthName}"),
+                          children: [
+                            ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: expansionInData.length,
+                              itemBuilder: (context, index) {
+                                return HistoryCard(
+                                  ShowTime: true,
+                                  subTitle2: expansionInData[index].dateTime,
+                                  icon: CustomIconData().data(
+                                    ticket: expansionInData[index].costType,
+                                  ),
+                                  title: expansionInData[index].product,
+                                  subTitle: expansionInData[index].costType,
+
+                                  actionTk: expansionInData[index].cost,
+                                );
+                              },
+                            ),
+                          ],
+                        ),
                       );
                     },
                   ),

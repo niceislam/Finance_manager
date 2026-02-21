@@ -1,3 +1,5 @@
+import 'package:finance_management/app/data/dummy_data/filterData.dart';
+import 'package:finance_management/app/data/model/monthlyConvert_model.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -7,10 +9,21 @@ class TransectionController extends GetxController {
   final homeController = Get.find<HomeController>();
   RxBool iconActive = false.obs;
   RxBool slideOnEnd = false.obs;
+  RxList<MonthlyConvertModel> monthlyData = <MonthlyConvertModel>[].obs;
 
   searchClearTap() {
     if (searchController.text.isNotEmpty) {
       searchController.clear();
+    }
+  }
+
+  void filterMonth() async {
+    final source = homeController.userAllData.value.allExpense;
+    if (source!.isNotEmpty) {
+      List<MonthlyConvertModel> monthly = await FilterdataMonthly().filterData(
+        listData: homeController.userAllData.value.allExpense ?? [],
+      );
+      monthlyData.assignAll(monthly);
     }
   }
 
@@ -27,6 +40,7 @@ class TransectionController extends GetxController {
         iconActive.value = false;
       }
     });
+    filterMonth();
     super.onInit();
   }
 }
