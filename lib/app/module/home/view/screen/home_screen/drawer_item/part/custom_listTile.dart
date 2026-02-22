@@ -1,7 +1,6 @@
 import 'package:finance_management/app/module/home/controller/drawer_controller/drawer_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import '../../../../../Global_widget/custom_text.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -16,7 +15,6 @@ class CustomListTile extends StatelessWidget {
     this.iconColor,
     this.selectColor,
     this.trailing,
-    required this.controller,
   });
   final String? title;
   final IconData? leadingIcon;
@@ -27,11 +25,11 @@ class CustomListTile extends StatelessWidget {
   final Color? iconColor;
   final Color? selectColor;
   final Widget? trailing;
-  final AppDrawerController controller;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      splashColor: Colors.black12,
       trailing: trailing,
       minTileHeight: 36.h,
       shape: RoundedRectangleBorder(

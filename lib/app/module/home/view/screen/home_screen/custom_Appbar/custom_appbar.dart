@@ -24,14 +24,7 @@ class AllAppbar extends StatelessWidget {
               },
             )
           : val == 1
-          ? CustomAppbar(
-              centerText: "Btm_Tr".tr,
-              actionIcon: Icon(
-                Icons.more_vert,
-                color: Colors.white,
-                size: 27.5.r,
-              ),
-            )
+          ? CustomAppbar(centerText: "Btm_Tr".tr)
           : val == 2
           ? CustomAppbar(centerText: "Btm_Rp".tr)
           : SizedBox();

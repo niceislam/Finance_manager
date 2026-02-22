@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/module/home/Global_widget/custom_text.dart';
 import 'package:finance_management/app/module/home/controller/report_controller/report.dart';
@@ -10,8 +8,6 @@ import 'package:finance_management/app/module/home/view/screen/home_screen/botto
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
-import '../../../../../../../data/dummy_data/report_page_color.dart';
 
 class ReportBody extends StatelessWidget {
   const ReportBody({super.key});

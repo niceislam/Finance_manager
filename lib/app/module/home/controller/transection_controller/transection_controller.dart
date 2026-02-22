@@ -43,6 +43,7 @@ class TransectionController extends GetxController {
       }
     });
     filterMonth();
+    homeController.userAllData.listen((v) => filterMonth());
     super.onInit();
   }
 }

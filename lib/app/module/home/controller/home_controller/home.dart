@@ -14,6 +14,7 @@ import '../../view/screen/home_screen/bottom_home/home_body/home_body.dart';
 import '../../view/screen/home_screen/drawer_item/part/edit_bio/edit_bio.dart';
 import '../../view/screen/home_screen/bottom_home/report_body/report_body.dart';
 import '../../view/screen/home_screen/bottom_home/transection_body/transection_body.dart';
+import '../drawer_controller/drawer_controller.dart';
 
 class HomeController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -32,11 +33,18 @@ class HomeController extends GetxController
   RxBool updateInfoLoading = false.obs;
   final ImagePicker picker = ImagePicker();
   RxString imagePath = "".obs;
-  RxString showImage = "".obs;
   Stream<DocumentSnapshot>? userStream;
 
   void cameraImage() async {
     XFile? path = await picker.pickImage(source: ImageSource.camera);
+    if (path != null) {
+      imagePath.value = path.path;
+    }
+    Get.back();
+  }
+
+  void galleryImage() async {
+    XFile? path = await picker.pickImage(source: ImageSource.gallery);
     if (path != null) {
       imagePath.value = path.path;
     }
@@ -56,14 +64,6 @@ class HomeController extends GetxController
       });
       update();
     }
-  }
-
-  void galleryImage() async {
-    XFile? path = await picker.pickImage(source: ImageSource.gallery);
-    if (path != null) {
-      imagePath.value = path.path;
-    }
-    Get.back();
   }
 
   Future<void> floatingTap() async {
@@ -125,6 +125,7 @@ class HomeController extends GetxController
     );
 
     if (status) {
+      Get.find<AppDrawerController>().setPrImage();
       Get.back();
       EasyLoading.showSuccess("Data Updated");
     } else {
@@ -144,12 +145,12 @@ class HomeController extends GetxController
   }
 
   void deleteTodayInfo() async {
-    var TodayTime = DateTime.now().toString().split(" ")[0];
+    var todayTime = DateTime.now().toString().split(" ")[0];
     var uid = await LocalStorage().readData(key: "login");
     var storeTime = await LocalStorage().readData(key: "time");
 
     if (storeTime != null) {
-      if (storeTime != TodayTime) {
+      if (storeTime != todayTime) {
         var callRef = FirebaseFirestore.instance.collection("users").doc(uid);
         callRef.update({"tExpense": []});
         await LocalStorage().writeData(
@@ -158,7 +159,7 @@ class HomeController extends GetxController
         );
       }
     } else {
-      await LocalStorage().writeData(key: "time", value: TodayTime);
+      await LocalStorage().writeData(key: "time", value: todayTime);
     }
   }
 

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:finance_management/app/module/home/controller/drawer_controller/drawer_controller.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,8 @@ class ImageAndInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       final item = controller.homeController.userAllData.value;
-      final imageItem = controller.homeController.showImage.value;
+      final imageItem = controller.profileImage.value;
+      log("=====image222222222 $imageItem");
       return Row(
         spacing: 4.w,
         children: [

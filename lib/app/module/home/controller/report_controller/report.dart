@@ -6,24 +6,20 @@ import '../../../../data/dummy_data/filterData.dart';
 
 class ReportController extends GetxController {
   HomeController Hcontroller = Get.find<HomeController>();
-  RxList<String> ReportDayCategory = ["All", "Today", "Weekly", "Monthly"].obs;
+  RxList<String> ReportDayCategory = ["All", "Today", "Monthly"].obs;
   RxList<String> ReportChartCategory = ["Pie Chart", "Bar Chart"].obs;
   RxString storeDayValue = "All".obs;
   RxString storeChartValue = "Pie Chart".obs;
   RxList<TExpense> barChartReport = <TExpense>[].obs;
-  RxList<MonthlyConvertModel> monthlyData = <MonthlyConvertModel>[].obs;
-  Rx<FirebaseGetModel> userData = FirebaseGetModel().obs;
 
   void categoryChecker() async {
-    final fromData = userData.value;
+    final fromData = Hcontroller.userAllData.value;
     if (storeDayValue.value == "All") {
       List<TExpense>? data = fromData.allExpense;
       barChartReport.assignAll(data ?? []);
     } else if (storeDayValue.value == "Today") {
       List<TExpense>? data = fromData.tExpense;
       barChartReport.assignAll(data ?? []);
-    } else if (storeDayValue.value == "Weekly") {
-      barChartReport.assignAll([]);
     } else if (storeDayValue.value == "Monthly") {
       List<MonthlyConvertModel> monthlyExpanse = await FilterdataMonthly()
           .filterData(listData: fromData.allExpense ?? []);
@@ -49,13 +45,10 @@ class ReportController extends GetxController {
 
   @override
   void onInit() {
-    userData.value = Hcontroller.userAllData.value;
     categoryChecker();
+    Hcontroller.userAllData.listen((v) => categoryChecker());
     storeDayValue.listen((v) {
       categoryChecker();
-    });
-    Hcontroller.userAllData.listen((j) {
-      userData.value = j;
     });
     super.onInit();
   }

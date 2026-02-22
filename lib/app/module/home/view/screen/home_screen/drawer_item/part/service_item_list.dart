@@ -32,7 +32,6 @@ class ServiceItemList extends StatelessWidget {
               controller.selectedIndex.value = 1;
               Get.back();
             },
-            controller: controller,
           ),
           CustomListTile(
             title: "Tr_title".tr,
@@ -44,7 +43,6 @@ class ServiceItemList extends StatelessWidget {
               Get.back();
               controller.homeController.bottomIndex.value = 1;
             },
-            controller: controller,
           ),
           CustomListTile(
             title: "Btm_Rp".tr,
@@ -56,10 +54,8 @@ class ServiceItemList extends StatelessWidget {
               Get.back();
               controller.homeController.bottomIndex.value = 2;
             },
-            controller: controller,
           ),
           CustomListTile(
-            controller: controller,
             title: "drawer_Budget".tr,
             Tileno: 4,
             selectedindex: controller.selectedIndex.value,
@@ -70,7 +66,6 @@ class ServiceItemList extends StatelessWidget {
             },
           ),
           CustomListTile(
-            controller: controller,
             title: "Drawer_privacy".tr,
             Tileno: 5,
             selectedindex: controller.selectedIndex.value,
@@ -82,7 +77,6 @@ class ServiceItemList extends StatelessWidget {
           ),
           Divider(),
           CustomListTile(
-            controller: controller,
             title: "drawer_settings".tr,
             Tileno: 6,
             selectedindex: controller.selectedIndex.value,
@@ -93,7 +87,6 @@ class ServiceItemList extends StatelessWidget {
             },
           ),
           CustomListTile(
-            controller: controller,
             title: "drawer_language".tr,
             selectedindex: controller.selectedIndex.value,
             leadingIcon: Icons.language,
@@ -101,7 +94,6 @@ class ServiceItemList extends StatelessWidget {
           ),
           Divider(),
           CustomListTile(
-            controller: controller,
             titleColor: Colors.red,
             iconColor: Colors.red,
             selectColor: Colors.red.shade50,

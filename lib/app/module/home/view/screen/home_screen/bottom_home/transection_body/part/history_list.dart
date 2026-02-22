@@ -63,7 +63,7 @@ class History_list extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final expansionData = controller.monthlyData[index];
                       List<MonthlyData> expansionInData =
-                          expansionData.monthlyData ?? [];
+                          expansionData.monthlyData?.reversed.toList() ?? [];
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 5),
                         child: ExpansionTile(

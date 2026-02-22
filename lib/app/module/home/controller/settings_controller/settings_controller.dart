@@ -18,6 +18,7 @@ class SettingsController extends GetxController {
   RxBool isSlide = false.obs;
   RxBool isLoading = false.obs;
   TextEditingController deleteAllController = TextEditingController();
+  RxInt selectedMonth = 0.obs;
 
   void animationSlide() async {
     await Future.delayed(Duration(milliseconds: 100));
@@ -27,6 +28,8 @@ class SettingsController extends GetxController {
   void deleteAllData() {
     Get.dialog(DeleteDialogue());
   }
+
+  void monthlyDelete(){}
 
   void deleteTodayData() {
     Get.dialog(
