@@ -78,7 +78,7 @@ class SettingsUi extends StatelessWidget {
                     },
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 50),
+                    padding: EdgeInsets.only(top: 10, left: 50, right: 50),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -137,28 +137,44 @@ class SettingsUi extends StatelessWidget {
             0,
           ),
           child: expansionTile == true
-              ? ExpansionTile(
-                  collapsedIconColor: Colors.red,
-                  iconColor: Colors.red,
-                  splashColor: Colors.teal,
-                  dense: true,
-                  minTileHeight: 40.h,
-                  backgroundColor: Colors.teal.shade100,
-                  collapsedShape: RoundedRectangleBorder(
+              ? Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade300,
+                        offset: Offset(3, 5),
+                        blurRadius: 5,
+                        spreadRadius: 0,
+                      ),
+                    ],
                     borderRadius: BorderRadius.circular(10),
+                    color: Colors.teal.shade200,
                   ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  collapsedBackgroundColor: Colors.teal.shade200,
-                  title: Center(
-                    child: CustomText(
-                      text: title ?? "",
-                      textColor: Colors.red,
-                      fontsize: 14.sp,
+                  child: ExpansionTile(
+                    tilePadding: EdgeInsets.only(left: 41),
+
+                    collapsedIconColor: Colors.red,
+                    iconColor: Colors.red,
+                    splashColor: Colors.teal,
+                    dense: true,
+                    minTileHeight: 40.h,
+                    backgroundColor: Colors.teal.shade100,
+                    collapsedShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    collapsedBackgroundColor: Colors.teal.shade200,
+                    title: Center(
+                      child: CustomText(
+                        text: title ?? "",
+                        textColor: Colors.red,
+                        fontsize: 14.sp,
+                      ),
+                    ),
+                    children: expansionItem ?? [],
                   ),
-                  children: expansionItem ?? [],
                 )
               : Container(
                   height: 40.h,

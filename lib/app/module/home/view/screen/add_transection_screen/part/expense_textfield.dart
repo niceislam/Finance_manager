@@ -4,6 +4,7 @@ import 'package:finance_management/app/data/dummy_data/cost_type_data.dart';
 import 'package:finance_management/app/data/dummy_data/iconData.dart';
 import 'package:finance_management/app/module/home/controller/add_transection_controller/add_transection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../Global_widget/custom_Textfield.dart';
@@ -121,6 +122,7 @@ class ExpenseTexField extends StatelessWidget {
             },
             preIcon: Icon(Icons.account_balance),
             keyboardType: TextInputType.number,
+            inputFormatter: FilteringTextInputFormatter.digitsOnly,
             controller: controller.costPriceController,
             hintText: "Add_Tr_Cost_Field_hint".tr,
           ),

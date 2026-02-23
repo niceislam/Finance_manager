@@ -33,22 +33,26 @@ class SettingsController extends GetxController {
   }
 
   void deleteMonthlyConfirm() {
-    log("=====Data ${jsonEncode(homeController.userAllData.value.tExpense)}");
+    DeleteMonthlydata().delete(selectedMonth.value);
   }
 
   void monthlyDelete() {
-    Get.dialog(
-      CustomAlertDia(
-        title: "Confirmation".tr,
-        body: "delete_monthly_body".tr,
-        yesOntap: () {
-          deleteMonthlyConfirm();
-        },
-        noOntap: () {
-          Get.back();
-        },
-      ),
-    );
+    if (selectedMonth.value == 13) {
+      EasyLoading.showError("Please select a month");
+    } else {
+      Get.dialog(
+        CustomAlertDia(
+          title: "Confirmation".tr,
+          body: "delete_monthly_body".tr,
+          yesOntap: () {
+            deleteMonthlyConfirm();
+          },
+          noOntap: () {
+            Get.back();
+          },
+        ),
+      );
+    }
   }
 
   void deleteTodayData() {

@@ -1,5 +1,6 @@
 import 'package:finance_management/app/module/home/controller/add_transection_controller/add_transection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../Global_widget/custom_Textfield.dart';
@@ -49,6 +50,7 @@ class IncomeTexField extends StatelessWidget {
             },
             preIcon: Icon(Icons.account_balance),
             keyboardType: TextInputType.number,
+            inputFormatter: FilteringTextInputFormatter.digitsOnly,
             controller: controller.incomeController,
             hintText: "Add_Tr_Income_field".tr,
           ),

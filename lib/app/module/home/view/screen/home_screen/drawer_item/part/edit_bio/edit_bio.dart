@@ -1,6 +1,7 @@
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
 import 'package:finance_management/app/module/home/view/screen/home_screen/drawer_item/part/edit_bio/part/image_add.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -48,6 +49,7 @@ class EditBiodataDialogue extends StatelessWidget {
             keyboardType: TextInputType.number,
             hintText: "Age",
             controller: controller.ageEditController,
+            inputFormatter: FilteringTextInputFormatter.digitsOnly,
           ),
           SizedBox(height: 5.h),
           Obx(
