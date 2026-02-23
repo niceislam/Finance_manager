@@ -24,21 +24,35 @@ class RegisterAuth extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText(
-              text: "Let’s Get Started!",
-              fontWeight: FontWeight.bold,
-              fontsize: 20.sp,
-            ),
-            SizedBox(height: 2.h),
-            CustomText(
-              text: "Create an account.",
-              fontsize: 14.sp,
-              fontWeight: FontWeight.w400,
-            ),
-            SizedBox(height: 22.h),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.teal.shade50,
+              ),
+              width: MediaQuery.sizeOf(context).width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    text: "Let’s Get Started!",
+                    fontWeight: FontWeight.bold,
+                    fontsize: 20.sp,
+                  ),
+                  SizedBox(height: 2.h),
+                  CustomText(
+                    text: "Create an account.",
+                    fontsize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  SizedBox(height: 22.h),
 
-            //Register Textfields
-            RegTextfields(controller: controller),
+                  //Register Textfields
+                  RegTextfields(controller: controller),
+                ],
+              ),
+            ),
+
             SizedBox(height: 30),
 
             //Register Button

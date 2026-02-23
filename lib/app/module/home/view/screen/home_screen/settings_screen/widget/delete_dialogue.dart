@@ -1,9 +1,6 @@
 import 'package:finance_management/app/module/home/controller/settings_controller/settings_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-
 import '../../../../../Global_widget/custom_Textfield.dart';
 import '../../../../../Global_widget/custom_text.dart';
 import 'package:get/get.dart';

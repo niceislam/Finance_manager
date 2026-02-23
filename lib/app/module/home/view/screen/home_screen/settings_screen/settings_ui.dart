@@ -47,12 +47,15 @@ class SettingsUi extends StatelessWidget {
                 title: "Delete_Month".tr,
                 expansionTile: true,
                 expansionItem: [
-                  SizedBox(height: 10.h),
-                  ListView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
-                    physics: NeverScrollableScrollPhysics(),
+                  GridView.builder(
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                     shrinkWrap: true,
                     itemCount: EnglishMonth().months.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 3.3.r,
+                      crossAxisSpacing: 5,
+                    ),
                     itemBuilder: (context, index) {
                       return Obx(
                         () => CustomListTile(
@@ -74,9 +77,8 @@ class SettingsUi extends StatelessWidget {
                       );
                     },
                   ),
-                  SizedBox(height: 10.h),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    padding: EdgeInsets.symmetric(horizontal: 50),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(

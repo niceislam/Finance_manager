@@ -18,7 +18,6 @@ class floating_action extends StatelessWidget {
               position: controller.offsetAnimation,
               child: GestureDetector(
                 onTap: () {
-                  log("==========Size ${MediaQuery.sizeOf(context)}");
                   controller.floatingTap();
                 },
                 child: Container(

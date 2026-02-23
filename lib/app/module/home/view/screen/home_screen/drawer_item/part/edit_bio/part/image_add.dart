@@ -27,7 +27,7 @@ class AddImage extends StatelessWidget {
               backgroundColor: Colors.teal,
               radius: 37.r,
               backgroundImage: controller.imagePath.value.isEmpty
-                  ? const AssetImage("assets/image/noImage.webp")
+                  ? AssetImage("assets/image/noImage.webp")
                   : FileImage(File(controller.imagePath.value)),
             ),
           ),

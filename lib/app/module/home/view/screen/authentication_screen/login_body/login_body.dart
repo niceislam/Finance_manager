@@ -19,38 +19,52 @@ class LoginAuth extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText(
-              text: "Welcome Back!",
-              fontWeight: FontWeight.bold,
-              fontsize: 20.sp,
-            ),
-            SizedBox(height: 2.h),
-            CustomText(
-              text: "Please enter your details to login.",
-              fontsize: 14.sp,
-              fontWeight: FontWeight.w400,
-            ),
-            SizedBox(height: 25.h),
-
-            //Login Textfields
-            TextfieldLogin(controller: controller),
-            SizedBox(height: 8.h),
-
-            //forgot password
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                InkWell(
-                  borderRadius: BorderRadius.circular(40),
-                  onTap: () {},
-                  child: CustomText(
-                    text: "Forgot Password",
-                    fontsize: 13.sp,
-                    fontWeight: FontWeight.w600,
-                    textColor: Colors.black,
+            SizedBox(height: 20),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.teal.shade50,
+              ),
+              width: MediaQuery.sizeOf(context).width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    text: "Welcome Back!",
+                    fontWeight: FontWeight.bold,
+                    fontsize: 20.sp,
                   ),
-                ),
-              ],
+                  SizedBox(height: 2.h),
+                  CustomText(
+                    text: "Please enter your details to login.",
+                    fontsize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  SizedBox(height: 25.h),
+
+                  //Login Textfields
+                  TextfieldLogin(controller: controller),
+                  SizedBox(height: 8.h),
+
+                  //forgot password
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        borderRadius: BorderRadius.circular(40),
+                        onTap: () {},
+                        child: CustomText(
+                          text: "Forgot Password",
+                          fontsize: 13.sp,
+                          fontWeight: FontWeight.w600,
+                          textColor: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 25.h),
 

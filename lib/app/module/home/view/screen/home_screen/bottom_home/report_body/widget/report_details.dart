@@ -1,8 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import '../../../../../../../../data/dummy_data/report_page_color.dart';
 import '../../../../../../Global_widget/custom_text.dart';
 import '../../../../../../controller/report_controller/report.dart';

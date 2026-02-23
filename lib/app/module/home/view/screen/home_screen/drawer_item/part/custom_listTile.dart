@@ -41,7 +41,7 @@ class CustomListTile extends StatelessWidget {
       title: CustomText(
         text: title ?? "",
         fontWeight: FontWeight.w500,
-        fontsize: 14.sp,
+        fontsize: 13.sp,
         textColor: titleColor ?? Colors.black,
       ),
       selected: true,

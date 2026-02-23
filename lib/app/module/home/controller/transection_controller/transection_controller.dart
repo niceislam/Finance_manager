@@ -1,4 +1,4 @@
-import 'package:finance_management/app/data/dummy_data/filterData.dart';
+import 'package:finance_management/app/data/service/filterData.dart';
 import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/data/model/monthlyConvert_model.dart';
 import 'package:finance_management/app/module/home/controller/home_controller/home.dart';
@@ -22,7 +22,7 @@ class TransectionController extends GetxController {
   void filterMonth() async {
     final source = homeController.userAllData.value.allExpense;
     if (source!.isNotEmpty) {
-      List<MonthlyConvertModel> monthly = await FilterdataMonthly().filterData(
+      List<MonthlyConvertModel> monthly = await FilterDataMonthly().filterData(
         listData: homeController.userAllData.value.allExpense ?? [],
       );
       monthlyData.assignAll(monthly);

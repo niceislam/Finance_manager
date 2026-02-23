@@ -9,7 +9,7 @@ class TodaydataDelete {
       String uid = await LocalStorage().readData(key: "login");
       var callRef = FirebaseFirestore.instance.collection("users").doc(uid);
       if (list != <TExpense>[]) {
-        int value = 0;
+        dynamic value = 0;
         for (var i in list) {
           value += i.cost!;
         }

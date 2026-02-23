@@ -15,7 +15,6 @@ class ImageAndInfo extends StatelessWidget {
     return Obx(() {
       final item = controller.homeController.userAllData.value;
       final imageItem = controller.profileImage.value;
-      log("=====image222222222 $imageItem");
       return Row(
         spacing: 4.w,
         children: [

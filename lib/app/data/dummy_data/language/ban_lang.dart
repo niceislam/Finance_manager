@@ -44,6 +44,7 @@ class BanglaLanguage {
     "Confirmation": "নিশ্চিতকরণ",
     "delete_all_body": "মুছে ফেলা নিশ্চিত করতে দয়া করে #delete টাইপ করুন",
     "delete_today_body": "আপনি কি আজকের তথ্য মুছে ফেলার বিষয়ে নিশ্চিত?",
+    "delete_monthly_body": "আপনি কি নিশ্চিত যে আপনি মাসিক তথ্য মুছে ফেলতে চান?",
     "Confirm": "নিশ্চিত করুন",
     "yes": "হ্যাঁ",
     "no": "না",

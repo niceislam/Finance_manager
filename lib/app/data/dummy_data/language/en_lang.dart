@@ -44,6 +44,7 @@ class EnglshLanguage {
     "Confirmation": "Confirmation",
     "delete_all_body": "Please type #delete to confirm delete",
     "delete_today_body": "Are you sure to delete today data",
+    "delete_monthly_body": "Are you sure to delete monthly data",
     "Confirm": "Confirm",
     "yes": "Yes",
     "no": "No",

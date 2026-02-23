@@ -10,7 +10,7 @@ class AddTraController extends GetxController {
   TextEditingController productsControleller = TextEditingController();
   TextEditingController costPriceController = TextEditingController();
   TextEditingController incomeController = TextEditingController();
-  RxString dateFormat = DateFormat("dd MMM yyy").format(DateTime.now()).obs;
+  RxString dateFormat = DateFormat("dd MMMM yyy").format(DateTime.now()).obs;
   RxString TimeFormat = DateFormat("hh:mm aa").format(DateTime.now()).obs;
   final mykey = GlobalKey<FormState>();
   final mykeyincome = GlobalKey<FormState>();

@@ -82,6 +82,10 @@ class History_list extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           title: CustomText(text: "${expansionData.monthName}"),
+                          subtitle: CustomText(
+                            text: "Total: ${expansionData.totalCost}",
+                            fontsize: 12.sp,
+                          ),
                           children: [
                             ListView.builder(
                               physics: NeverScrollableScrollPhysics(),

@@ -21,10 +21,16 @@ class IncomeTexField extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 _buildContainer(
-                  child: CustomText(text: controller.dateFormat.value),
+                  child: CustomText(
+                    text: controller.dateFormat.value,
+                    fontsize: 13.sp,
+                  ),
                 ),
                 _buildContainer(
-                  child: CustomText(text: controller.TimeFormat.value),
+                  child: CustomText(
+                    text: controller.TimeFormat.value,
+                    fontsize: 13.sp,
+                  ),
                 ),
               ],
             ),
@@ -53,6 +59,7 @@ class IncomeTexField extends StatelessWidget {
 
   Container _buildContainer({required Widget child}) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 5),
       height: 40.h,
       width: 130.w,
       decoration: BoxDecoration(

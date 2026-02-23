@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:finance_management/app/data/dummy_data/English_month.dart';
 import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/data/model/firebase_get_model.dart';
 import 'package:finance_management/app/data/service/delete_all_data.dart';
@@ -11,6 +13,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import '../../../../data/service/delete_monthlyData.dart';
 import '../../view/screen/home_screen/settings_screen/widget/delete_dialogue.dart';
 
 class SettingsController extends GetxController {
@@ -18,7 +21,7 @@ class SettingsController extends GetxController {
   RxBool isSlide = false.obs;
   RxBool isLoading = false.obs;
   TextEditingController deleteAllController = TextEditingController();
-  RxInt selectedMonth = 0.obs;
+  RxInt selectedMonth = 13.obs;
 
   void animationSlide() async {
     await Future.delayed(Duration(milliseconds: 100));
@@ -29,7 +32,24 @@ class SettingsController extends GetxController {
     Get.dialog(DeleteDialogue());
   }
 
-  void monthlyDelete(){}
+  void deleteMonthlyConfirm() {
+    log("=====Data ${jsonEncode(homeController.userAllData.value.tExpense)}");
+  }
+
+  void monthlyDelete() {
+    Get.dialog(
+      CustomAlertDia(
+        title: "Confirmation".tr,
+        body: "delete_monthly_body".tr,
+        yesOntap: () {
+          deleteMonthlyConfirm();
+        },
+        noOntap: () {
+          Get.back();
+        },
+      ),
+    );
+  }
 
   void deleteTodayData() {
     Get.dialog(

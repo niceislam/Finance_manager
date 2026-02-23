@@ -26,7 +26,7 @@ class TransectionBody extends StatelessWidget {
 
               //body
               Container(
-                padding: EdgeInsets.only(top: 15, left: 15, right: 15),
+                padding: EdgeInsets.only(top: 15, left: 10, right: 10),
                 margin: EdgeInsets.only(top: 60),
                 height: size.height,
                 width: size.width,

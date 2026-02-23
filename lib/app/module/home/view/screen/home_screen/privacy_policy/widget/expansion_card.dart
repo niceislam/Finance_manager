@@ -37,7 +37,7 @@ class ExpansionCardCustom extends StatelessWidget {
           iconColor: Colors.teal,
           childrenPadding: EdgeInsets.all(10),
           collapsedShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(10),
           ),
           backgroundColor: Colors.teal.shade100,
           collapsedBackgroundColor: Colors.teal.shade100,

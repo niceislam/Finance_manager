@@ -1,17 +1,16 @@
 class MonthlyConvertModel {
   String? monthName;
+  int? totalCost;
   List<MonthlyData>? monthlyData;
 
-  MonthlyConvertModel({this.monthName, this.monthlyData});
+  MonthlyConvertModel({this.monthName, this.totalCost, this.monthlyData});
 
-  // এই Method টি Map এবং Object উভয় থেকেই ডাটা নিতে পারবে
   MonthlyConvertModel.fromJson(Map<String, dynamic> json) {
     monthName = json['monthName'];
+    totalCost = json['totalCost']?.toDouble();
     if (json['monthlyData'] != null) {
       monthlyData = <MonthlyData>[];
       json['monthlyData'].forEach((v) {
-        // যদি v একটি Map হয় তবে .fromJson ব্যবহার করবে
-        // আর যদি সরাসরি Object (যেমন TExpense) হয় তবে .fromObject ব্যবহার করবে
         if (v is Map<String, dynamic>) {
           monthlyData!.add(MonthlyData.fromJson(v));
         } else {
@@ -24,6 +23,7 @@ class MonthlyConvertModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['monthName'] = monthName;
+    data['totalCost'] = totalCost;
     if (monthlyData != null) {
       data['monthlyData'] = monthlyData!.map((v) => v.toJson()).toList();
     }
@@ -36,10 +36,15 @@ class MonthlyData {
   String? product;
   int? cost;
   String? costType;
+  double? totalCost;
 
-  MonthlyData({this.dateTime, this.product, this.cost, this.costType});
+  MonthlyData({
+    this.dateTime,
+    this.product,
+    this.cost,
+    this.costType,
+  });
 
-  // নতুন মেথড: এটি সরাসরি TExpense অবজেক্ট থেকে ডাটা ম্যাপ করবে
   MonthlyData.fromObject(dynamic obj) {
     dateTime = obj.dateTime;
     product = obj.product;
