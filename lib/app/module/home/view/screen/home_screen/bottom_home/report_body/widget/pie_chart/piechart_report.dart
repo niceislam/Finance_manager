@@ -43,6 +43,6 @@ class PieChartCustom extends StatelessWidget {
         ),
       );
     }
-    return Center(child: CustomText(text: "No_data_found".tr));
+    return Center(child: CustomText(text: "No_data_found".tr,fontsize: 13.sp,));
   }
 }

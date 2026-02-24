@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:finance_management/app/data/local/secure_storage/secure_storage.dart';
 import 'package:finance_management/app/module/home/controller/languages_controller/languages_controller.dart';
 import 'package:finance_management/app/module/home/view/screen/splash_sreen/splash_screen.dart';
@@ -9,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import 'app/core/utils/easyloading_setting/easyloading.dart';
 
 void main() async {
@@ -20,16 +18,12 @@ void main() async {
 
   var es = await LocalStorage().readData(key: "language");
   runApp(
-    DevicePreview(
-      builder: (BuildContext context) {
-        return ScreenUtilInit(
-          minTextAdapt: true,
-          splitScreenMode: true,
-          designSize: const Size(360, 690),
-          builder: (_, constrains) {
-            return MyApp(status: es);
-          },
-        );
+    ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      designSize: const Size(360, 690),
+      builder: (_, constrains) {
+        return MyApp(status: es);
       },
     ),
   );

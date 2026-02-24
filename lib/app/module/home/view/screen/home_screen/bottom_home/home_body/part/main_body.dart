@@ -100,7 +100,7 @@ class main_body extends StatelessWidget {
                       child: Center(
                         child: CustomText(
                           text: "No_data_today".tr,
-                          fontsize: 15.sp,
+                          fontsize: 13.sp,
                         ),
                       ),
                     )

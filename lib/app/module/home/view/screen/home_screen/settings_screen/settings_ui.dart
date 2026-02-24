@@ -152,7 +152,6 @@ class SettingsUi extends StatelessWidget {
                   ),
                   child: ExpansionTile(
                     tilePadding: EdgeInsets.only(left: 41),
-
                     collapsedIconColor: Colors.red,
                     iconColor: Colors.red,
                     splashColor: Colors.teal,

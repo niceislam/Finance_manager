@@ -40,7 +40,7 @@ class ReportBody extends StatelessWidget {
                   final check = controller.Hcontroller.userAllData.value;
                   if (check == FirebaseGetModel()) {
                     return Center(
-                      child: CustomText(text: "Something went wrong"),
+                      child: CustomText(text: "Something went wrong",fontsize: 13.sp,),
                     );
                   }
                   return Column(

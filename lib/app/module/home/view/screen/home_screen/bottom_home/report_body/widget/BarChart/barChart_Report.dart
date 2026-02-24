@@ -50,7 +50,7 @@ class BarchartReport extends StatelessWidget {
         ),
       );
     }
-    return Center(child: CustomText(text: "No_data_found".tr));
+    return Center(child: CustomText(text: "No_data_found".tr,fontsize: 13.sp,));
   }
 
   Row _bottomWidget({required String title, required Color conColor}) {
